@@ -11,15 +11,17 @@ namespace PictureApp
         {
             var g = e.Graphics;
             var mainPen = new Pen(Color.Black, 3);
+            var scaler = new Scaler();
+            scaler.ScreenRectangle = ClientRectangle;
 
-            g.FillRectangle(Brushes.DarkGray, 100, 100, 200, 300);
-            g.DrawRectangle(mainPen, 100, 100, 200, 300);
+            g.FillRectangle(Brushes.DarkGray, scaler.Calculate(-8, 9, 3, -7));
+            g.DrawRectangle(mainPen, scaler.Calculate(-8, 9, 3, -7));
 
             g.FillRectangle(Brushes.Azure, 200, 120, 80, 120);
             g.DrawRectangle(mainPen, 200, 120, 80, 120);
 
-            g.FillRectangle(Brushes.DarkGray, 300, 200, 600, 200);
-            g.DrawRectangle(mainPen, 300, 200, 600, 200);
+            g.FillRectangle(Brushes.DarkGray, scaler.Calculate(-5, 6, 11, -4));
+            g.DrawRectangle(mainPen, scaler.Calculate(-5, 6, 11, -4));
 
             g.FillEllipse(Brushes.DarkGray, 150, 400, 150, 150);
             g.DrawEllipse(mainPen, 150, 400, 150, 150);
@@ -45,6 +47,11 @@ namespace PictureApp
             };
             g.FillPolygon(Brushes.DarkGray, points);
             g.DrawPolygon(mainPen, points);
+        }
+
+        private void PictureForm_Resize(object sender, EventArgs e)
+        {
+            Refresh();
         }
     }
 }
