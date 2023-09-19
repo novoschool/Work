@@ -21,24 +21,32 @@ namespace PictureApp
 
         public Rectangle Calculate(RectangleModel rectangleModel)
         {
-            if (MathRectangle == null)
-            {
-                return new Rectangle();
-            }
-
-            var x = (int)(ScreenRectangle.X + (rectangleModel.X - MathRectangle.X) * ScreenRectangle.Width / MathRectangle.Width);
-            var y = (int)(ScreenRectangle.Y + (MathRectangle.Y + MathRectangle.Height - rectangleModel.Y) *
-                ScreenRectangle.Height / MathRectangle.Height);
-            var width = (int)(ScreenRectangle.X + rectangleModel.Width * ScreenRectangle.Width / MathRectangle.Width);
-            var height = (int)(ScreenRectangle.Y - rectangleModel.Height * ScreenRectangle.Height / MathRectangle.Height);
+            var x = (int)(ScreenRectangle.X + (rectangleModel.Left - MathRectangle.Left) * ScreenRectangle.Width / Math.Abs(MathRectangle.Width));
+            var y = (int)(ScreenRectangle.Y + (MathRectangle.Top - rectangleModel.Top) * ScreenRectangle.Height / Math.Abs(MathRectangle.Height));
+            var width = (int)(ScreenRectangle.X + Math.Abs(rectangleModel.Width) * ScreenRectangle.Width / Math.Abs(MathRectangle.Width));
+            var height = (int)(ScreenRectangle.Y + Math.Abs(rectangleModel.Height) * ScreenRectangle.Height / Math.Abs(MathRectangle.Height));
 
             return new Rectangle
             {
-                X = width > 0 ? x : x + width,
-                Y = height > 0 ? y : y + height,
-                Width = Math.Abs(width),
-                Height = Math.Abs(height),
+                X = x,
+                Y = y,
+                Width = width,
+                Height = height,
             };
+        }
+
+        public Point Calculate(double x, double y)
+        {
+            return new Point
+            {
+                X = (int)(ScreenRectangle.X + (x - MathRectangle.Left) * ScreenRectangle.Width / Math.Abs(MathRectangle.Width)),
+                Y = (int)(ScreenRectangle.Y + (MathRectangle.Top - y) * ScreenRectangle.Height / Math.Abs(MathRectangle.Height)),
+            };
+        }
+
+        public Point Calculate(PointModel pointModel)
+        {
+            return Calculate(pointModel.X, pointModel.Y);
         }
     }
 }

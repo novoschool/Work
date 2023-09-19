@@ -15,5 +15,13 @@ namespace PictureApp.Models
         public double Width { get; set; }
 
         public double Height { get; set; }
+
+        public double Left => Width > 0 ? X : X + Width;
+
+        public double Right => Width > 0 ? X + Width : X;
+
+        public double Bottom => Height > 0 ? Y : Y + Height;
+
+        public double Top => Height > 0 ? Y + Height : Y;
     }
 }
