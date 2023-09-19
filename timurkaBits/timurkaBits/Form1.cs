@@ -71,7 +71,15 @@ namespace timurkaBits
             g.FillEllipse(new SolidBrush(Color.Black),
                70, 300, 10, 10);
             g.DrawLine(new Pen(Color.Green, 7),
-               300, 900, 300, 300);
+               600, 600, 600, 300);
+            g.DrawEllipse(new Pen(Color.Yellow, 7),
+               550, 200, 100, 100);
+            g.FillEllipse(new SolidBrush(Color.Yellow),
+                550, 200, 100, 100);
+            g.DrawEllipse(new Pen(Color.Yellow, 7),
+               650, 20, 100, 100);
+            g.FillEllipse(new SolidBrush(Color.Yellow),
+                 650, 20, 100, 100);
 
 
 
