@@ -35,7 +35,27 @@ namespace Zima
 
 
             g.FillRectangle(Brushes.DarkBlue, 392, 240, 16, 23);
+
+
             g.FillRectangle(Brushes.Black, 512, 341, 17, 14);
+            g.FillRectangle(Brushes.Black, 519, 344, 11, 14);
+            g.FillRectangle(Brushes.Black, 516, 343, 11, 14);
+            g.FillRectangle(Brushes.Black, 514, 342, 11, 14);
+            g.FillRectangle(Brushes.Black, 512, 339, 8, 14);
+            g.FillRectangle(Brushes.Black, 513, 340, 11, 14);
+
+            g.FillRectangle(Brushes.Black, 552, 341, 17, 14);
+            g.FillRectangle(Brushes.Black, 562, 339, 10, 14);
+            g.FillRectangle(Brushes.Black, 559, 340, 10, 14);
+            g.FillRectangle(Brushes.Black, 552, 343, 10, 14);
+            g.FillRectangle(Brushes.Black, 552, 342, 14, 14);
+
+            g.FillRectangle(Brushes.DarkRed, 752, 341, 17, 14);
+            g.FillRectangle(Brushes.DarkRed, 759, 344, 11, 14);
+            g.FillRectangle(Brushes.DarkRed, 756, 343, 11, 14);
+            g.FillRectangle(Brushes.DarkRed, 754, 342, 11, 14);
+            g.FillRectangle(Brushes.DarkRed, 752, 339, 8, 14);
+            g.FillRectangle(Brushes.DarkRed, 753, 340, 11, 14);
         }
     }
 }
