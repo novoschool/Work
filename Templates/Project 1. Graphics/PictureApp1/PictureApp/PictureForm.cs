@@ -13,41 +13,15 @@ namespace PictureApp
         {
             var g = e.Graphics;
             var mainPen = new Pen(Color.Black, 3);
-            var scaler = new Scaler();
-            scaler.ScreenRectangle = ClientRectangle;
 
-            var rect = new RectangleModel
-            {
-                X = -8,
-                Y = 9,
-                Width = 3,
-                Height = -7,
-            };
+            g.FillRectangle(Brushes.DarkGray, 100, 100, 200, 300);
+            g.DrawRectangle(mainPen, 100, 100, 200, 300);
 
-            g.FillRectangle(Brushes.DarkGray, scaler.Calculate(rect));
-            g.DrawRectangle(mainPen, scaler.Calculate(rect));
+            g.FillRectangle(Brushes.Azure, 200, 120, 80, 120);
+            g.DrawRectangle(mainPen, 200, 120, 80, 120);
 
-            rect = new RectangleModel
-            {
-                X = -6.5,
-                Y = 8,
-                Width = 1,
-                Height = -2,
-            };
-
-            g.FillRectangle(Brushes.Azure, scaler.Calculate(rect));
-            g.DrawRectangle(mainPen, scaler.Calculate(rect));
-
-            rect = new RectangleModel
-            {
-                X = -5,
-                Y = 6,
-                Width = 11,
-                Height = -4,
-            };
-
-            g.FillRectangle(Brushes.DarkGray, scaler.Calculate(rect));
-            g.DrawRectangle(mainPen, scaler.Calculate(rect));
+            g.FillRectangle(Brushes.DarkGray, 300, 200, 600, 200);
+            g.DrawRectangle(mainPen, 300, 200, 600, 200);
 
             g.FillEllipse(Brushes.DarkGray, 150, 400, 150, 150);
             g.DrawEllipse(mainPen, 150, 400, 150, 150);
