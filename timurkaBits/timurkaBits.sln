@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "timurkaBits", "timurkaBits\timurkaBits.csproj", "{5FFB80D7-D85E-4300-9163-CF223F395FFC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5FFB80D7-D85E-4300-9163-CF223F395FFC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FFB80D7-D85E-4300-9163-CF223F395FFC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FFB80D7-D85E-4300-9163-CF223F395FFC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FFB80D7-D85E-4300-9163-CF223F395FFC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E4BA6832-027E-4174-AD5A-6EB8132F246F}
+	EndGlobalSection
+EndGlobal
