@@ -9,22 +9,28 @@ namespace PictureApp
 {
     internal class Scaler
     {
-        public Rectangle ScreenRectangle { get; set; }
+        private Rectangle _screenRectangle { get; set; }
 
-        public RectangleModel MathRectangle { get; set; } = new RectangleModel
+        private RectangleModel _mathRectangle { get; set; } = new RectangleModel
         {
             X = -9,
             Y = -1,
-            Width = 18,
+            Width = 17,
             Height = 11,
         };
 
+        public Scaler(Rectangle screenRectangle, RectangleModel mathRectangle)
+        {
+            _screenRectangle = screenRectangle;
+            _mathRectangle = mathRectangle;
+        }
+
         public Rectangle Calculate(RectangleModel rectangleModel)
         {
-            var x = (int)(ScreenRectangle.X + (rectangleModel.Left - MathRectangle.Left) * ScreenRectangle.Width / Math.Abs(MathRectangle.Width));
-            var y = (int)(ScreenRectangle.Y + (MathRectangle.Top - rectangleModel.Top) * ScreenRectangle.Height / Math.Abs(MathRectangle.Height));
-            var width = (int)(ScreenRectangle.X + Math.Abs(rectangleModel.Width) * ScreenRectangle.Width / Math.Abs(MathRectangle.Width));
-            var height = (int)(ScreenRectangle.Y + Math.Abs(rectangleModel.Height) * ScreenRectangle.Height / Math.Abs(MathRectangle.Height));
+            var x = (int)(_screenRectangle.X + (rectangleModel.Left - _mathRectangle.Left) * _screenRectangle.Width / Math.Abs(_mathRectangle.Width));
+            var y = (int)(_screenRectangle.Y + (_mathRectangle.Top - rectangleModel.Top) * _screenRectangle.Height / Math.Abs(_mathRectangle.Height));
+            var width = (int)(_screenRectangle.X + Math.Abs(rectangleModel.Width) * _screenRectangle.Width / Math.Abs(_mathRectangle.Width));
+            var height = (int)(_screenRectangle.Y + Math.Abs(rectangleModel.Height) * _screenRectangle.Height / Math.Abs(_mathRectangle.Height));
 
             return new Rectangle
             {
@@ -39,8 +45,8 @@ namespace PictureApp
         {
             return new Point
             {
-                X = (int)(ScreenRectangle.X + (x - MathRectangle.Left) * ScreenRectangle.Width / Math.Abs(MathRectangle.Width)),
-                Y = (int)(ScreenRectangle.Y + (MathRectangle.Top - y) * ScreenRectangle.Height / Math.Abs(MathRectangle.Height)),
+                X = (int)(_screenRectangle.X + (x - _mathRectangle.Left) * _screenRectangle.Width / Math.Abs(_mathRectangle.Width)),
+                Y = (int)(_screenRectangle.Y + (_mathRectangle.Top - y) * _screenRectangle.Height / Math.Abs(_mathRectangle.Height)),
             };
         }
 
