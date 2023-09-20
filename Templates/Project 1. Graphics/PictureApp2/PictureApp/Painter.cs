@@ -9,10 +9,6 @@ namespace PictureApp
 {
     internal class Painter
     {
-        private Graphics _graphics;
-
-        private Rectangle _clientRectangle;
-
         private RectangleModel _mathRectangle = new RectangleModel
         {
             X = -9,
@@ -21,13 +17,7 @@ namespace PictureApp
             Height = 11,
         };
 
-        public Painter(Graphics graphics, Rectangle clientRectangle)
-        {
-            _graphics = graphics;
-            _clientRectangle = clientRectangle;
-        }
-
-        public void Paint()
+        public void Paint(Graphics _graphics, Rectangle _clientRectangle)
         {
             var mainPen = new Pen(Color.Black, 3);
             var scaler = new Scaler(_clientRectangle, _mathRectangle);

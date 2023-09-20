@@ -11,8 +11,8 @@ namespace PictureApp
 
         private void PictureForm_Paint(object sender, PaintEventArgs e)
         {
-            var painter = new Painter(e.Graphics, ClientRectangle);
-            painter.Paint();
+            var painter = new Painter();
+            painter.Paint(e.Graphics, ClientRectangle);
         }
 
         private void PictureForm_Resize(object sender, EventArgs e)
