@@ -27,25 +27,15 @@ namespace OrlovaArina
                0, 0, 816, 489); //фулл красный цвет флага(размеры 816 на 489)
             var points = new[]
             {
-                new Point(190,100),
+                new Point(200,60),
                 new Point(210,30),
-                new Point(230,100),
-              //  new Point(0,0),
+                new Point(220,60),
+           
             };
             g.FillPolygon(new SolidBrush(Color.FromArgb(254, 222, 1)), points);
             
 
-            var points1 = new[]
-           {
-                new Point(190,101),
-                new Point(210,80),
-                new Point(230,101),
-              
-            };
-            g.FillPolygon(new SolidBrush(Color.FromArgb(224, 18, 29)), points1);
-
-            // g.DrawRectangle(new Pen(Color.FromArgb(255, 255, 255), 30),
-            //   300, 225, 300, 150);
+            
         }
 
         
