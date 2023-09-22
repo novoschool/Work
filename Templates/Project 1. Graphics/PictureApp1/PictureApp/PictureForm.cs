@@ -1,3 +1,5 @@
+using PictureApp.Models;
+
 namespace PictureApp
 {
     public partial class PictureForm : Form
@@ -45,6 +47,11 @@ namespace PictureApp
             };
             g.FillPolygon(Brushes.DarkGray, points);
             g.DrawPolygon(mainPen, points);
+        }
+
+        private void PictureForm_Resize(object sender, EventArgs e)
+        {
+            Refresh();
         }
     }
 }
