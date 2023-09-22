@@ -19,21 +19,8 @@ namespace aegis
 
         private void Form1_Paint(object sender, PaintEventArgs e)
         {
-            var g = e.Graphics;
-            var mainPen = new Pen(Color.Black, 1);
-
-            g.FillRectangle(Brushes.Green, 50, 100, 200, 300);
-            g.DrawRectangle(mainPen, 50, 100, 200, 300);
-
-
-            g.FillRectangle(Brushes.White, 250, 100, 200, 300);
-            g.DrawRectangle(mainPen, 250, 100, 200, 300);
-
-
-            g.FillRectangle(Brushes.Red, 400, 100, 200, 300);
-            g.DrawRectangle(mainPen, 400, 100, 200, 300);
-
-
+            var painter = new Painter();
+            painter.Paint(e.Graphics, ClientRectangle);
         }
 
         private void PictureForm_Resize(object sender, EventArgs e)
