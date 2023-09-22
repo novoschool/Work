@@ -17,10 +17,10 @@ namespace PictureApp
             Height = 11,
         };
 
-        public void Paint(Graphics _graphics, Rectangle _clientRectangle)
+        public void Paint(Graphics graphics, Rectangle clientRectangle)
         {
             var mainPen = new Pen(Color.Black, 3);
-            var scaler = new Scaler(_clientRectangle, _mathRectangle);
+            var scaler = new Scaler(clientRectangle, _mathRectangle);
 
             var rect = new RectangleModel
             {
@@ -30,8 +30,8 @@ namespace PictureApp
                 Height = 7,
             };
 
-            _graphics.FillRectangle(Brushes.DarkGray, scaler.Calculate(rect));
-            _graphics.DrawRectangle(mainPen, scaler.Calculate(rect));
+            graphics.FillRectangle(Brushes.DarkGray, scaler.Calculate(rect));
+            graphics.DrawRectangle(mainPen, scaler.Calculate(rect));
 
             rect = new RectangleModel
             {
@@ -41,8 +41,8 @@ namespace PictureApp
                 Height = 2,
             };
 
-            _graphics.FillRectangle(Brushes.Azure, scaler.Calculate(rect));
-            _graphics.DrawRectangle(mainPen, scaler.Calculate(rect));
+            graphics.FillRectangle(Brushes.Azure, scaler.Calculate(rect));
+            graphics.DrawRectangle(mainPen, scaler.Calculate(rect));
 
             rect = new RectangleModel
             {
@@ -52,8 +52,8 @@ namespace PictureApp
                 Height = 4,
             };
 
-            _graphics.FillRectangle(Brushes.DarkGray, scaler.Calculate(rect));
-            _graphics.DrawRectangle(mainPen, scaler.Calculate(rect));
+            graphics.FillRectangle(Brushes.DarkGray, scaler.Calculate(rect));
+            graphics.DrawRectangle(mainPen, scaler.Calculate(rect));
 
             rect = new RectangleModel
             {
@@ -63,8 +63,8 @@ namespace PictureApp
                 Height = 2,
             };
 
-            _graphics.FillEllipse(Brushes.DarkGray, scaler.Calculate(rect));
-            _graphics.DrawEllipse(mainPen, scaler.Calculate(rect));
+            graphics.FillEllipse(Brushes.DarkGray, scaler.Calculate(rect));
+            graphics.DrawEllipse(mainPen, scaler.Calculate(rect));
 
             rect = new RectangleModel
             {
@@ -74,8 +74,8 @@ namespace PictureApp
                 Height = 2,
             };
 
-            _graphics.FillEllipse(Brushes.DarkGray, scaler.Calculate(rect));
-            _graphics.DrawEllipse(mainPen, scaler.Calculate(rect));
+            graphics.FillEllipse(Brushes.DarkGray, scaler.Calculate(rect));
+            graphics.DrawEllipse(mainPen, scaler.Calculate(rect));
 
             rect = new RectangleModel
             {
@@ -85,8 +85,8 @@ namespace PictureApp
                 Height = 2,
             };
 
-            _graphics.FillEllipse(Brushes.DarkGray, scaler.Calculate(rect));
-            _graphics.DrawEllipse(mainPen, scaler.Calculate(rect));
+            graphics.FillEllipse(Brushes.DarkGray, scaler.Calculate(rect));
+            graphics.DrawEllipse(mainPen, scaler.Calculate(rect));
 
             rect = new RectangleModel
             {
@@ -96,8 +96,8 @@ namespace PictureApp
                 Height = 2,
             };
 
-            _graphics.FillEllipse(Brushes.DarkGray, scaler.Calculate(rect));
-            _graphics.DrawEllipse(mainPen, scaler.Calculate(rect));
+            graphics.FillEllipse(Brushes.DarkGray, scaler.Calculate(rect));
+            graphics.DrawEllipse(mainPen, scaler.Calculate(rect));
 
             rect = new RectangleModel
             {
@@ -107,8 +107,8 @@ namespace PictureApp
                 Height = 4,
             };
 
-            _graphics.FillPie(Brushes.DarkGray, scaler.Calculate(rect), 270, 180);
-            _graphics.DrawArc(mainPen, scaler.Calculate(rect), 270, 180);
+            graphics.FillPie(Brushes.DarkGray, scaler.Calculate(rect), 270, 180);
+            graphics.DrawArc(mainPen, scaler.Calculate(rect), 270, 180);
 
             var points = new[]
             {
@@ -118,8 +118,8 @@ namespace PictureApp
                 new PointModel { X = 4, Y = 6 },
             };
             var calculatedPoints = points.Select(p => scaler.Calculate(p)).ToArray();
-            _graphics.FillPolygon(Brushes.DarkGray, calculatedPoints);
-            _graphics.DrawPolygon(mainPen, calculatedPoints);
+            graphics.FillPolygon(Brushes.DarkGray, calculatedPoints);
+            graphics.DrawPolygon(mainPen, calculatedPoints);
         }
     }
 }
