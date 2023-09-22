@@ -36,7 +36,7 @@ namespace Angola
             Star((Width/12) * 5, ((Hight/18) * 6), Width/10, Hight/7);
 
 
-            
+            Refresh();
         }
 
         void Star(int X, int Y, int Width, int Hight)
