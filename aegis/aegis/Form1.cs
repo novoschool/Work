@@ -34,9 +34,6 @@ namespace aegis
             g.DrawRectangle(mainPen, 400, 100, 200, 300);
 
 
-
-        
-
         }
 
         private void PictureForm_Resize(object sender, EventArgs e)
