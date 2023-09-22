@@ -28,18 +28,19 @@
         /// </summary>
         private void InitializeComponent()
         {
-            SuspendLayout();
+            this.SuspendLayout();
             // 
             // PictureForm
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
-            AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1199, 590);
-            Name = "PictureForm";
-            Text = "Рисунок";
-            Paint += PictureForm_Paint;
-            Resize += PictureForm_Resize;
-            ResumeLayout(false);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(7F, 15F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(190)))), ((int)(((byte)(0)))), ((int)(((byte)(0)))));
+            this.ClientSize = new System.Drawing.Size(1199, 590);
+            this.Name = "PictureForm";
+            this.Text = "Рисунок";
+            this.Paint += new System.Windows.Forms.PaintEventHandler(this.PictureForm_Paint);
+            this.ResumeLayout(false);
+
         }
 
         #endregion

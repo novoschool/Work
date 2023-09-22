@@ -11,115 +11,56 @@ namespace PictureApp
     {
         private RectangleModel _mathRectangle = new RectangleModel
         {
-            X = -9,
-            Y = -1,
-            Width = 17,
-            Height = 11,
+            X = 0,
+            Y = 0,
+            Width = 16,
+            Height = 9,
         };
 
-        public void Paint(Graphics graphics, Rectangle clientRectangle)
+        public void Paint(Graphics g, Rectangle clientRectangle)
         {
-            var mainPen = new Pen(Color.Black, 3);
+            var mainPen = new Pen(Color.Yellow, 3);
             var scaler = new Scaler(clientRectangle, _mathRectangle);
 
-            var rect = new RectangleModel
-            {
-                X = -8,
-                Y = 2,
-                Width = 3,
-                Height = 7,
-            };
 
-            graphics.FillRectangle(Brushes.DarkGray, scaler.Calculate(rect));
-            graphics.DrawRectangle(mainPen, scaler.Calculate(rect));
-
-            rect = new RectangleModel
-            {
-                X = -6.5,
-                Y = 6,
-                Width = 1,
-                Height = 2,
-            };
-
-            graphics.FillRectangle(Brushes.Azure, scaler.Calculate(rect));
-            graphics.DrawRectangle(mainPen, scaler.Calculate(rect));
-
-            rect = new RectangleModel
-            {
-                X = -5,
-                Y = 2,
-                Width = 11,
-                Height = 4,
-            };
-
-            graphics.FillRectangle(Brushes.DarkGray, scaler.Calculate(rect));
-            graphics.DrawRectangle(mainPen, scaler.Calculate(rect));
-
-            rect = new RectangleModel
-            {
-                X = -6,
-                Y = 0,
-                Width = 2,
-                Height = 2,
-            };
-
-            graphics.FillEllipse(Brushes.DarkGray, scaler.Calculate(rect));
-            graphics.DrawEllipse(mainPen, scaler.Calculate(rect));
-
-            rect = new RectangleModel
-            {
-                X = -3,
-                Y = 0,
-                Width = 2,
-                Height = 2,
-            };
-
-            graphics.FillEllipse(Brushes.DarkGray, scaler.Calculate(rect));
-            graphics.DrawEllipse(mainPen, scaler.Calculate(rect));
-
-            rect = new RectangleModel
-            {
-                X = 0,
-                Y = 0,
-                Width = 2,
-                Height = 2,
-            };
-
-            graphics.FillEllipse(Brushes.DarkGray, scaler.Calculate(rect));
-            graphics.DrawEllipse(mainPen, scaler.Calculate(rect));
-
-            rect = new RectangleModel
-            {
-                X = 3,
-                Y = 0,
-                Width = 2,
-                Height = 2,
-            };
-
-            graphics.FillEllipse(Brushes.DarkGray, scaler.Calculate(rect));
-            graphics.DrawEllipse(mainPen, scaler.Calculate(rect));
-
-            rect = new RectangleModel
-            {
-                X = 5,
-                Y = 2,
-                Width = 2,
-                Height = 4,
-            };
-
-            graphics.FillPie(Brushes.DarkGray, scaler.Calculate(rect), 270, 180);
-            graphics.DrawArc(mainPen, scaler.Calculate(rect), 270, 180);
 
             var points = new[]
             {
-                new PointModel { X = 3, Y = 6 },
-                new PointModel { X = 2.5, Y = 9 },
-                new PointModel { X = 4.5, Y = 9 },
-                new PointModel { X = 4, Y = 6 },
+                new PointModel { X = 3, Y = 8 },
+                new PointModel { X = 2.7, Y = 7 },
+                new PointModel { X = 3.3, Y = 7 },
+
+                new PointModel { X = 4.1, Y = 7},
+                new PointModel { X = 3.5, Y = 6.45},
+
+                new PointModel { X = 3.9, Y = 5.6},
+                new PointModel { X = 3, Y = 6.1},
+
+                new PointModel { X = 2.1, Y = 5.6},
+                new PointModel { X = 2.5, Y = 6.45},
+
+                new PointModel { X = 1.9, Y = 7},
+                new PointModel { X = 3.3, Y = 7},
+
             };
             var calculatedPoints = points.Select(p => scaler.Calculate(p)).ToArray();
-            graphics.FillPolygon(Brushes.DarkGray, calculatedPoints);
-            graphics.DrawPolygon(mainPen, calculatedPoints);
+            g.FillPolygon(Brushes.Yellow, calculatedPoints);
+            g.DrawPolygon(mainPen, calculatedPoints);
+
+            /*
+             * X средняя 3, max - 4.1, min - 1.9
+             * y max - 8, min - 5.6
+             * 
+             */
+            var pointsR = new[]
+            {
+                new PointModel { X = 4.5, Y = 7.8 },
+              
+
+            };
+            var calculatedPointsR = pointsR.Select(p => scaler.Calculate(p)).ToArray();
+            g.FillPolygon(Brushes.Yellow, calculatedPointsR);
+            g.DrawPolygon(mainPen, calculatedPointsR);
         }
     }
 }
