@@ -25,26 +25,23 @@ namespace aegis
             g.FillRectangle(Brushes.Green, 50, 100, 200, 300);
             g.DrawRectangle(mainPen, 50, 100, 200, 300);
 
-            //g.FillRectangle(Brushes.Azure, 200, 120, 80, 120);
-            //g.DrawRectangle(mainPen, 200, 120, 80, 120);
-
-            //g.FillRectangle(Brushes.DarkGray, 300, 200, 600, 200);
-            //g.DrawRectangle(mainPen, 300, 200, 600, 200);
-
-            //g.FillRectangle(Brushes.DarkGray, 600, 200, 600, 200);
-            //g.DrawRectangle(mainPen, 600, 200, 600, 200);
-
 
             g.FillRectangle(Brushes.White, 250, 100, 200, 300);
             g.DrawRectangle(mainPen, 250, 100, 200, 300);
+
 
             g.FillRectangle(Brushes.Red, 400, 100, 200, 300);
             g.DrawRectangle(mainPen, 400, 100, 200, 300);
 
 
 
+        
 
+        }
 
+        private void PictureForm_Resize(object sender, EventArgs e)
+        {
+            Refresh();
         }
     }
 }
