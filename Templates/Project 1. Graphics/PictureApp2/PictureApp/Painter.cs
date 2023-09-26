@@ -19,107 +19,121 @@ namespace PictureApp
 
         public void Paint(Graphics _graphics, Rectangle _clientRectangle)
         {
-            var mainPen = new Pen(Color.Black, 3);
+            var mainPen = new Pen(Color.Black, 1);
             var scaler = new Scaler(_clientRectangle, _mathRectangle);
 
-            var rect = new RectangleModel
+            var rect = new RectangleModel  // корпус дома
             {
-                X = -8,
-                Y = 2,
-                Width = 3,
-                Height = 7,
+                X = -7,
+                Y = 1,
+                Width = 12,
+                Height = 8,
             };
 
             _graphics.FillRectangle(Brushes.DarkGray, scaler.Calculate(rect));
             _graphics.DrawRectangle(mainPen, scaler.Calculate(rect));
 
-            rect = new RectangleModel
+            rect = new RectangleModel  // окно 1
             {
                 X = -6.5,
                 Y = 6,
-                Width = 1,
-                Height = 2,
+                Width = 2,
+                Height = 2.5,
+            };
+
+            _graphics.FillRectangle(Brushes.Azure, scaler.Calculate(rect));
+            _graphics.DrawRectangle(mainPen, scaler.Calculate(rect));
+            
+            rect = new RectangleModel  // окно 2
+            {
+                X = -6.5,
+                Y = 2,
+                Width = 2,
+                Height = 2.5,
             };
 
             _graphics.FillRectangle(Brushes.Azure, scaler.Calculate(rect));
             _graphics.DrawRectangle(mainPen, scaler.Calculate(rect));
 
-            rect = new RectangleModel
+            rect = new RectangleModel  // окно 3
             {
-                X = -5,
+                X = 2.5,
                 Y = 2,
-                Width = 11,
-                Height = 4,
+                Width = 2,
+                Height = 2.5,
             };
 
-            _graphics.FillRectangle(Brushes.DarkGray, scaler.Calculate(rect));
+            _graphics.FillRectangle(Brushes.Azure, scaler.Calculate(rect));
             _graphics.DrawRectangle(mainPen, scaler.Calculate(rect));
 
-            rect = new RectangleModel
+            rect = new RectangleModel  // окно 4
             {
-                X = -6,
-                Y = 0,
+                X = 2.5,
+                Y = 6,
                 Width = 2,
-                Height = 2,
+                Height = 2.5,
             };
 
-            _graphics.FillEllipse(Brushes.DarkGray, scaler.Calculate(rect));
-            _graphics.DrawEllipse(mainPen, scaler.Calculate(rect));
+            _graphics.FillRectangle(Brushes.Azure, scaler.Calculate(rect));
+            _graphics.DrawRectangle(mainPen, scaler.Calculate(rect));
 
-            rect = new RectangleModel
+            rect = new RectangleModel  // балкон
             {
                 X = -3,
-                Y = 0,
-                Width = 2,
-                Height = 2,
+                Y = 5.5,
+                Width = 4,
+                Height = 3,
             };
 
-            _graphics.FillEllipse(Brushes.DarkGray, scaler.Calculate(rect));
-            _graphics.DrawEllipse(mainPen, scaler.Calculate(rect));
+            _graphics.FillRectangle(Brushes.Azure, scaler.Calculate(rect));
+            _graphics.DrawRectangle(mainPen, scaler.Calculate(rect));
 
-            rect = new RectangleModel
+            rect = new RectangleModel  // окно малое
             {
-                X = 0,
-                Y = 0,
-                Width = 2,
-                Height = 2,
-            };
-
-            _graphics.FillEllipse(Brushes.DarkGray, scaler.Calculate(rect));
-            _graphics.DrawEllipse(mainPen, scaler.Calculate(rect));
-
-            rect = new RectangleModel
-            {
-                X = 3,
-                Y = 0,
-                Width = 2,
-                Height = 2,
-            };
-
-            _graphics.FillEllipse(Brushes.DarkGray, scaler.Calculate(rect));
-            _graphics.DrawEllipse(mainPen, scaler.Calculate(rect));
-
-            rect = new RectangleModel
-            {
-                X = 5,
+                X = -3.2,
                 Y = 2,
-                Width = 2,
-                Height = 4,
+                Width = 1.2,
+                Height = 2.5,
             };
 
-            _graphics.FillPie(Brushes.DarkGray, scaler.Calculate(rect), 270, 180);
-            _graphics.DrawArc(mainPen, scaler.Calculate(rect), 270, 180);
+            _graphics.FillRectangle(Brushes.Azure, scaler.Calculate(rect));
+            _graphics.DrawRectangle(mainPen, scaler.Calculate(rect));
 
-            var points = new[]
+
+
+            rect = new RectangleModel  // линия ограничения горизонтальная
             {
-                new PointModel { X = 3, Y = 6 },
-                new PointModel { X = 2.5, Y = 9 },
-                new PointModel { X = 4.5, Y = 9 },
-                new PointModel { X = 4, Y = 6 },
+                X = -7,
+                Y = 5,
+                Width = 12,
+                Height = 0.2,
             };
-            var calculatedPoints = points.Select(p => scaler.Calculate(p)).ToArray();
-            _graphics.FillPolygon(Brushes.DarkGray, calculatedPoints);
-            _graphics.DrawPolygon(mainPen, calculatedPoints);
+
+            _graphics.FillRectangle(Brushes.Azure, scaler.Calculate(rect));
+            _graphics.DrawRectangle(mainPen, scaler.Calculate(rect));
+
+            rect = new RectangleModel  // линия ограничения вертикальная слева
+            {
+                X = -4,
+                Y = 1,
+                Width = 0.2,
+                Height = 8,
+            };
+
+            _graphics.FillRectangle(Brushes.Azure, scaler.Calculate(rect));
+            _graphics.DrawRectangle(mainPen, scaler.Calculate(rect));
+
+            rect = new RectangleModel  // линия ограничения вертикальная справа
+            {
+                X = 1.8,
+                Y = 1,
+                Width = 0.2,
+                Height = 8,
+            };
+
+            _graphics.FillRectangle(Brushes.Azure, scaler.Calculate(rect));
+            _graphics.DrawRectangle(mainPen, scaler.Calculate(rect));
+
         }
     }
 }
