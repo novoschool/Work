@@ -38,6 +38,7 @@
             Name = "PictureForm";
             Text = "Рисунок";
             Paint += PictureForm_Paint;
+            Resize += PictureForm_Resize;
             ResumeLayout(false);
         }
 
