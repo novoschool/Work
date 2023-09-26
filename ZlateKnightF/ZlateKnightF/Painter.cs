@@ -115,7 +115,7 @@ namespace ZlateKnightF
                 Height = 8,
             };
 
-            g.DrawPolygon(Pen., scaler.Calculate(rect));
+            g.DrawPolygon(Pen.Black, scaler.Calculate(rect));
 
         }
     }
