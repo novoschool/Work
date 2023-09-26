@@ -20,6 +20,7 @@ namespace PictureApp
         public void Paint(Graphics _graphics, Rectangle _clientRectangle)
         {
             var mainPen = new Pen(Color.Black, 3);
+            var pen = new Pen(new SolidBrush(Color.Yellow), 20);
             var scaler = new Scaler(_clientRectangle, _mathRectangle);
 
             var rect = new RectangleModel
@@ -58,14 +59,56 @@ namespace PictureApp
             var calculatedPoints = points.Select(p => scaler.Calculate(p)).ToArray();
             _graphics.FillPolygon(Brushes.Yellow, calculatedPoints);
 
+            //круг
+            rect = new RectangleModel
+            {
+                X = -3.2,
+                Y = 2.5,
+                Width = 4,
+                Height = 5,
+            };
+
+            _graphics.DrawEllipse(pen, scaler.Calculate(rect));
+
+            //мачете
             points = new[]
             {
-                new PointModel { X = -2.3, Y = 4.8 },
-                new PointModel { X = 1, Y = 1 },
-                new PointModel { X = 0, Y = 0 },
+                new PointModel { X = -1, Y = 3.9 },
+                new PointModel { X = -1.7, Y = 4.4 },
+                new PointModel { X = -2.3, Y = 5 },
+                new PointModel { X = -2.4, Y = 4.7 },
+                new PointModel { X = -2.4, Y = 4.3 },
+                new PointModel { X = -2.3, Y = 4 },
+                new PointModel { X = 0.5, Y = 2 },
+                new PointModel { X = 0.8, Y = 2 },
+                new PointModel { X = 1.1, Y = 1.85 },
+                new PointModel { X = 1.4, Y = 1.4 },
+                new PointModel { X = 1.6, Y = 1.7 },
+                new PointModel { X = 1.5, Y = 2.2 },
             };
             calculatedPoints = points.Select(p => scaler.Calculate(p)).ToArray();
-            _graphics.FillPolygon(Brushes.Blue, calculatedPoints);
+            _graphics.FillPolygon(Brushes.Yellow, calculatedPoints);
+
+            points = new[]
+            {
+                new PointModel { X = -2, Y = 4.4 },
+                new PointModel { X = -2, Y = 4.3 },
+                new PointModel { X = 0.6, Y = 2.35 },
+                new PointModel { X = 0.6, Y = 2.45 },
+            };
+            calculatedPoints = points.Select(p => scaler.Calculate(p)).ToArray();
+            _graphics.FillPolygon(Brushes.Black, calculatedPoints);
+
+            points = new[]
+            {
+                new PointModel { X = 0.9, Y = 3 },
+                new PointModel { X = 0.8, Y = 3 },
+                new PointModel { X = 0.4, Y = 2 },
+                new PointModel { X = 0.5, Y = 2 },
+            };
+            calculatedPoints = points.Select(p => scaler.Calculate(p)).ToArray();
+            _graphics.FillPolygon(Brushes.Black, calculatedPoints);
+
         }
     }
 }

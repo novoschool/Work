@@ -23,7 +23,7 @@ namespace Angola
         }
 
 
-        private void Form1_Paint(object sender, PaintEventArgs e)
+        private void Form1_Paint(object sender, PaintEventArgs e,)
         {
             var g = CreateGraphics();
             var clientRectangle = ClientRectangle;
