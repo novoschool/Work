@@ -21,6 +21,7 @@ namespace aegis
             Height = 11,
         };
 
+
         public void Paint(Graphics graphics, Rectangle clientRectangle)
         {
             var scaler = new Scaler(clientRectangle, _mathRectangle);
@@ -258,13 +259,27 @@ namespace aegis
                 {
                     X = -9,
                     Y = -1,
-                    Width = 5,
-                    Height = 5,
+                    Width = 4,
+                    Height = 4,
                 };
                 graphics.FillRectangle(Brushes.Gray, scaler.Calculate(rect));
                 graphics.DrawRectangle(mainPen, scaler.Calculate(rect));
-                //var image = Image.FromFile("MyPicture.png");
-                //graphics.DrawImage(image, scaler.Calculate(rect));
+
+                rect = new RectangleModel
+                {
+                    X = -9,
+                    Y = 3,
+                    Width = 3,
+                    Height = 3,
+                };
+                graphics.FillRectangle(Brushes.Gray, scaler.Calculate(rect));
+                graphics.DrawRectangle(mainPen, scaler.Calculate(rect));
+
+
+
+             
+
+
             }
 
 
