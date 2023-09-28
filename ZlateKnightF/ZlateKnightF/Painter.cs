@@ -35,6 +35,18 @@ namespace ZlateKnightF
 
             rect = new RectangleModel
             {
+                X = -4,
+                Y = -4,
+                Width = 8,
+                Height = 8,
+            };
+
+            g.FillRectangle(Brushes.Gray, scaler.Calculate(rect));
+            g.DrawRectangle(mainPen, scaler.Calculate(rect));
+
+
+            rect = new RectangleModel
+            {
                 X = -3.5,
                 Y = -3.5,
                 Width = 7,
@@ -105,17 +117,15 @@ namespace ZlateKnightF
 
             g.FillEllipse(Brushes.Red, scaler.Calculate(rect));
 
+            g.DrawLine(mainPen, scaler.Calculate(-2.3, -2), scaler.Calculate(2.5, 2.2));
+
+            g.DrawLine(mainPen, scaler.Calculate(-2.3, 2), scaler.Calculate(2.5, -2.2));
+            g.DrawLine(mainPen, scaler.Calculate(-3, 0), scaler.Calculate(3, 0));
+            g.DrawLine(mainPen, scaler.Calculate(0, 3), scaler.Calculate(0, -3));
 
 
-            rect = new RectangleModel
-            {
-                X = -4,
-                Y = -4,
-                Width = 8,
-                Height = 8,
-            };
 
-            g.DrawPolygon(Pen.Black, scaler.Calculate(rect));
+
 
         }
     }
