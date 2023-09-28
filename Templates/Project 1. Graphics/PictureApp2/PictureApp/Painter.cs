@@ -59,16 +59,44 @@ namespace PictureApp
             var calculatedPoints = points.Select(p => scaler.Calculate(p)).ToArray();
             _graphics.FillPolygon(Brushes.Yellow, calculatedPoints);
 
-            //круг
+            //святая шестерёнка механикус
             rect = new RectangleModel
             {
-                X = -3.2,
-                Y = 2.5,
-                Width = 4,
-                Height = 5,
+                X = -3.5,
+                Y = 2.6,
+                Width = 3.5,
+                Height = 4.5,
             };
 
-            _graphics.DrawEllipse(pen, scaler.Calculate(rect));
+            _graphics.DrawArc(pen, scaler.Calculate(rect), -80, 220);
+
+            rect = new RectangleModel
+            {
+                X = -3.5,
+                Y = 2.4,
+                Width = 3.6,
+                Height = 4.8,
+            };
+            var toothangle = 10;
+            var angle = -75;
+            pen = new Pen(new SolidBrush(Color.Yellow), 30);
+
+            while (angle <= 130)
+            {
+                _graphics.DrawArc(pen, scaler.Calculate(rect), angle, toothangle);
+                angle = angle + 20;
+            }
+            pen = new Pen(new SolidBrush(Color.Yellow), 20);
+
+            points = new[]
+            {
+                new PointModel { X = -0.5, Y = 2.55 },
+                new PointModel { X = 0.1, Y = 3.4 },
+                new PointModel { X = -1, Y = 4.1 },
+                new PointModel { X = -1.2, Y = 3 },
+            };
+            calculatedPoints = points.Select(p => scaler.Calculate(p)).ToArray();
+            _graphics.FillPolygon(Brushes.Black, calculatedPoints);
 
             //мачете
             points = new[]
