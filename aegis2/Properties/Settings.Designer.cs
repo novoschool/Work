@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace aegis.Properties
+namespace aegis2.Properties
 {
 
 

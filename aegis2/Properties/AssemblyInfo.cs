@@ -5,12 +5,12 @@ using System.Runtime.InteropServices;
 // Общие сведения об этой сборке предоставляются следующим набором
 // набора атрибутов. Измените значения этих атрибутов для изменения сведений,
 // связанных со сборкой.
-[assembly: AssemblyTitle("aegis")]
+[assembly: AssemblyTitle("aegis2")]
 [assembly: AssemblyDescription("")]
 [assembly: AssemblyConfiguration("")]
-[assembly: AssemblyCompany("")]
-[assembly: AssemblyProduct("aegis")]
-[assembly: AssemblyCopyright("Copyright ©  2023")]
+[assembly: AssemblyCompany("sborka")]
+[assembly: AssemblyProduct("aegis2")]
+[assembly: AssemblyCopyright("Copyright © sborka 2023")]
 [assembly: AssemblyTrademark("")]
 [assembly: AssemblyCulture("")]
 
@@ -20,7 +20,7 @@ using System.Runtime.InteropServices;
 [assembly: ComVisible(false)]
 
 // Следующий GUID служит для идентификации библиотеки типов, если этот проект будет видимым для COM
-[assembly: Guid("c89f248e-1432-48d8-9c08-9934f69fb092")]
+[assembly: Guid("029495c8-4942-44b1-bae3-65eeabe4b6cd")]
 
 // Сведения о версии сборки состоят из указанных ниже четырех значений:
 //

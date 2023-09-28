@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C89F248E-1432-48D8-9C08-9934F69FB092}</ProjectGuid>
+    <ProjectGuid>{029495C8-4942-44B1-BAE3-65EEABE4B6CD}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>aegis</RootNamespace>
-    <AssemblyName>aegis</AssemblyName>
+    <RootNamespace>aegis2</RootNamespace>
+    <AssemblyName>aegis2</AssemblyName>
     <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
@@ -52,12 +52,8 @@
     <Compile Include="Form1.Designer.cs">
       <DependentUpon>Form1.cs</DependentUpon>
     </Compile>
-    <Compile Include="Models\PointModel.cs" />
-    <Compile Include="Models\RectangleModel.cs" />
-    <Compile Include="Painter.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Scaler.cs" />
     <EmbeddedResource Include="Form1.resx">
       <DependentUpon>Form1.cs</DependentUpon>
     </EmbeddedResource>
