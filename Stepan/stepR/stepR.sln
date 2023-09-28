@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33213.308
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "stepR", "stepR\stepR.csproj", "{002CD4B0-DDF9-4A14-A6F7-694F4E362500}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{002CD4B0-DDF9-4A14-A6F7-694F4E362500}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{002CD4B0-DDF9-4A14-A6F7-694F4E362500}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{002CD4B0-DDF9-4A14-A6F7-694F4E362500}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{002CD4B0-DDF9-4A14-A6F7-694F4E362500}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5E78D9E0-ED15-4208-AFDB-9E413272173A}
+	EndGlobalSection
+EndGlobal
