@@ -39,6 +39,7 @@
             this.Name = "PictureForm";
             this.Text = "Рисунок";
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.PictureForm_Paint);
+            this.Resize += new System.EventHandler(this.PictureForm_Resize);
             this.ResumeLayout(false);
 
         }
