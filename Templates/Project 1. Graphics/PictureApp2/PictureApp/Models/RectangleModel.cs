@@ -23,5 +23,22 @@ namespace PictureApp.Models
         public double Bottom => Height > 0 ? Y : Y + Height;
 
         public double Top => Height > 0 ? Y + Height : Y;
+
+
+        public void Normalize()
+        {
+            if (Width < 0)
+            {
+                X += Width;
+                Width = -Width;
+            }
+
+            if (Height < 0)
+            {
+                Y += Height;
+                Height = -Height;
+            }
+        }
+
     }
 }

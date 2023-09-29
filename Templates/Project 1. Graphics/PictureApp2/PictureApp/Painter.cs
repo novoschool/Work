@@ -22,6 +22,36 @@ namespace PictureApp
             var mainPen = new Pen(Color.Black, 1);
             var scaler = new Scaler(_clientRectangle, _mathRectangle);
 
+            var points = new[]  //Небо
+{
+                new PointModel{ X = -12, Y = 3 },
+                new PointModel{ X = 12, Y = 3 },
+                new PointModel{ X = 12, Y = 12 },
+                new PointModel{ X = -12, Y =12 },
+            };
+            var calculatedPoints = points.Select(p => scaler.Calculate(p)).ToArray();
+            _graphics.FillPolygon(Brushes.DarkBlue, calculatedPoints);
+
+            points = new[]  //Снег
+{
+                new PointModel{ X = -12, Y = -2 },
+                new PointModel{ X = 12, Y = -2 },
+                new PointModel{ X = 12, Y = 3 },
+                new PointModel{ X = -12, Y =3 },
+            };
+            calculatedPoints = points.Select(p => scaler.Calculate(p)).ToArray();
+            _graphics.FillPolygon(Brushes.Snow, calculatedPoints);
+
+            points = new[]  //Дорожка
+{
+                new PointModel{ X = -4, Y = -2 },
+                new PointModel{ X = 2, Y = -2 },
+                new PointModel{ X = 3, Y = 3 },
+                new PointModel{ X = -2, Y =3 },
+            };
+            calculatedPoints = points.Select(p => scaler.Calculate(p)).ToArray();
+            _graphics.FillPolygon(Brushes.Aqua, calculatedPoints);
+
             var rect = new RectangleModel  // корпус дома
             {
                 X = -7,
@@ -376,15 +406,55 @@ namespace PictureApp
             _graphics.FillEllipse(Brushes.Black, scaler.Calculate(rect));
             _graphics.DrawEllipse(mainPen, scaler.Calculate(rect));
 
-            var points = new[]
+            points = new[]  //крыша
             {
                 new PointModel{ X = -8, Y = 9 },
                 new PointModel{ X = -7, Y = 10 },
                 new PointModel{ X = 5, Y = 10 },
                 new PointModel{ X = 6, Y = 9 },
             };
-            var calculatedPoints = points.Select(p => scaler.Calculate(p)).ToArray();
+            calculatedPoints = points.Select(p => scaler.Calculate(p)).ToArray();
             _graphics.FillPolygon(Brushes.Black, calculatedPoints);
+
+            points = new[]  // Ствол
+{
+                new PointModel{ X = -9, Y = 1 },
+                new PointModel{ X = -10, Y = 1 },
+                new PointModel{ X = -10, Y = 4 },
+                new PointModel{ X = -9, Y = 4 }
+            };
+            calculatedPoints = points.Select(p => scaler.Calculate(p)).ToArray();
+            _graphics.FillPolygon(Brushes.DarkGreen, calculatedPoints);
+
+
+            points = new[]  // ёлка 3
+{
+                new PointModel{ X = -11.5, Y = 2.5 },
+                new PointModel{ X = -7.5, Y = 2.5 },
+                new PointModel{ X = -9.5, Y = 5 },
+            };
+            calculatedPoints = points.Select(p => scaler.Calculate(p)).ToArray();
+            _graphics.FillPolygon(Brushes.Green, calculatedPoints);
+
+            points = new[]  // ёлка 2
+{
+                new PointModel{ X = -11, Y = 3.5 },
+                new PointModel{ X = -8, Y = 3.5 },
+                new PointModel{ X = -9.5, Y = 5.5 },
+            };
+            calculatedPoints = points.Select(p => scaler.Calculate(p)).ToArray();
+            _graphics.FillPolygon(Brushes.Green, calculatedPoints);
+
+            points = new[]  // ёлка 1
+{
+                new PointModel{ X = -10.5, Y = 4.5 },
+                new PointModel{ X = -8.5, Y = 4.5 },
+                new PointModel{ X = -9.5, Y = 6 },
+            };
+            calculatedPoints = points.Select(p => scaler.Calculate(p)).ToArray();
+            _graphics.FillPolygon(Brushes.Green, calculatedPoints);
+
+
         }
     }
 }
