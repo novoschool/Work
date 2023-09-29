@@ -23,6 +23,24 @@ namespace PictureApp
         {
             _screenRectangle = screenRectangle;
             _mathRectangle = mathRectangle;
+            _mathRectangle.Normalize();
+
+            if (_mathRectangle.Width * _screenRectangle.Height > _screenRectangle.Width * _mathRectangle.Height)
+            {
+                // Добавки сверху и снизу
+                var newHeight = _mathRectangle.Width * _screenRectangle.Height / _screenRectangle.Width;
+                var dy = newHeight - _mathRectangle.Height;
+                _mathRectangle.Y -= dy / 2;
+                _mathRectangle.Height = newHeight;
+            }
+            else
+            {
+                // Добавки слева и справа
+                var newWidth = _mathRectangle.Height * _screenRectangle.Width / _screenRectangle.Height;
+                var dx = newWidth - _mathRectangle.Width;
+                _mathRectangle.X -= dx / 2;
+                _mathRectangle.Width = newWidth;
+            }
         }
 
         public Rectangle Calculate(RectangleModel rectangleModel)

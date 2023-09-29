@@ -136,7 +136,6 @@ namespace PictureApp
             };
             calculatedPoints = points.Select(p => scaler.Calculate(p)).ToArray();
             _graphics.FillPolygon(Brushes.Black, calculatedPoints);
-
         }
     }
 }
