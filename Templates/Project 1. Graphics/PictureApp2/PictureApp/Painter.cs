@@ -19,7 +19,7 @@ namespace PictureApp
 
         public void Paint(Graphics g, Rectangle clientRectangle)
         {
-            var mainPen = new Pen(Color.Yellow, 3);
+            var mainPen = new Pen(Color.Yellow, 2);
             var scaler = new Scaler(clientRectangle, _mathRectangle);
 
 
@@ -61,10 +61,10 @@ namespace PictureApp
                 new PointModel { X = 5.8, Y = 5.8 },
                 new PointModel { X = 5.65, Y = 5.6 },
 
-                new PointModel { X = 5.8, Y = 5.35 },
+                new PointModel { X = 5.75, Y = 5.35 },
                 new PointModel { X = 5.5, Y = 5.5 },
 
-                new PointModel { X = 5.2, Y = 5.35 },
+                new PointModel { X = 5.25, Y = 5.35 },
                 new PointModel { X = 5.35, Y = 5.6 },
 
                 new PointModel { X = 5.2, Y = 5.8 },
@@ -99,6 +99,31 @@ namespace PictureApp
             var calculatedPointsE = pointsE.Select(p => scaler.Calculate(p)).ToArray();
             g.FillPolygon(Brushes.Yellow, calculatedPointsE);
             g.DrawPolygon(mainPen, calculatedPointsE);
+
+
+            var pointsF = new[]
+            {
+                new PointModel { X = 5.35, Y = 7 },
+                new PointModel { X = 5.55, Y =  6.9 },
+                new PointModel { X = 5.55, Y = 7.06},
+
+                new PointModel { X = 5.55, Y = 7.27 },
+                new PointModel { X = 5.7, Y = 7.12 },
+
+                new PointModel { X = 5.88, Y = 7.18 },
+                new PointModel { X = 5.78, Y = 7 },
+
+                new PointModel { X = 5.9, Y = 6.84 },
+                new PointModel { X = 5.7, Y = 6.9 },
+
+
+                new PointModel { X = 5.6, Y = 6.7 },
+                new PointModel { X = 5.55, Y = 7.06 },
+
+            };
+            var calculatedPointsF = pointsF.Select(p => scaler.Calculate(p)).ToArray();
+            g.FillPolygon(Brushes.Yellow, calculatedPointsF);
+            g.DrawPolygon(mainPen, calculatedPointsF);
 
 
         }
