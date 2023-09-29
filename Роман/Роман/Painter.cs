@@ -26,9 +26,9 @@ namespace Роман
 
             var rect = new RectangleModel
             {
-                X = 12,
+                X = 15,
                 Y = 0,
-                Width = 4,
+                Width = 1,
                 Height = 8,
             };
 
@@ -60,9 +60,9 @@ namespace Роман
             rect = new RectangleModel
             {
                 X = -1,
-                Y = 4,
-                Width = 5,
-                Height = 2,
+                Y = 3,
+                Width = 11,
+                Height = 1,
             };
 
             g.FillRectangle(Brushes.DarkGray, scaler.Calculate(rect));
@@ -81,8 +81,8 @@ namespace Роман
 
             rect = new RectangleModel
             {
-                X = 5,
-                Y = 5,
+                X = -1,
+                Y = 3,
                 Width = 5,
                 Height = 4,
             };
@@ -92,9 +92,9 @@ namespace Роман
 
             rect = new RectangleModel
             {
-                X = 3,
+                X = 4,
                 Y = 0,
-                Width = 5,
+                Width = 6,
                 Height = 1,
             };
 
@@ -103,38 +103,65 @@ namespace Роман
 
             rect = new RectangleModel
             {
-                X = 4,
-                Y = 0,
+                X = 5,
+                Y = 9,
                 Width = 5,
                 Height = 2,
             };
 
             g.FillEllipse(Brushes.DarkGray, scaler.Calculate(rect));
-            g.DrawArc(mainPen, 320, 20, 150, 150, 250, 400);
+            g.DrawEllipse(mainPen, scaler.Calculate(rect));
 
             rect = new RectangleModel
             {
-                X = 1,
-                Y = 0,
+                X = 11,
+                Y = 9,
                 Width = 5,
                 Height = 2,
             };
 
-            g.FillPie(Brushes.DarkGray, 50, 20, 250, 70, 250, 400);
-            g.DrawArc(mainPen, 50, 20, 250, 70, 250, 400);
+            g.FillEllipse(Brushes.DarkGray, scaler.Calculate(rect));
+            g.DrawEllipse(mainPen, scaler.Calculate(rect));
 
-            g.FillPie(Brushes.DarkGray, 500, 20, 250, 70, 250, 400);
-            g.DrawArc(mainPen, 500, 20, 250, 70, 250, 400);
+            rect = new RectangleModel
+            {
+                X = -1,
+                Y = 9,
+                Width = 5,
+                Height = 2,
+            };
+
+            g.FillEllipse(Brushes.DarkGray, scaler.Calculate(rect));
+            g.DrawEllipse(mainPen, scaler.Calculate(rect));
+
+            rect = new RectangleModel
+            {
+                X = 8,
+                Y = 10,
+                Width = 5,
+                Height = 2,
+            };
+
 
             var points = new[]
             {
-                new Point(350, 300),
-                new Point(380, 300),
-                new Point(400, 250),
-                new Point(500, 300),
+                new PointModel { X = 12, Y = 6 },
+                new PointModel { X = 7.1, Y = 6 },
+                new PointModel { X = 10, Y = 8 },
             };
-            g.FillPolygon(Brushes.DarkGray, points);
-            g.DrawPolygon(mainPen, points);
+            var calculatedPoints = points.Select(p => scaler.Calculate(p)).ToArray();
+            g.FillPolygon(Brushes.DarkGray, calculatedPoints);
+            g.DrawPolygon(mainPen, calculatedPoints);
+
+            points = new[]
+            {
+                new PointModel { X = -1, Y = 7 },
+                new PointModel { X = 4, Y = 7 },
+                new PointModel { X = 2, Y = 9 },
+            };
+            calculatedPoints = points.Select(p => scaler.Calculate(p)).ToArray();
+            g.FillPolygon(Brushes.DarkGray, calculatedPoints);
+            g.DrawPolygon(mainPen, calculatedPoints);
         }
     }
 }
