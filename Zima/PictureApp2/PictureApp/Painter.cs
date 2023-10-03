@@ -121,7 +121,7 @@ namespace PictureApp
 
             rect = new RectangleModel
             {
-                X = 785,
+                X = 787,
                 Y = 630,
                 Width = 28,
                 Height = 32,
@@ -140,8 +140,8 @@ namespace PictureApp
             rect = new RectangleModel
             {
                 X = 960,
-                Y = 485,
-                Width = 28,
+                Y = 487,
+                Width = 30,
                 Height = 28,
             };
             graphics.FillRectangle(Brushes.Black, scaler.Calculate(rect));
@@ -149,8 +149,8 @@ namespace PictureApp
             rect = new RectangleModel
             {
                 X = 1310,
-                Y = 485,
-                Width = 28,
+                Y = 487,
+                Width = 30,
                 Height = 28,
             };
             graphics.FillRectangle(Brushes.DarkRed, scaler.Calculate(rect));

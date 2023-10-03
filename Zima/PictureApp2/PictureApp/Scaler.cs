@@ -17,7 +17,7 @@ namespace PictureApp
         {
             _screenRectangle = screenRectangle;
             _mathRectangle = mathRectangle;
-            //_mathRectangle.Normalize();
+            _mathRectangle.Normalize();
 
             if (_mathRectangle.Width * _screenRectangle.Height > _screenRectangle.Width * _mathRectangle.Height)
             {
