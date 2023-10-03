@@ -38,7 +38,7 @@ namespace PictureApp
                 X = -9.5,
                 Y = -1,
                 Width = 18,
-                Height = 5.5,
+                Height = 5.6,
             };
 
             _graphics.FillRectangle(new SolidBrush(Color.Black), scaler.Calculate(rect));
@@ -62,9 +62,9 @@ namespace PictureApp
             //святая шестерёнка механикус
             rect = new RectangleModel
             {
-                X = -3.5,
+                X = -4,
                 Y = 2.6,
-                Width = 3.5,
+                Width = 4.5,
                 Height = 4.5,
             };
 
@@ -72,9 +72,9 @@ namespace PictureApp
 
             rect = new RectangleModel
             {
-                X = -3.5,
+                X = -4,
                 Y = 2.4,
-                Width = 3.6,
+                Width = 4.6,
                 Height = 4.8,
             };
             var toothangle = 10;
@@ -91,7 +91,7 @@ namespace PictureApp
             points = new[]
             {
                 new PointModel { X = -0.5, Y = 2.55 },
-                new PointModel { X = 0.1, Y = 3.4 },
+                new PointModel { X = 0.3, Y = 3.2 },
                 new PointModel { X = -1, Y = 4.1 },
                 new PointModel { X = -1.2, Y = 3 },
             };
