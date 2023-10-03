@@ -32,7 +32,7 @@ namespace Роман
                 Height = 8,
             };
 
-            g.FillRectangle(Brushes.DarkGray, scaler.Calculate(rect));
+            g.FillRectangle(Brushes.Aqua, scaler.Calculate(rect));
             g.DrawRectangle(mainPen, scaler.Calculate(rect));
 
             rect = new RectangleModel
@@ -43,7 +43,7 @@ namespace Роман
                 Height = 2,
             };
 
-            g.FillRectangle(Brushes.DarkGray, scaler.Calculate(rect));
+            g.FillRectangle(Brushes.Aqua, scaler.Calculate(rect));
             g.DrawRectangle(mainPen, scaler.Calculate(rect));
 
             rect = new RectangleModel
@@ -54,7 +54,7 @@ namespace Роман
                 Height = 4,
             };
 
-            g.FillRectangle(Brushes.DarkGray, scaler.Calculate(rect));
+            g.FillRectangle(Brushes.Aqua, scaler.Calculate(rect));
             g.DrawRectangle(mainPen, scaler.Calculate(rect));
 
             rect = new RectangleModel
@@ -65,7 +65,7 @@ namespace Роман
                 Height = 1,
             };
 
-            g.FillRectangle(Brushes.DarkGray, scaler.Calculate(rect));
+            g.FillRectangle(Brushes.Azure, scaler.Calculate(rect));
             g.DrawRectangle(mainPen, scaler.Calculate(rect));
 
             rect = new RectangleModel
@@ -76,7 +76,7 @@ namespace Роман
                 Height = 3,
             };
 
-            g.FillRectangle(Brushes.DarkGray, scaler.Calculate(rect));
+            g.FillRectangle(Brushes.Aqua, scaler.Calculate(rect));
             g.DrawRectangle(mainPen, scaler.Calculate(rect));
 
             rect = new RectangleModel
@@ -87,7 +87,7 @@ namespace Роман
                 Height = 4,
             };
 
-            g.FillRectangle(Brushes.DarkGray, scaler.Calculate(rect));
+            g.FillRectangle(Brushes.Aqua, scaler.Calculate(rect));
             g.DrawRectangle(mainPen, scaler.Calculate(rect));
 
             rect = new RectangleModel
@@ -98,7 +98,7 @@ namespace Роман
                 Height = 1,
             };
 
-            g.FillRectangle(Brushes.DarkGray, scaler.Calculate(rect));
+            g.FillRectangle(Brushes.Azure, scaler.Calculate(rect));
             g.DrawRectangle(mainPen, scaler.Calculate(rect));
 
             rect = new RectangleModel
@@ -109,7 +109,7 @@ namespace Роман
                 Height = 2,
             };
 
-            g.FillEllipse(Brushes.DarkGray, scaler.Calculate(rect));
+            g.FillEllipse(Brushes.Azure, scaler.Calculate(rect));
             g.DrawEllipse(mainPen, scaler.Calculate(rect));
 
             rect = new RectangleModel
@@ -120,7 +120,7 @@ namespace Роман
                 Height = 2,
             };
 
-            g.FillEllipse(Brushes.DarkGray, scaler.Calculate(rect));
+            g.FillEllipse(Brushes.Azure, scaler.Calculate(rect));
             g.DrawEllipse(mainPen, scaler.Calculate(rect));
 
             rect = new RectangleModel
@@ -131,7 +131,7 @@ namespace Роман
                 Height = 2,
             };
 
-            g.FillEllipse(Brushes.DarkGray, scaler.Calculate(rect));
+            g.FillEllipse(Brushes.Azure, scaler.Calculate(rect));
             g.DrawEllipse(mainPen, scaler.Calculate(rect));
 
             rect = new RectangleModel
@@ -150,7 +150,7 @@ namespace Роман
                 new PointModel { X = 10, Y = 8 },
             };
             var calculatedPoints = points.Select(p => scaler.Calculate(p)).ToArray();
-            g.FillPolygon(Brushes.DarkGray, calculatedPoints);
+            g.FillPolygon(Brushes.AntiqueWhite, calculatedPoints);
             g.DrawPolygon(mainPen, calculatedPoints);
 
             points = new[]
@@ -160,7 +160,7 @@ namespace Роман
                 new PointModel { X = 2, Y = 9 },
             };
             calculatedPoints = points.Select(p => scaler.Calculate(p)).ToArray();
-            g.FillPolygon(Brushes.DarkGray, calculatedPoints);
+            g.FillPolygon(Brushes.AntiqueWhite, calculatedPoints);
             g.DrawPolygon(mainPen, calculatedPoints);
         }
     }
