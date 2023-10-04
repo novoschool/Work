@@ -66,6 +66,7 @@
             this.StopButton.TabIndex = 2;
             this.StopButton.Text = "Остановить";
             this.StopButton.UseVisualStyleBackColor = true;
+            this.StopButton.Click += new System.EventHandler(this.StopButton_Click);
             // 
             // AboutButton
             // 
@@ -97,6 +98,7 @@
             this.MinimizeBox = false;
             this.Name = "ClockForm";
             this.Text = "Часы-будильник";
+            this.Load += new System.EventHandler(this.ClockForm_Load);
             this.ResumeLayout(false);
 
         }
