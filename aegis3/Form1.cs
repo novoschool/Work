@@ -70,6 +70,18 @@ namespace aegis3
             g.DrawEllipse(mainPen3, 860, 780, 30, 30);
             g.FillEllipse(Brushes.Red, 860, 780, 30, 30);
 
+            g.FillRectangle(Brushes.Gray, 300, 100, 50, 150);
+            g.DrawRectangle(mainPen, 300, 100, 50, 150);
+
+            g.DrawEllipse(mainPen3, 300, 50, 20, 40);
+            g.FillEllipse(Brushes.LightGray, 300, 50, 20, 40);
+
+            g.DrawEllipse(mainPen3, 335, 35, 20, 40);
+            g.FillEllipse(Brushes.LightGray, 335, 35, 20, 40);
+
+            g.DrawEllipse(mainPen3, 315, 0, 20, 40);
+            g.FillEllipse(Brushes.LightGray, 315, 0, 20, 40);
+
             Point point1 = new Point(100, 300);
             Point point2 = new Point(200, 100);
             Point point3 = new Point(300, 300);
