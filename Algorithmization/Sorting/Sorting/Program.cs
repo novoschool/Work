@@ -178,7 +178,7 @@
             {
                 var iMin = i;
                 var minValue = data[iMin];
-                for (int j = i; j < data.Length; j++)
+                for (int j = i + 1; j < data.Length; j++)
                 {
                     if (data[j] < minValue)
                     {
@@ -201,13 +201,13 @@
             for (int i = 0; i < data.Length - 1; i++)
             {
                 var iMin = i;
-                var minValue = data[iMin].Key;
+                var minKey = data[iMin].Key;
                 for (int j = i; j < data.Length; j++)
                 {
-                    if (data[j].Key < minValue)
+                    if (data[j].Key < minKey)
                     {
                         iMin = j;
-                        minValue = data[j].Key;
+                        minKey = data[j].Key;
                     }
                 }
 
