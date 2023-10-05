@@ -142,7 +142,6 @@ namespace Роман
                 Height = 2,
             };
 
-
             var points = new[]
             {
                 new PointModel { X = 12, Y = 6 },
