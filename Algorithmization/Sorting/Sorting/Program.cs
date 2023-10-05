@@ -4,17 +4,17 @@
     {
         static void Main(string[] args)
         {
-            SingleSort(InsertionSort);
-            //SingleKeyValueSort(SelectionSort);
-            GeneralTimeMeasure(InsertionSort);
-            SortedTimeMeasure(InsertionSort);
-            AlmostSortedTimeMeasure(InsertionSort);
-            ReverseSortedTimeMeasure(InsertionSort);
+            SingleSort(SelectionSort);
+            SingleKeyValueSort(SelectionSort);
+            GeneralTimeMeasure(SelectionSort);
+            SortedTimeMeasure(SelectionSort);
+            AlmostSortedTimeMeasure(SelectionSort);
+            ReverseSortedTimeMeasure(SelectionSort);
         }
 
         private static void ReverseSortedTimeMeasure(Action<int[]> sort)
         {
-            const int runCount = 400;
+            const int runCount = 1000;
             var rnd = new Random();
 
             foreach (var itemCount in new[] { 100, 200, 400, 800 })
@@ -38,11 +38,13 @@
 
                 Console.WriteLine($"Количество элементов (обратно упорядочен): {itemCount}, среднее время сортировки: {(endTime - startTime).TotalSeconds / runCount}");
             }
+
+            Console.WriteLine();
         }
 
         private static void AlmostSortedTimeMeasure(Action<int[]> sort)
         {
-            const int runCount = 400;
+            const int runCount = 1000;
             var rnd = new Random();
 
             foreach (var itemCount in new[] { 100, 200, 400, 800 })
@@ -68,11 +70,13 @@
 
                 Console.WriteLine($"Количество элементов (почти упорядочен): {itemCount}, среднее время сортировки: {(endTime - startTime).TotalSeconds / runCount}");
             }
+
+            Console.WriteLine();
         }
 
         private static void SortedTimeMeasure(Action<int[]> sort)
         {
-            const int runCount = 400;
+            const int runCount = 1000;
             var rnd = new Random();
 
             foreach (var itemCount in new[] { 100, 200, 400, 800 })
@@ -96,11 +100,13 @@
 
                 Console.WriteLine($"Количество элементов (упорядочен): {itemCount}, среднее время сортировки: {(endTime - startTime).TotalSeconds / runCount}");
             }
+
+            Console.WriteLine();
         }
 
         private static void GeneralTimeMeasure(Action<int[]> sort)
         {
-            const int runCount = 400;
+            const int runCount = 1000;
             var rnd = new Random();
 
             foreach (var itemCount in new[] { 100, 200, 400, 800 })
@@ -122,6 +128,8 @@
 
                 Console.WriteLine($"Количество элементов: {itemCount}, среднее время сортировки: {(endTime - startTime).TotalSeconds / runCount}");
             }
+
+            Console.WriteLine();
         }
 
         private static void SingleSort(Action<int[]> sort)
@@ -133,11 +141,15 @@
                 array[i] = rnd.Next(200);
             }
 
+            Console.WriteLine("Исходный массив:");
             ShowArray(array);
+            Console.WriteLine();
 
             sort(array);
 
+            Console.WriteLine("Отсортированный массив:");
             ShowArray(array);
+            Console.WriteLine();
         }
 
         private static void SingleKeyValueSort(Action<KeyValue[]> sort)
@@ -149,11 +161,15 @@
                 array[i] = new KeyValue { Key = rnd.Next(100), Value = i };
             }
 
+            Console.WriteLine("Исходный массив:");
             ShowArray(array);
+            Console.WriteLine();
 
             sort(array);
 
+            Console.WriteLine("Отсортированный массив:");
             ShowArray(array);
+            Console.WriteLine();
         }
 
         static void SelectionSort(int[] data)
@@ -242,9 +258,18 @@
 
         static void ShowArray(KeyValue[] array)
         {
+            var count = 0;
+            var prevKey = array.First().Key;
             foreach (var item in array)
             {
                 Console.Write($"{item.Key} : {item.Value}; ");
+                if (++count >= 10 && item.Key != prevKey)
+                {
+                    Console.WriteLine();
+                    count = 0;
+                }
+
+                prevKey = item.Key;
             }
 
             Console.WriteLine();
