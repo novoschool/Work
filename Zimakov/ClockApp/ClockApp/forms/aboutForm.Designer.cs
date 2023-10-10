@@ -91,6 +91,7 @@
             this.MaximizeBox = false;
             this.MinimizeBox = false;
             this.Name = "aboutForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "О программе";
             this.ResumeLayout(false);
 

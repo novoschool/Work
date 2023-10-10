@@ -34,6 +34,7 @@
             this.stopButton = new System.Windows.Forms.Button();
             this.infoProgramm = new System.Windows.Forms.Button();
             this.clockTimer = new System.Windows.Forms.Timer(this.components);
+            this.CheckAlarmActive = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // displayLabel
@@ -60,6 +61,7 @@
             this.settingsButton.TabIndex = 1;
             this.settingsButton.Text = "Settings";
             this.settingsButton.UseVisualStyleBackColor = false;
+            this.settingsButton.Click += new System.EventHandler(this.settingsButton_Click);
             // 
             // stopButton
             // 
@@ -93,12 +95,22 @@
             this.clockTimer.Interval = 1000;
             this.clockTimer.Tick += new System.EventHandler(this.clockTimer_Tick);
             // 
+            // CheckAlarmActive
+            // 
+            this.CheckAlarmActive.BackColor = System.Drawing.Color.Red;
+            this.CheckAlarmActive.Location = new System.Drawing.Point(539, 10);
+            this.CheckAlarmActive.Name = "CheckAlarmActive";
+            this.CheckAlarmActive.Size = new System.Drawing.Size(34, 35);
+            this.CheckAlarmActive.TabIndex = 4;
+            this.CheckAlarmActive.Visible = false;
+            // 
             // ClockApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(541, 155);
+            this.ClientSize = new System.Drawing.Size(583, 155);
+            this.Controls.Add(this.CheckAlarmActive);
             this.Controls.Add(this.infoProgramm);
             this.Controls.Add(this.stopButton);
             this.Controls.Add(this.settingsButton);
@@ -118,6 +130,7 @@
         private System.Windows.Forms.Button stopButton;
         private System.Windows.Forms.Button infoProgramm;
         private System.Windows.Forms.Timer clockTimer;
+        private System.Windows.Forms.Label CheckAlarmActive;
     }
 }
 

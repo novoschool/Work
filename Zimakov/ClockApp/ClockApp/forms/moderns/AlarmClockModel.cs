@@ -6,8 +6,10 @@ using System.Threading.Tasks;
 
 namespace ClockApp.forms.moderns
 {
-    internal class AlarmClockModel
+    public class AlarmClockModel
     {
         public TimeSpan CurrentTime => DateTime.Now.TimeOfDay;
+
+        public SettingModel Settings { get; set; } = new SettingModel();
     }
 }

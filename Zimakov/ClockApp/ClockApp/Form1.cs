@@ -44,5 +44,29 @@ namespace ClockApp
                 aboutForm.ShowDialog();
             }
         }
+
+        private void settingsButton_Click(object sender, EventArgs e)
+        {
+            var SettingsForm = new settingsForm();
+            SettingsForm.Model = Model.Settings;
+
+            if (SettingsForm.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
+            DisplayAlarmMode();
+        }
+
+        private void DisplayAlarmMode()
+        {
+            if(Model.Settings.IsAlarmOn)
+            {
+                CheckAlarmActive.Visible = true;
+            }
+            else
+            {
+                CheckAlarmActive.Visible = false;
+            }
+        }
     }
 }
