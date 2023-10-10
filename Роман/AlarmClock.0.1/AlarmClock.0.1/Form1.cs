@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AlarmClock._0._1.Forms1;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -35,10 +36,7 @@ namespace AlarmClock._0._1
 
         private void AboutButton_Click(object sender, EventArgs e)
         {
-            //using (var aboutForm = new AboutForm())
-            //{
-            //    aboutForm.ShowDialog();
-            //}
+            new AboutForm().ShowDialog();
         }
     }
 }

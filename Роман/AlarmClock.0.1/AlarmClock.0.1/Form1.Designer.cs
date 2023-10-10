@@ -29,40 +29,41 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.button3 = new System.Windows.Forms.Button();
+            this.Старт = new System.Windows.Forms.Button();
+            this.StopButton = new System.Windows.Forms.Button();
+            this.AboutButton = new System.Windows.Forms.Button();
             this.ClockLabel = new System.Windows.Forms.Label();
             this.ClockTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
-            // button1
+            // Старт
             // 
-            this.button1.Location = new System.Drawing.Point(322, 12);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 1;
-            this.button1.Text = "button1";
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.Старт.Location = new System.Drawing.Point(322, 12);
+            this.Старт.Name = "Старт";
+            this.Старт.Size = new System.Drawing.Size(75, 23);
+            this.Старт.TabIndex = 1;
+            this.Старт.Text = "Настройки";
+            this.Старт.UseVisualStyleBackColor = true;
+            this.Старт.Click += new System.EventHandler(this.button1_Click);
             // 
-            // button2
+            // StopButton
             // 
-            this.button2.Location = new System.Drawing.Point(322, 41);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 2;
-            this.button2.Text = "button2";
-            this.button2.UseVisualStyleBackColor = true;
+            this.StopButton.Location = new System.Drawing.Point(322, 41);
+            this.StopButton.Name = "StopButton";
+            this.StopButton.Size = new System.Drawing.Size(75, 23);
+            this.StopButton.TabIndex = 2;
+            this.StopButton.Text = "Основания";
+            this.StopButton.UseVisualStyleBackColor = true;
             // 
-            // button3
+            // AboutButton
             // 
-            this.button3.Location = new System.Drawing.Point(322, 70);
-            this.button3.Name = "button3";
-            this.button3.Size = new System.Drawing.Size(75, 23);
-            this.button3.TabIndex = 3;
-            this.button3.Text = "button3";
-            this.button3.UseVisualStyleBackColor = true;
+            this.AboutButton.Location = new System.Drawing.Point(322, 70);
+            this.AboutButton.Name = "AboutButton";
+            this.AboutButton.Size = new System.Drawing.Size(75, 23);
+            this.AboutButton.TabIndex = 3;
+            this.AboutButton.Text = "О програме";
+            this.AboutButton.UseVisualStyleBackColor = true;
+            this.AboutButton.Click += new System.EventHandler(this.AboutButton_Click);
             // 
             // ClockLabel
             // 
@@ -87,9 +88,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(412, 104);
             this.Controls.Add(this.ClockLabel);
-            this.Controls.Add(this.button3);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
+            this.Controls.Add(this.AboutButton);
+            this.Controls.Add(this.StopButton);
+            this.Controls.Add(this.Старт);
             this.ForeColor = System.Drawing.Color.Cyan;
             this.Name = "Form1";
             this.Text = "Form1";
@@ -98,9 +99,9 @@
         }
 
         #endregion
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Button Старт;
+        private System.Windows.Forms.Button StopButton;
+        private System.Windows.Forms.Button AboutButton;
         private System.Windows.Forms.Label ClockLabel;
         private System.Windows.Forms.Timer ClockTimer;
     }
