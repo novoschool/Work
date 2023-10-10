@@ -26,6 +26,14 @@ namespace AlarmClockApp.Forms
             {
                 Model.AlarmTime = alarmTime;
             }
+            else
+            {
+                MessageBox.Show("Введено неверное значение времени!", "Ошибка",
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
+                AlarmTimeTextBox.Focus();
+                AlarmTimeTextBox.SelectAll();
+                return;
+            }
 
             Model.AlarmMessage = MessageTextBox.Text;
             Model.IsAlarmOn = AlarmCheckBox.Checked;

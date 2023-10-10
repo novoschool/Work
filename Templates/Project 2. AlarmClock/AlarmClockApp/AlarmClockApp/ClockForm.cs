@@ -27,10 +27,10 @@ namespace AlarmClockApp
 
         private void SettingsButton_Click(object sender, EventArgs e)
         {
-            var settingsFrom = new SettingsForm();
-            settingsFrom.Model = _model.Settings;
+            var settingsForm = new SettingsForm();
+            settingsForm.Model = _model.Settings;
 
-            if (settingsFrom.ShowDialog() != DialogResult.OK)
+            if (settingsForm.ShowDialog() != DialogResult.OK)
             {
                 return;
             }
