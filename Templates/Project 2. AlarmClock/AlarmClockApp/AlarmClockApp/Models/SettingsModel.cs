@@ -15,5 +15,7 @@ namespace AlarmClockApp.Models
         public bool IsAlarmOn { get; set; }
 
         public bool IsSoundOn { get; set; }
+
+        public Action AlarmOff { get; set; }
     }
 }

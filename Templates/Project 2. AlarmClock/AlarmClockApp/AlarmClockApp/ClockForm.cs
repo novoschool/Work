@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -41,6 +42,7 @@ namespace AlarmClockApp
         private void ClockTimer_Tick(object sender, EventArgs e)
         {
             DisplayLabel.Text = _model.CurrentTime.ToString(@"hh\:mm\:ss");
+
             if (_model.IsTimeToAwake())
             {
                 if (_awakeForm == null || _awakeForm.IsDisposed)
@@ -50,6 +52,11 @@ namespace AlarmClockApp
                 }
 
                 _awakeForm.Show();
+
+                if (_model.IsSoundOn)
+                {
+                    SystemSounds.Beep.Play();
+                }
             }
         }
 
@@ -61,6 +68,7 @@ namespace AlarmClockApp
         private void ClockForm_Load(object sender, EventArgs e)
         {
             _initialText = Text;
+            _model.Settings.AlarmOff = () => DisplayAlarmMode();
         }
 
         private void DisplayAlarmMode()
