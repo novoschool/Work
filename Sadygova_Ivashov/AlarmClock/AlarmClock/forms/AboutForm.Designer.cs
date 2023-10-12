@@ -1,6 +1,6 @@
 ﻿namespace AlarmClock.forms
 {
-    partial class Form1
+    partial class AboutForm
     {
         /// <summary>
         /// Required designer variable.

@@ -32,12 +32,18 @@ namespace AlarmClock
 
         private void button1_Click(object sender, EventArgs e)
         {
+            var settingsForm = new SettingsForm();
+            settingsForm.Model = model.Settings;
 
+            if (settingsForm.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
         }
 
         private void button3_Click(object sender, EventArgs e)
         {
-            using (var form1 = new Form1())
+            using (var form1 = new AboutForm())
             {
                 form1.ShowDialog();
             }

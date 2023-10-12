@@ -10,11 +10,21 @@ using System.Windows.Forms;
 
 namespace AlarmClock.forms
 {
-    public partial class Form2 : Form
+    public partial class AboutForm : Form
     {
-        public Form2()
+        public AboutForm()
         {
             InitializeComponent();
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            Close();
         }
     }
 }
