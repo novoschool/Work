@@ -4,12 +4,32 @@
     {
         static void Main(string[] args)
         {
-            SingleSort(SelectionSort);
-            SingleKeyValueSort(SelectionSort);
-            GeneralTimeMeasure(SelectionSort);
-            SortedTimeMeasure(SelectionSort);
-            AlmostSortedTimeMeasure(SelectionSort);
-            ReverseSortedTimeMeasure(SelectionSort);
+            SingleSort(SelectionSort, (x, y) => x > y ? -1 : x == y ? 0 : 1);
+            SingleKeyValueSort(SelectionSort, (x, y) => x.Key < y.Key ? -1 : x.Key == y.Key ? 0 : 1);
+            SingleComplexKeyValueSort(SelectionSort, (x, y) =>
+            {
+                if (x.Key1 < y.Key1)
+                {
+                    return -1;
+                }
+                if (x.Key1 > y.Key2)
+                {
+                    return 1;
+                }
+                if (x.Key2 > x.Key2)
+                {
+                    return -1;
+                }
+                if (x.Key2 < y.Key2)
+                {
+                    return 1;
+                }
+                return 0;
+            });
+            //GeneralTimeMeasure(SelectionSort);
+            //SortedTimeMeasure(SelectionSort);
+            //AlmostSortedTimeMeasure(SelectionSort);
+            //ReverseSortedTimeMeasure(SelectionSort);
         }
 
         private static void ReverseSortedTimeMeasure(Action<int[]> sort)
@@ -132,7 +152,7 @@
             Console.WriteLine();
         }
 
-        private static void SingleSort(Action<int[]> sort)
+        private static void SingleSort(Action<IList<int>, Func<int, int, int>> sort, Func<int, int, int> compare)
         {
             var array = new int[100];
             var rnd = new Random();
@@ -145,14 +165,14 @@
             ShowArray(array);
             Console.WriteLine();
 
-            sort(array);
+            sort(array, compare);
 
             Console.WriteLine("Отсортированный массив:");
             ShowArray(array);
             Console.WriteLine();
         }
 
-        private static void SingleKeyValueSort(Action<KeyValue[]> sort)
+        private static void SingleKeyValueSort(Action<IList<KeyValue>, Func<KeyValue, KeyValue, int>> sort, Func<KeyValue, KeyValue, int> compare)
         {
             var array = new KeyValue[100];
             var rnd = new Random();
@@ -165,22 +185,22 @@
             ShowArray(array);
             Console.WriteLine();
 
-            sort(array);
+            sort(array, compare);
 
             Console.WriteLine("Отсортированный массив:");
             ShowArray(array);
             Console.WriteLine();
         }
 
-        static void SelectionSort(int[] data)
+        static void SelectionSort<T>(IList<T> data, Func<T, T, int> compare)
         {
-            for (int i = 0; i < data.Length - 1; i++)
+            for (int i = 0; i < data.Count - 1; i++)
             {
                 var iMin = i;
                 var minValue = data[iMin];
-                for (int j = i; j < data.Length; j++)
+                for (int j = i; j < data.Count; j++)
                 {
-                    if (data[j] < minValue)
+                    if (compare(data[j], minValue) < 0)
                     {
                         iMin = j;
                         minValue = data[j];
@@ -269,7 +289,8 @@
                     count = 0;
                 }
 
-                prevKey = item.Key;
+                prevKey1 = item.Key1;
+                prevKey2 = item.Key2;
             }
 
             Console.WriteLine();
@@ -277,9 +298,11 @@
 
         private class KeyValue
         {
-            public int Key { get; set; }
+            public int Key1 { get; set; }
 
-            public int Value { get; set; }
+            public int Key2 { get; set; }
+
+            public int Key3 { get; set; }
         }
     }
 }
