@@ -4,36 +4,64 @@
     {
         static void Main(string[] args)
         {
-            SingleSort(InsertionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
-            SingleKeyValueSort(InsertionSort, (x, y) => x.Key < y.Key ? -1 : x.Key == y.Key ? 0 : 1);
-            SingleComplexKeyValueSort(InsertionSort, (x, y) =>
-                {
-                    if (x.Key1 < y.Key1)
-                    {
-                        return -1;
-                    }
+            //SingleSort(ShellSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            //SingleKeyValueSort(ShellSort, (x, y) => x.Key < y.Key ? -1 : x.Key == y.Key ? 0 : 1);
+            //SingleComplexKeyValueSort(BubbleSort, (x, y) =>
+            //    {
+            //        if (x.Key1 < y.Key1)
+            //        {
+            //            return -1;
+            //        }
 
-                    if (x.Key1 > y.Key1)
-                    {
-                        return 1;
-                    }
+            //        if (x.Key1 > y.Key1)
+            //        {
+            //            return 1;
+            //        }
 
-                    if (x.Key2 < y.Key2)
-                    {
-                        return -1;
-                    }
+            //        if (x.Key2 < y.Key2)
+            //        {
+            //            return -1;
+            //        }
 
-                    if (x.Key2 > y.Key2)
-                    {
-                        return 1;
-                    }
+            //        if (x.Key2 > y.Key2)
+            //        {
+            //            return 1;
+            //        }
 
-                    return 0;
-                });
+            //        return 0;
+            //    });
+
+            Console.WriteLine("Сортировка выбором:");
+            Console.WriteLine();
+
+            GeneralTimeMeasure(SelectionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            SortedTimeMeasure(SelectionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            AlmostSortedTimeMeasure(SelectionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            ReverseSortedTimeMeasure(SelectionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+
+            Console.WriteLine("Сортировка вставкой:");
+            Console.WriteLine();
+
             GeneralTimeMeasure(InsertionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
             SortedTimeMeasure(InsertionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
             AlmostSortedTimeMeasure(InsertionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
             ReverseSortedTimeMeasure(InsertionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+
+            Console.WriteLine("Пузырьковая сортировка:");
+            Console.WriteLine();
+
+            GeneralTimeMeasure(BubbleSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            SortedTimeMeasure(BubbleSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            AlmostSortedTimeMeasure(BubbleSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            ReverseSortedTimeMeasure(BubbleSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+
+            Console.WriteLine("Сортировка Шелла:");
+            Console.WriteLine();
+
+            GeneralTimeMeasure(ShellSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            SortedTimeMeasure(ShellSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            AlmostSortedTimeMeasure(ShellSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            ReverseSortedTimeMeasure(ShellSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
         }
 
         private static void ReverseSortedTimeMeasure(Action<IList<int>, Func<int, int, int>> sort,
@@ -254,30 +282,6 @@
             }
         }
 
-        static void SelectionSort(KeyValue[] data)
-        {
-            for (int i = 0; i < data.Length - 1; i++)
-            {
-                var iMin = i;
-                var minKey = data[iMin].Key;
-                for (int j = i; j < data.Length; j++)
-                {
-                    if (data[j].Key < minKey)
-                    {
-                        iMin = j;
-                        minKey = data[j].Key;
-                    }
-                }
-
-                if (i != iMin)
-                {
-                    var t = data[i];
-                    data[i] = data[iMin];
-                    data[iMin] = t;
-                }
-            }
-        }
-
         static void InsertionSort<T>(IList<T> data, Func<T, T, int> compare)
         {
             for (int i = 1; i < data.Count; i++)
@@ -300,6 +304,57 @@
                     }
 
                     data[j + 1] = t;
+                }
+            }
+        }
+
+        static void ShellSort<T>(IList<T> data, Func<T, T, int> compare)
+        {
+            int step = data.Count / 2;
+            while (step >= 1)
+            {
+                for (int i = 0; i < step; i++)
+                {
+                    for (int j = 1; j < data.Count; j += step)
+                    {
+                        int k = j - step;
+                        for (; k >= 0; k -= step)
+                        {
+                            if (compare(data[k], data[j]) <= 0)
+                            {
+                                break;
+                            }
+                        }
+
+                        if (k < j - step)
+                        {
+                            var t = data[j];
+                            for (int m = j - step; m > k; m -= step)
+                            {
+                                data[m + step] = data[m];
+                            }
+
+                            data[k + step] = t;
+                        }
+                    }
+                }
+
+                step /= 2;
+            }
+        }
+
+        static void BubbleSort<T>(IList<T> data, Func<T, T, int> compare)
+        {
+            for (int i = 0; i < data.Count - 1; i++)
+            {
+                for (int j = data.Count - 2; j >= i; j--)
+                {
+                    if (compare(data[j], data[j + 1]) > 0)
+                    {
+                        var t = data[j];
+                        data[j] = data[j + 1];
+                        data[j + 1] = t;
+                    }
                 }
             }
         }
