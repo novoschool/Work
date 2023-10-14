@@ -22,17 +22,7 @@ namespace AlarmClock.forms
 
         private void button2_Click(object sender, EventArgs e)
         {
-            if (TimeSpan.TryParse(AlarmTimeTextBox.Text, out var alarmTime))
-            {
-                Model.AlarmTime = alarmTime;
-            }
-            else
-            {
-                MessageBox.Show("Введено неверное значение времени!", "Ошибка!",
-                    MessageBoxButtons.OK, MessageBoxIcon.Error);
-                AlarmTimeTextBox.Focus();
-                AlarmTimeTextBox.SelectAll();
-            }
+
         }
 
         private void label2_Click(object sender, EventArgs e)
@@ -59,6 +49,11 @@ namespace AlarmClock.forms
         }
 
         private void checkBox1_CheckedChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void OK_Click(object sender, EventArgs e)
         {
 
         }

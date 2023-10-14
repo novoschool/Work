@@ -10,6 +10,26 @@ namespace AlarmClock.models
     {
         public TimeSpan CurrentTime => DateTime.Now.TimeOfDay;
 
-        public SettingsModel Settings { get; set; }
+        public SettingsModel Settings { get; set; } = new SettingsModel();
+        public bool IsAlarmOn
+        {
+            get => Settings.IsAlarmOn;
+            set => Settings.IsAlarmOn = value;
+        }
+        public bool IsTimeToAwake()
+        {
+            if (!IsAlarmOn)
+            {
+                return false;
+            }
+
+            var now = DateTime.Now.TimeOfDay;
+            if (now.Hours == Settings.AlarmTime.Hours && now.Minutes==Settings.AlarmTime.Minutes)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }

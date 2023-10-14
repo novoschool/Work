@@ -25,5 +25,10 @@ namespace AlarmClockApp.Forms
             Model.IsAlarmOn = false;
             Close();
         }
+
+        private void AwakeLabel_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

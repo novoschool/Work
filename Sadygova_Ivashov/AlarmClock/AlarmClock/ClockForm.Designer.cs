@@ -28,10 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.DisplayLabel = new System.Windows.Forms.Label();
             this.button1 = new System.Windows.Forms.Button();
             this.button2 = new System.Windows.Forms.Button();
             this.button3 = new System.Windows.Forms.Button();
+            this.AlarmTimer = new System.Windows.Forms.Timer(this.components);
             this.SuspendLayout();
             // 
             // DisplayLabel
@@ -76,6 +78,12 @@
             this.button3.UseVisualStyleBackColor = true;
             this.button3.Click += new System.EventHandler(this.button3_Click);
             // 
+            // AlarmTimer
+            // 
+            this.AlarmTimer.Enabled = true;
+            this.AlarmTimer.Interval = 1000;
+            this.AlarmTimer.Tick += new System.EventHandler(this.AlarmTimer_Tick);
+            // 
             // Form_Main
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -100,6 +108,7 @@
         private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Button button2;
         private System.Windows.Forms.Button button3;
+        private System.Windows.Forms.Timer AlarmTimer;
     }
 }
 

@@ -58,6 +58,12 @@
     <Compile Include="forms\AboutForm.Designer.cs">
       <DependentUpon>AboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\AwakeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\AwakeForm.Designer.cs">
+      <DependentUpon>AwakeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -73,6 +79,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\AboutForm.resx">
       <DependentUpon>AboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\AwakeForm.resx">
+      <DependentUpon>AwakeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
@@ -98,6 +107,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="images\" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
