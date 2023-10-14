@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -15,6 +16,10 @@ namespace ClockApp
     public partial class ClockApp : Form
     {
         internal AlarmClockModel Model = new AlarmClockModel();
+
+        private AwakeForm _awakeForm;
+
+
         public ClockApp()
         {
             InitializeComponent();
@@ -23,6 +28,23 @@ namespace ClockApp
         private void clockTimer_Tick(object sender, EventArgs e)
         {
             displayLabel.Text = Model.CurrentTime.ToString(@"hh\:mm\:ss");
+
+            if (Model.IsTimeToAwake())
+            {
+                if (_awakeForm == null || _awakeForm.IsDisposed)
+                {
+                    _awakeForm = new AwakeForm();
+                    _awakeForm.Model = Model.Settings;
+                }
+
+                _awakeForm.Show();
+                CheckAlarmActive.BackColor= Color.Pink;
+
+                if (Model.IsSoundOn)
+                {
+                    SystemSounds.Beep.Play();
+                }
+            }
         }
 
         private void stopButton_Click(object sender, EventArgs e)

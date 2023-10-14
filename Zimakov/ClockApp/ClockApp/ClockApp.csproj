@@ -58,6 +58,12 @@
     <Compile Include="forms\aboutForm.Designer.cs">
       <DependentUpon>aboutForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="forms\AwakeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="forms\AwakeForm.Designer.cs">
+      <DependentUpon>AwakeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="forms\moderns\AlarmClockModel.cs" />
     <Compile Include="forms\moderns\SettingModel.cs" />
     <Compile Include="forms\settingsForm.cs">
@@ -73,6 +79,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="forms\aboutForm.resx">
       <DependentUpon>aboutForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="forms\AwakeForm.resx">
+      <DependentUpon>AwakeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="forms\settingsForm.resx">
       <DependentUpon>settingsForm.cs</DependentUpon>
@@ -98,6 +107,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="images\1.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\2.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\3.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="images\4.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
