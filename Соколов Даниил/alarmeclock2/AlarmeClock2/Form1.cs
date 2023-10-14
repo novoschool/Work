@@ -6,6 +6,8 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -16,15 +18,32 @@ namespace AlarmeClock2
     {
         internal AlarmeClockModel Model = new AlarmeClockModel();
 
+        private AwakeForm AwakeForm;
+
         public ClockForm()
         {
             InitializeComponent();
         }
 
         private void ClockTimer_Tick(object sender, EventArgs e)
+        {
+            DislayLable.Text = Model.CurrentTime.ToString(@"hh\:mm\:ss");
+
+            if (Model.IsTimeToAwake())
             {
-                DislayLable.Text = Model.CurrentTime.ToString(@"hh\:mm\:ss");
+                if (AwakeForm == null || AwakeForm.IsDisposed)
+                {
+                    AwakeForm = new AwakeForm() { Model = Model.Settings };
+                }
+
+                AwakeForm.Show();
+
+                //if (Model.IsSoundOn)
+                //{
+                //    SystemSounds.Question.Play();
+                //}
             }
+        }
 
         private void AbautButton_Click(object sender, EventArgs e)
         {
@@ -36,7 +55,14 @@ namespace AlarmeClock2
 
         private void SettingsButton_Click(object sender, EventArgs e)
         {
+            var settingsForm = new SettingsForm();
+            settingsForm.Model = Model.Settings;
+            if (settingsForm.ShowDialog() != DialogResult.OK)
+            {
+                return;
+            }
 
+            //DisplayAlarmMode();
         }
 
         private void StopButton_Click(object sender, EventArgs e)
@@ -48,5 +74,7 @@ namespace AlarmeClock2
         {
 
         }
+
+        
     }
 }

@@ -46,6 +46,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Forms\AwakeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\AwakeForm.Designer.cs">
+      <DependentUpon>AwakeForm.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms\SettingsForm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -65,6 +71,7 @@
     <Compile Include="Forms\AbautForms.Designer.cs">
       <DependentUpon>AbautForms.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\SettingsModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">
@@ -72,6 +79,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\AbautForms.resx">
       <DependentUpon>AbautForms.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\AwakeForm.resx">
+      <DependentUpon>AwakeForm.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\SettingsForm.resx">
       <DependentUpon>SettingsForm.cs</DependentUpon>
@@ -97,6 +107,20 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="img\1img.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\2img.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\3img.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="img\4img.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

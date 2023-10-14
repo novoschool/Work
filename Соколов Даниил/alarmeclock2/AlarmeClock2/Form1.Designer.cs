@@ -44,7 +44,7 @@
             this.DislayLable.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.DislayLable.Font = new System.Drawing.Font("MS Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DislayLable.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.DislayLable.Location = new System.Drawing.Point(12, 9);
+            this.DislayLable.Location = new System.Drawing.Point(10, 9);
             this.DislayLable.Name = "DislayLable";
             this.DislayLable.Size = new System.Drawing.Size(362, 136);
             this.DislayLable.TabIndex = 0;
@@ -67,7 +67,7 @@
             // 
             this.StopButton.BackColor = System.Drawing.Color.Maroon;
             this.StopButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.StopButton.Location = new System.Drawing.Point(380, 53);
+            this.StopButton.Location = new System.Drawing.Point(380, 52);
             this.StopButton.Name = "StopButton";
             this.StopButton.Size = new System.Drawing.Size(107, 50);
             this.StopButton.TabIndex = 2;
@@ -96,7 +96,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(501, 152);
+            this.ClientSize = new System.Drawing.Size(501, 153);
             this.Controls.Add(this.AbautButton);
             this.Controls.Add(this.StopButton);
             this.Controls.Add(this.SettingsButton);
@@ -104,6 +104,7 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
             this.MaximizeBox = false;
             this.Name = "ClockForm";
+            this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Часики";
             this.ResumeLayout(false);
 
