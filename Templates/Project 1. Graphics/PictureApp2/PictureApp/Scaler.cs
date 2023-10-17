@@ -11,13 +11,7 @@ namespace PictureApp
     {
         private Rectangle _screenRectangle { get; set; }
 
-        private RectangleModel _mathRectangle { get; set; } = new RectangleModel
-        {
-            X = -9,
-            Y = -1,
-            Width = 17,
-            Height = 11,
-        };
+        private RectangleModel _mathRectangle { get; set; }
 
 
 
