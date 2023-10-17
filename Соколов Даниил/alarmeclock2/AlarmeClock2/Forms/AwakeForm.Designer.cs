@@ -33,6 +33,7 @@
             this.AwakeLabel = new System.Windows.Forms.Label();
             this.AwakePicture = new System.Windows.Forms.PictureBox();
             this.AwakeTimer = new System.Windows.Forms.Timer(this.components);
+            this.PostponeButton = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.AwakePicture)).BeginInit();
             this.SuspendLayout();
             // 
@@ -40,7 +41,7 @@
             // 
             this.Awakebutton.DialogResult = System.Windows.Forms.DialogResult.OK;
             this.Awakebutton.Font = new System.Drawing.Font("Microsoft Sans Serif", 72F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.Awakebutton.Location = new System.Drawing.Point(137, 404);
+            this.Awakebutton.Location = new System.Drawing.Point(15, 404);
             this.Awakebutton.Name = "Awakebutton";
             this.Awakebutton.Size = new System.Drawing.Size(280, 102);
             this.Awakebutton.TabIndex = 0;
@@ -65,7 +66,6 @@
             this.AwakePicture.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.AwakePicture.TabIndex = 2;
             this.AwakePicture.TabStop = false;
-            this.AwakePicture.Click += new System.EventHandler(this.pictureBox1_Click);
             // 
             // AwakeTimer
             // 
@@ -73,12 +73,24 @@
             this.AwakeTimer.Interval = 5000;
             this.AwakeTimer.Tick += new System.EventHandler(this.AwakeTimer_Tick_1);
             // 
+            // PostponeButton
+            // 
+            this.PostponeButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 26.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.PostponeButton.Location = new System.Drawing.Point(301, 404);
+            this.PostponeButton.Name = "PostponeButton";
+            this.PostponeButton.Size = new System.Drawing.Size(227, 102);
+            this.PostponeButton.TabIndex = 3;
+            this.PostponeButton.Text = "ОТЛОЖИТЬ";
+            this.PostponeButton.UseVisualStyleBackColor = true;
+            this.PostponeButton.Click += new System.EventHandler(this.PostponeButton_Click);
+            // 
             // AwakeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(543, 518);
             this.ControlBox = false;
+            this.Controls.Add(this.PostponeButton);
             this.Controls.Add(this.AwakePicture);
             this.Controls.Add(this.AwakeLabel);
             this.Controls.Add(this.Awakebutton);
@@ -99,5 +111,6 @@
         private System.Windows.Forms.Label AwakeLabel;
         private System.Windows.Forms.PictureBox AwakePicture;
         private System.Windows.Forms.Timer AwakeTimer;
+        private System.Windows.Forms.Button PostponeButton;
     }
 }

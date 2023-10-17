@@ -12,6 +12,8 @@ namespace AlarmeClock2.Models
 
         public TimeSpan AlarmTime { get; set; } = DateTime.Now.TimeOfDay;
 
+        public TimeSpan WaitingAlarmTime { get; set; } = DateTime.Now.TimeOfDay;
+
         public string AlarmMessage { get; set;} = string.Empty;
 
         public bool IsAlarmOn { get; set;}

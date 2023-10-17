@@ -65,16 +65,9 @@ namespace AlarmeClock2
             //DisplayAlarmMode();
         }
 
-        private void StopButton_Click(object sender, EventArgs e)
+        private void TimerButton_Click(object sender, EventArgs e)
         {
 
         }
-
-        private void DislayLable_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        
     }
 }

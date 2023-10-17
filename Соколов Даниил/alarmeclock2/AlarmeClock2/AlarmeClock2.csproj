@@ -72,6 +72,7 @@
       <DependentUpon>AbautForms.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\SettingsModel.cs" />
+    <Compile Include="Models\TimerModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

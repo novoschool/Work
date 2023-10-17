@@ -23,6 +23,8 @@ namespace AlarmeClock2.Forms
 
         private int ImageIndex = 0;
 
+        public bool postpone = false;
+
         public AwakeForm()
         {
             InitializeComponent();
@@ -45,11 +47,6 @@ namespace AlarmeClock2.Forms
             AwakePicture.Load(FileName[ImageIndex]);
         }
 
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void AwakeForm_Load(object sender, EventArgs e)
         {
             AwakeLabel.Text = Model.AlarmMessage;
@@ -62,6 +59,10 @@ namespace AlarmeClock2.Forms
             Close();
         }
 
-        
+        private void PostponeButton_Click(object sender, EventArgs e)
+        {
+            Model.WaitingAlarmTime += new TimeSpan(0, 2, 0);
+            Close();
+        }
     }
 }

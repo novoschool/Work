@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AlarmeClock2.Forms;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -25,8 +26,8 @@ namespace AlarmeClock2.Models
             }
 
             var now = DateTime.Now.TimeOfDay;
-            if (now.Hours == Settings.AlarmTime.Hours
-                && now.Minutes == Settings.AlarmTime.Minutes)
+            if (now.Hours == Settings.WaitingAlarmTime.Hours
+                && now.Minutes == Settings.WaitingAlarmTime.Minutes)
             {
                 return true;
             }

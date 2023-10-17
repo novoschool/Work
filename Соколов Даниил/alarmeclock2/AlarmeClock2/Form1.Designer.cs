@@ -31,9 +31,10 @@
             this.components = new System.ComponentModel.Container();
             this.DislayLable = new System.Windows.Forms.Label();
             this.SettingsButton = new System.Windows.Forms.Button();
-            this.StopButton = new System.Windows.Forms.Button();
+            this.TimerButton = new System.Windows.Forms.Button();
             this.AbautButton = new System.Windows.Forms.Button();
             this.ClockTimer = new System.Windows.Forms.Timer(this.components);
+            this.TimerLabel = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // DislayLable
@@ -44,13 +45,13 @@
             this.DislayLable.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
             this.DislayLable.Font = new System.Drawing.Font("MS Gothic", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.DislayLable.ForeColor = System.Drawing.SystemColors.HotTrack;
-            this.DislayLable.Location = new System.Drawing.Point(10, 9);
+            this.DislayLable.Location = new System.Drawing.Point(15, 7);
+            this.DislayLable.Margin = new System.Windows.Forms.Padding(0);
             this.DislayLable.Name = "DislayLable";
-            this.DislayLable.Size = new System.Drawing.Size(362, 136);
+            this.DislayLable.Size = new System.Drawing.Size(362, 137);
             this.DislayLable.TabIndex = 0;
             this.DislayLable.Text = "00:00:00";
             this.DislayLable.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
-            this.DislayLable.Click += new System.EventHandler(this.DislayLable_Click);
             // 
             // SettingsButton
             // 
@@ -63,17 +64,17 @@
             this.SettingsButton.UseVisualStyleBackColor = false;
             this.SettingsButton.Click += new System.EventHandler(this.SettingsButton_Click);
             // 
-            // StopButton
+            // TimerButton
             // 
-            this.StopButton.BackColor = System.Drawing.Color.Maroon;
-            this.StopButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.StopButton.Location = new System.Drawing.Point(380, 52);
-            this.StopButton.Name = "StopButton";
-            this.StopButton.Size = new System.Drawing.Size(107, 50);
-            this.StopButton.TabIndex = 2;
-            this.StopButton.Text = "Стоп";
-            this.StopButton.UseVisualStyleBackColor = false;
-            this.StopButton.Click += new System.EventHandler(this.StopButton_Click);
+            this.TimerButton.BackColor = System.Drawing.Color.Maroon;
+            this.TimerButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 20.25F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TimerButton.Location = new System.Drawing.Point(380, 52);
+            this.TimerButton.Name = "TimerButton";
+            this.TimerButton.Size = new System.Drawing.Size(107, 50);
+            this.TimerButton.TabIndex = 2;
+            this.TimerButton.Text = "Старт";
+            this.TimerButton.UseVisualStyleBackColor = false;
+            this.TimerButton.Click += new System.EventHandler(this.TimerButton_Click);
             // 
             // AbautButton
             // 
@@ -92,13 +93,25 @@
             this.ClockTimer.Interval = 1000;
             this.ClockTimer.Tick += new System.EventHandler(this.ClockTimer_Tick);
             // 
+            // TimerLabel
+            // 
+            this.TimerLabel.BackColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.TimerLabel.Font = new System.Drawing.Font("MS Gothic", 18F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TimerLabel.ForeColor = System.Drawing.SystemColors.HotTrack;
+            this.TimerLabel.Location = new System.Drawing.Point(253, 115);
+            this.TimerLabel.Name = "TimerLabel";
+            this.TimerLabel.Size = new System.Drawing.Size(106, 23);
+            this.TimerLabel.TabIndex = 4;
+            this.TimerLabel.Text = "00:00:00";
+            // 
             // ClockForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(501, 153);
+            this.Controls.Add(this.TimerLabel);
             this.Controls.Add(this.AbautButton);
-            this.Controls.Add(this.StopButton);
+            this.Controls.Add(this.TimerButton);
             this.Controls.Add(this.SettingsButton);
             this.Controls.Add(this.DislayLable);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedDialog;
@@ -114,9 +127,10 @@
 
         private System.Windows.Forms.Label DislayLable;
         private System.Windows.Forms.Button SettingsButton;
-        private System.Windows.Forms.Button StopButton;
+        private System.Windows.Forms.Button TimerButton;
         private System.Windows.Forms.Button AbautButton;
         private System.Windows.Forms.Timer ClockTimer;
+        private System.Windows.Forms.Label TimerLabel;
     }
 }
 

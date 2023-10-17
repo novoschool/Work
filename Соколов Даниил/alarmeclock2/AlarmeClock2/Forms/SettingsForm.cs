@@ -38,6 +38,7 @@ namespace AlarmeClock2.Forms
             if (TimeSpan.TryParse(AlarmTimeTextBox.Text, out var alarmTime))
             {
                 Model.AlarmTime = alarmTime;
+                Model.WaitingAlarmTime = alarmTime;
             }
             else
             {
