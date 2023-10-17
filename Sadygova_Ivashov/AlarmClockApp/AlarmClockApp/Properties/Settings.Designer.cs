@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace AlarmClock.Properties
+namespace AlarmClockApp.Properties
 {
 
 
