@@ -64,6 +64,8 @@
     <Compile Include="Forms1\SettingsForm.Designer.cs">
       <DependentUpon>SettingsForm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Models\ClockModel.cs" />
+    <Compile Include="Models\SettingsModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Form1.resx">

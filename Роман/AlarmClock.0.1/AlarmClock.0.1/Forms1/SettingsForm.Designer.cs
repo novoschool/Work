@@ -28,68 +28,70 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.checkBox1 = new System.Windows.Forms.CheckBox();
-            this.checkBox2 = new System.Windows.Forms.CheckBox();
-            this.button1 = new System.Windows.Forms.Button();
-            this.button2 = new System.Windows.Forms.Button();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.textBox2 = new System.Windows.Forms.TextBox();
+            this.AlarmCheckBox = new System.Windows.Forms.CheckBox();
+            this.SoundCheckBox = new System.Windows.Forms.CheckBox();
+            this.CancelButton = new System.Windows.Forms.Button();
+            this.OkButton = new System.Windows.Forms.Button();
+            this.AlarmTimeTextBox = new System.Windows.Forms.TextBox();
+            this.MessageTextBox = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
-            // checkBox1
+            // AlarmCheckBox
             // 
-            this.checkBox1.AutoSize = true;
-            this.checkBox1.Location = new System.Drawing.Point(101, 64);
-            this.checkBox1.Name = "checkBox1";
-            this.checkBox1.Size = new System.Drawing.Size(126, 17);
-            this.checkBox1.TabIndex = 0;
-            this.checkBox1.Text = "Будильник включен";
-            this.checkBox1.UseVisualStyleBackColor = true;
+            this.AlarmCheckBox.AutoSize = true;
+            this.AlarmCheckBox.Location = new System.Drawing.Point(101, 64);
+            this.AlarmCheckBox.Name = "AlarmCheckBox";
+            this.AlarmCheckBox.Size = new System.Drawing.Size(126, 17);
+            this.AlarmCheckBox.TabIndex = 0;
+            this.AlarmCheckBox.Text = "Будильник включен";
+            this.AlarmCheckBox.UseVisualStyleBackColor = true;
             // 
-            // checkBox2
+            // SoundCheckBox
             // 
-            this.checkBox2.AutoSize = true;
-            this.checkBox2.Location = new System.Drawing.Point(101, 87);
-            this.checkBox2.Name = "checkBox2";
-            this.checkBox2.Size = new System.Drawing.Size(184, 17);
-            this.checkBox2.TabIndex = 1;
-            this.checkBox2.Text = "Будильник выключен навсегда";
-            this.checkBox2.UseVisualStyleBackColor = true;
+            this.SoundCheckBox.AutoSize = true;
+            this.SoundCheckBox.Location = new System.Drawing.Point(101, 87);
+            this.SoundCheckBox.Name = "SoundCheckBox";
+            this.SoundCheckBox.Size = new System.Drawing.Size(184, 17);
+            this.SoundCheckBox.TabIndex = 1;
+            this.SoundCheckBox.Text = "Будильник выключен навсегда";
+            this.SoundCheckBox.UseVisualStyleBackColor = true;
             // 
-            // button1
+            // CancelButton
             // 
-            this.button1.Location = new System.Drawing.Point(218, 124);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(75, 23);
-            this.button1.TabIndex = 2;
-            this.button1.Text = "Отмена";
-            this.button1.UseVisualStyleBackColor = true;
+            this.CancelButton.DialogResult = System.Windows.Forms.DialogResult.Cancel;
+            this.CancelButton.Location = new System.Drawing.Point(218, 124);
+            this.CancelButton.Name = "CancelButton";
+            this.CancelButton.Size = new System.Drawing.Size(75, 23);
+            this.CancelButton.TabIndex = 2;
+            this.CancelButton.Text = "Отмена";
+            this.CancelButton.UseVisualStyleBackColor = true;
             // 
-            // button2
+            // OkButton
             // 
-            this.button2.Location = new System.Drawing.Point(137, 124);
-            this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(75, 23);
-            this.button2.TabIndex = 3;
-            this.button2.Text = "ОК";
-            this.button2.UseVisualStyleBackColor = true;
+            this.OkButton.Location = new System.Drawing.Point(137, 124);
+            this.OkButton.Name = "OkButton";
+            this.OkButton.Size = new System.Drawing.Size(75, 23);
+            this.OkButton.TabIndex = 3;
+            this.OkButton.Text = "ОК";
+            this.OkButton.UseVisualStyleBackColor = true;
+            this.OkButton.Click += new System.EventHandler(this.OkButon_Click);
             // 
-            // textBox1
+            // AlarmTimeTextBox
             // 
-            this.textBox1.Location = new System.Drawing.Point(101, 12);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 20);
-            this.textBox1.TabIndex = 4;
-            this.textBox1.Text = "апа";
+            this.AlarmTimeTextBox.Location = new System.Drawing.Point(101, 12);
+            this.AlarmTimeTextBox.Name = "AlarmTimeTextBox";
+            this.AlarmTimeTextBox.Size = new System.Drawing.Size(100, 20);
+            this.AlarmTimeTextBox.TabIndex = 4;
+            this.AlarmTimeTextBox.Text = "апа";
             // 
-            // textBox2
+            // MessageTextBox
             // 
-            this.textBox2.Location = new System.Drawing.Point(101, 38);
-            this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(192, 20);
-            this.textBox2.TabIndex = 5;
+            this.MessageTextBox.Location = new System.Drawing.Point(101, 38);
+            this.MessageTextBox.Name = "MessageTextBox";
+            this.MessageTextBox.Size = new System.Drawing.Size(192, 20);
+            this.MessageTextBox.TabIndex = 5;
             // 
             // label1
             // 
@@ -116,14 +118,15 @@
             this.ClientSize = new System.Drawing.Size(305, 159);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
-            this.Controls.Add(this.textBox2);
-            this.Controls.Add(this.textBox1);
-            this.Controls.Add(this.button2);
-            this.Controls.Add(this.button1);
-            this.Controls.Add(this.checkBox2);
-            this.Controls.Add(this.checkBox1);
+            this.Controls.Add(this.MessageTextBox);
+            this.Controls.Add(this.AlarmTimeTextBox);
+            this.Controls.Add(this.OkButton);
+            this.Controls.Add(this.CancelButton);
+            this.Controls.Add(this.SoundCheckBox);
+            this.Controls.Add(this.AlarmCheckBox);
             this.Name = "SettingsForm";
             this.Text = "Настройка";
+            this.Load += new System.EventHandler(this.SettingsForm_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -131,12 +134,12 @@
 
         #endregion
 
-        private System.Windows.Forms.CheckBox checkBox1;
-        private System.Windows.Forms.CheckBox checkBox2;
-        private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.Button button2;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.TextBox textBox2;
+        private System.Windows.Forms.CheckBox AlarmCheckBox;
+        private System.Windows.Forms.CheckBox SoundCheckBox;
+        private System.Windows.Forms.Button CancelButton;
+        private System.Windows.Forms.Button OkButton;
+        private System.Windows.Forms.TextBox AlarmTimeTextBox;
+        private System.Windows.Forms.TextBox MessageTextBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.Label label2;
     }
