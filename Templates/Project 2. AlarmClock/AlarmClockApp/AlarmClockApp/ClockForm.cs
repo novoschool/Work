@@ -47,8 +47,7 @@ namespace AlarmClockApp
             {
                 if (_awakeForm == null || _awakeForm.IsDisposed)
                 {
-                    _awakeForm = new AwakeForm();
-                    _awakeForm.Model = _model.Settings;
+                    _awakeForm = new AwakeForm { Model = _model.Settings };
                 }
 
                 _awakeForm.Show();
