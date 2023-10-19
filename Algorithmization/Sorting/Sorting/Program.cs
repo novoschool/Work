@@ -4,8 +4,8 @@
     {
         static void Main(string[] args)
         {
-            //SingleSort(ShellSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
-            //SingleKeyValueSort(ShellSort, (x, y) => x.Key < y.Key ? -1 : x.Key == y.Key ? 0 : 1);
+            SingleSort(ShellSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            SingleKeyValueSort(ShellSort, (x, y) => x.Key < y.Key ? -1 : x.Key == y.Key ? 0 : 1);
             //SingleComplexKeyValueSort(BubbleSort, (x, y) =>
             //    {
             //        if (x.Key1 < y.Key1)
@@ -31,13 +31,21 @@
             //        return 0;
             //    });
 
-            Console.WriteLine("Сортировка выбором:");
-            Console.WriteLine();
+            //Console.WriteLine("Сортировка выбором:");
+            //Console.WriteLine();
 
-            GeneralTimeMeasure(SelectionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
-            SortedTimeMeasure(SelectionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
-            AlmostSortedTimeMeasure(SelectionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
-            ReverseSortedTimeMeasure(SelectionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            //GeneralTimeMeasure(SelectionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            //SortedTimeMeasure(SelectionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            //AlmostSortedTimeMeasure(SelectionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            //ReverseSortedTimeMeasure(SelectionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+
+            //Console.WriteLine("Пузырьковая сортировка:");
+            //Console.WriteLine();
+
+            //GeneralTimeMeasure(BubbleSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            //SortedTimeMeasure(BubbleSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            //AlmostSortedTimeMeasure(BubbleSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            //ReverseSortedTimeMeasure(BubbleSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
 
             Console.WriteLine("Сортировка вставкой:");
             Console.WriteLine();
@@ -46,14 +54,6 @@
             SortedTimeMeasure(InsertionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
             AlmostSortedTimeMeasure(InsertionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
             ReverseSortedTimeMeasure(InsertionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
-
-            Console.WriteLine("Пузырьковая сортировка:");
-            Console.WriteLine();
-
-            GeneralTimeMeasure(BubbleSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
-            SortedTimeMeasure(BubbleSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
-            AlmostSortedTimeMeasure(BubbleSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
-            ReverseSortedTimeMeasure(BubbleSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
 
             Console.WriteLine("Сортировка Шелла:");
             Console.WriteLine();
@@ -310,36 +310,49 @@
 
         static void ShellSort<T>(IList<T> data, Func<T, T, int> compare)
         {
-            int step = data.Count / 2;
+            int step = (int)Math.Truncate(Math.Sqrt(data.Count)); //data.Count / 10;
             while (step >= 1)
             {
-                for (int i = 0; i < step; i++)
+                for (int startIndex = 0; startIndex < step; startIndex++)
                 {
-                    for (int j = 1; j < data.Count; j += step)
+                    for (int i = startIndex; i < data.Count; i += step)
                     {
-                        int k = j - step;
-                        for (; k >= 0; k -= step)
+                        int j = i - step;
+                        for (; j >= 0; j -= step)
                         {
-                            if (compare(data[k], data[j]) <= 0)
+                            if (compare(data[j], data[i]) <= 0)
                             {
                                 break;
                             }
                         }
 
-                        if (k < j - step)
+                        if (j < i - step)
                         {
-                            var t = data[j];
-                            for (int m = j - step; m > k; m -= step)
+                            var t = data[i];
+                            for (int k = i - step; k > j; k -= step)
                             {
-                                data[m + step] = data[m];
+                                data[k + step] = data[k];
                             }
 
-                            data[k + step] = t;
+                            data[j + step] = t;
                         }
                     }
                 }
 
-                step /= 2;
+                if (step == 1)
+                {
+                    break;
+                }
+
+                var nextStep = (int)Math.Truncate(Math.Sqrt(step));// step / 10;
+                if (nextStep == 0 && step > 1)
+                {
+                    step = 1;
+                }
+                else
+                {
+                    step = nextStep;
+                }
             }
         }
 
