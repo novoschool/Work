@@ -16,6 +16,12 @@ namespace AlarmClockApp.Models
             set => Settings.IsAlarmOn = value;
         }
 
+        public bool IsSoundOn
+        {
+            get => Settings.IsSoundOn;
+            set => Settings.IsSoundOn = value;
+        }
+
         public bool IsTimeToAwake()
         {
             if (!IsAlarmOn)

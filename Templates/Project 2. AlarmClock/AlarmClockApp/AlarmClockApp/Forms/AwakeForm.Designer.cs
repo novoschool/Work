@@ -28,9 +28,11 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             this.AwakeLabel = new System.Windows.Forms.Label();
             this.AwakePictureBox = new System.Windows.Forms.PictureBox();
             this.AwakeButton = new System.Windows.Forms.Button();
+            this.AwakeTimer = new System.Windows.Forms.Timer(this.components);
             ((System.ComponentModel.ISupportInitialize)(this.AwakePictureBox)).BeginInit();
             this.SuspendLayout();
             // 
@@ -62,6 +64,12 @@
             this.AwakeButton.UseVisualStyleBackColor = true;
             this.AwakeButton.Click += new System.EventHandler(this.AwakeButton_Click);
             // 
+            // AwakeTimer
+            // 
+            this.AwakeTimer.Enabled = true;
+            this.AwakeTimer.Interval = 5000;
+            this.AwakeTimer.Tick += new System.EventHandler(this.AwakeTimer_Tick);
+            // 
             // AwakeForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -76,6 +84,7 @@
             this.MinimizeBox = false;
             this.Name = "AwakeForm";
             this.Text = "Просыпайся!";
+            this.Load += new System.EventHandler(this.AwakeForm_Load);
             ((System.ComponentModel.ISupportInitialize)(this.AwakePictureBox)).EndInit();
             this.ResumeLayout(false);
 
@@ -86,5 +95,6 @@
         private System.Windows.Forms.Label AwakeLabel;
         private System.Windows.Forms.PictureBox AwakePictureBox;
         private System.Windows.Forms.Button AwakeButton;
+        private System.Windows.Forms.Timer AwakeTimer;
     }
 }
