@@ -15,5 +15,7 @@ namespace ClockApp.forms.moderns
         public bool IsAlarmOn { get; set; }
 
         public bool IsSoundOn { get; set; }
+
+        public Action AlarmOff { get; set; }
     }
 }

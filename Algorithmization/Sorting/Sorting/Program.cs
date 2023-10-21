@@ -310,7 +310,7 @@
 
         static void ShellSort<T>(IList<T> data, Func<T, T, int> compare)
         {
-            int step = data.Count / 2;
+            int step = data.Count / 4;
             while (step >= 1)
             {
                 for (int i = 0; i < step; i++)
@@ -326,6 +326,7 @@
                             }
                         }
 
+
                         if (k < j - step)
                         {
                             var t = data[j];
@@ -335,6 +336,17 @@
                             }
 
                             data[k + step] = t;
+                        }
+
+                        var nextStep = step / 4;
+                        if (nextStep == 0 && step > 1)
+                        {
+                            step = 1;
+
+                        }
+                        else
+                        {
+
                         }
                     }
                 }

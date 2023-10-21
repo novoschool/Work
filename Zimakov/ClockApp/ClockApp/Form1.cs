@@ -28,6 +28,7 @@ namespace ClockApp
         private void clockTimer_Tick(object sender, EventArgs e)
         {
             displayLabel.Text = Model.CurrentTime.ToString(@"hh\:mm\:ss");
+            displayTime.Text = Model.ShiftedTime.ToString(@"hh\:mm\:ss");
 
             if (Model.IsTimeToAwake())
             {
@@ -45,6 +46,14 @@ namespace ClockApp
                     SystemSounds.Beep.Play();
                 }
             }
+        }
+
+        private void timeMSKbutton_Click(object sender, EventArgs e)
+        {
+            Model.TimeShiftHours = -4;
+            timeKGDbutton.BackColor = Color.MistyRose;
+            timeEKBbutton.BackColor = Color.MistyRose;
+            timeMSKbutton.BackColor = Color.Coral;
         }
 
         private void stopButton_Click(object sender, EventArgs e)
@@ -89,6 +98,62 @@ namespace ClockApp
             {
                 CheckAlarmActive.Visible = false;
             }
+        }
+
+        private void timeEKBbutton_Click(object sender, EventArgs e)
+        {
+            Model.TimeShiftHours = -2;
+            timeKGDbutton.BackColor = Color.MistyRose;
+            timeEKBbutton.BackColor = Color.Coral;
+            timeMSKbutton.BackColor = Color.MistyRose;
+            timeSAMbutton.BackColor = Color.MistyRose;
+            timeOMSbutton.BackColor = Color.MistyRose;
+            timeIRKbutton.BackColor = Color.MistyRose;
+
+        }
+
+        private void timeKGDbutton_Click(object sender, EventArgs e)
+        {
+            Model.TimeShiftHours = -5;
+            timeKGDbutton.BackColor = Color.Coral;
+            timeEKBbutton.BackColor = Color.MistyRose;
+            timeMSKbutton.BackColor = Color.MistyRose;
+            timeSAMbutton.BackColor = Color.MistyRose;
+            timeOMSbutton.BackColor = Color.MistyRose;
+            timeIRKbutton.BackColor = Color.MistyRose;
+        }
+
+        private void timeSAMbutton_Click(object sender, EventArgs e)
+        {
+            Model.TimeShiftHours = -3;
+            timeKGDbutton.BackColor = Color.MistyRose;
+            timeEKBbutton.BackColor = Color.MistyRose;
+            timeMSKbutton.BackColor = Color.MistyRose;
+            timeSAMbutton.BackColor = Color.Coral;
+            timeOMSbutton.BackColor = Color.MistyRose;
+            timeIRKbutton.BackColor = Color.MistyRose;
+        }
+
+        private void timeOMSbutton_Click(object sender, EventArgs e)
+        {
+            Model.TimeShiftHours = -1;
+            timeKGDbutton.BackColor = Color.MistyRose;
+            timeEKBbutton.BackColor = Color.MistyRose;
+            timeMSKbutton.BackColor = Color.MistyRose;
+            timeSAMbutton.BackColor = Color.MistyRose;
+            timeOMSbutton.BackColor = Color.Coral;
+            timeIRKbutton.BackColor = Color.MistyRose;
+        }
+
+        private void timeIRKbutton_Click(object sender, EventArgs e)
+        {
+            Model.TimeShiftHours = 1;
+            timeKGDbutton.BackColor = Color.MistyRose;
+            timeEKBbutton.BackColor = Color.MistyRose;
+            timeMSKbutton.BackColor = Color.MistyRose;
+            timeSAMbutton.BackColor = Color.MistyRose;
+            timeOMSbutton.BackColor = Color.MistyRose;
+            timeIRKbutton.BackColor = Color.Coral;
         }
     }
 }

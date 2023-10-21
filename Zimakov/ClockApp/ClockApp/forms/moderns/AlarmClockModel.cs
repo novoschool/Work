@@ -10,7 +10,13 @@ namespace ClockApp.forms.moderns
     {
         public TimeSpan CurrentTime => DateTime.Now.TimeOfDay;
 
+        public TimeSpan ShiftedTime => DateTime.Now.TimeOfDay + new TimeSpan(TimeShiftHours, 0, 0);
+    
+        
+
         public SettingModel Settings { get; set; } = new SettingModel();
+
+        public int TimeShiftHours { get; set; } = 0;
 
         public bool IsAlarmOn
         {
