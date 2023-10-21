@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Diagnostics;
 using System.Drawing;
 using System.Linq;
 using System.Media;
@@ -18,6 +19,9 @@ namespace AlarmeClock2
     {
         internal AlarmeClockModel Model = new AlarmeClockModel();
 
+        internal bool StopwatchOn = false;
+        internal bool StopwatchStop = true;
+
         private AwakeForm AwakeForm;
 
         public ClockForm()
@@ -28,6 +32,17 @@ namespace AlarmeClock2
         private void ClockTimer_Tick(object sender, EventArgs e)
         {
             DislayLable.Text = Model.CurrentTime.ToString(@"hh\:mm\:ss");
+            TimerLabel.Text = Model.StopWatchTime.ToString(@"hh\:mm\:ss");
+
+            if (StopwatchOn && StopwatchStop)
+            {
+                Model.StopWatchTime = Model.StopWatchTime + new TimeSpan(0, 0, 1);
+                TimerLabel.ForeColor = Color.Aqua;
+            }
+            else
+            {
+                TimerLabel.ForeColor = Color.OrangeRed;
+            }
 
             if (Model.IsTimeToAwake())
             {
@@ -43,6 +58,9 @@ namespace AlarmeClock2
                 //    SystemSounds.Question.Play();
                 //}
             }
+
+            
+            
         }
 
         private void AbautButton_Click(object sender, EventArgs e)
@@ -65,9 +83,17 @@ namespace AlarmeClock2
             //DisplayAlarmMode();
         }
 
-        private void TimerButton_Click(object sender, EventArgs e)
+        private void TimerButtonOn_Click(object sender, EventArgs e)
         {
-
+            Model.StopWatchTime = new TimeSpan(0, 0, 0);
+            StopwatchOn = !StopwatchOn;
         }
+
+        private void TimerButtonStop_Click(object sender, EventArgs e)
+        {
+            StopwatchStop = !StopwatchStop;
+            //TimerButtonStop.Enabled =StopwatchStop;
+        }
+
     }
 }

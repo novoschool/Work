@@ -359,6 +359,22 @@
             }
         }
 
+        static void ShakerSort<T>(IList<T> data, Func<T, T, int> compare)
+        {
+            for (int i = 0; i < data.Count - 1; i++)
+            {
+                for (int j = data.Count - 2; j >= i; j--)
+                {
+                    if (compare(data[j], data[j + 1]) > 0)
+                    {
+                        var t = data[j];
+                        data[j] = data[j + 1];
+                        data[j + 1] = t;
+                    }
+                }
+            }
+        }
+
         static void ShowArray(int[] array)
         {
             foreach (var item in array)
@@ -384,7 +400,7 @@
 
                 prevKey = item.Key;
             }
-
+            ig
             Console.WriteLine();
         }
 

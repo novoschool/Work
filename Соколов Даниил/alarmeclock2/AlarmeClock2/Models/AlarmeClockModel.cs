@@ -11,6 +11,7 @@ namespace AlarmeClock2.Models
     {
         public TimeSpan CurrentTime => DateTime.Now.TimeOfDay;
 
+        public TimeSpan StopWatchTime { get; set; }
 
         public bool IsAlarmOn
         {
