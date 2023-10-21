@@ -4,35 +4,40 @@
     {
         static void Main(string[] args)
         {
-            SingleSort(SelectionSort, (x, y) => x > y ? -1 : x == y ? 0 : 1);
-            SingleKeyValueSort(SelectionSort, (x, y) => x.Key < y.Key ? -1 : x.Key == y.Key ? 0 : 1);
-            SingleComplexKeyValueSort(SelectionSort, (x, y) =>
+            SingleSort(InsertionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            SingleKeyValueSort(InsertionSort, (x, y) => x.Key < y.Key ? -1 : x.Key == y.Key ? 0 : 1);
+            SingleComplexKeyValueSort(InsertionSort, (x, y) =>
             {
                 if (x.Key1 < y.Key1)
                 {
                     return -1;
                 }
-                if (x.Key1 > y.Key2)
+
+                if (x.Key1 > y.Key1)
                 {
                     return 1;
                 }
-                if (x.Key2 > x.Key2)
+
+                if (x.Key2 < y.Key2)
                 {
                     return -1;
                 }
-                if (x.Key2 < y.Key2)
+
+                if (x.Key2 > y.Key2)
                 {
                     return 1;
                 }
+
                 return 0;
             });
-            //GeneralTimeMeasure(SelectionSort);
-            //SortedTimeMeasure(SelectionSort);
-            //AlmostSortedTimeMeasure(SelectionSort);
-            //ReverseSortedTimeMeasure(SelectionSort);
+            GeneralTimeMeasure(InsertionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            SortedTimeMeasure(InsertionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            AlmostSortedTimeMeasure(InsertionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            ReverseSortedTimeMeasure(InsertionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
         }
 
-        private static void ReverseSortedTimeMeasure(Action<int[]> sort)
+        private static void ReverseSortedTimeMeasure(Action<IList<int>, Func<int, int, int>> sort,
+            Func<int, int, int> compare)
         {
             const int runCount = 1000;
             var rnd = new Random();
@@ -51,7 +56,7 @@
                         array[j] = value;
                     }
 
-                    sort(array);
+                    sort(array, compare);
                 }
 
                 DateTime endTime = DateTime.Now;
@@ -62,7 +67,8 @@
             Console.WriteLine();
         }
 
-        private static void AlmostSortedTimeMeasure(Action<int[]> sort)
+        private static void AlmostSortedTimeMeasure(Action<IList<int>, Func<int, int, int>> sort,
+            Func<int, int, int> compare)
         {
             const int runCount = 1000;
             var rnd = new Random();
@@ -83,7 +89,7 @@
 
                     var index = rnd.Next(array.Length);
                     array[index] = rnd.Next(array.Length * 2);
-                    sort(array);
+                    sort(array, compare);
                 }
 
                 DateTime endTime = DateTime.Now;
@@ -94,7 +100,8 @@
             Console.WriteLine();
         }
 
-        private static void SortedTimeMeasure(Action<int[]> sort)
+        private static void SortedTimeMeasure(Action<IList<int>, Func<int, int, int>> sort,
+            Func<int, int, int> compare)
         {
             const int runCount = 1000;
             var rnd = new Random();
@@ -113,7 +120,7 @@
                         array[j] = value;
                     }
 
-                    sort(array);
+                    sort(array, compare);
                 }
 
                 DateTime endTime = DateTime.Now;
@@ -124,7 +131,8 @@
             Console.WriteLine();
         }
 
-        private static void GeneralTimeMeasure(Action<int[]> sort)
+        private static void GeneralTimeMeasure(Action<IList<int>, Func<int, int, int>> sort,
+            Func<int, int, int> compare)
         {
             const int runCount = 1000;
             var rnd = new Random();
@@ -141,7 +149,7 @@
                         array[j] = rnd.Next(itemCount * 2);
                     }
 
-                    sort(array);
+                    sort(array, compare);
                 }
 
                 DateTime endTime = DateTime.Now;
@@ -152,7 +160,8 @@
             Console.WriteLine();
         }
 
-        private static void SingleSort(Action<IList<int>, Func<int, int, int>> sort, Func<int, int, int> compare)
+        private static void SingleSort(Action<IList<int>, Func<int, int, int>> sort,
+            Func<int, int, int> compare)
         {
             var array = new int[100];
             var rnd = new Random();
@@ -172,7 +181,9 @@
             Console.WriteLine();
         }
 
-        private static void SingleKeyValueSort(Action<IList<KeyValue>, Func<KeyValue, KeyValue, int>> sort, Func<KeyValue, KeyValue, int> compare)
+        private static void SingleKeyValueSort(Action<IList<KeyValue>,
+                Func<KeyValue, KeyValue, int>> sort,
+            Func<KeyValue, KeyValue, int> compare)
         {
             var array = new KeyValue[100];
             var rnd = new Random();
@@ -192,13 +203,40 @@
             Console.WriteLine();
         }
 
+        private static void SingleComplexKeyValueSort(Action<IList<ComplexKeyValue>,
+                Func<ComplexKeyValue, ComplexKeyValue, int>> sort,
+            Func<ComplexKeyValue, ComplexKeyValue, int> compare)
+        {
+            var array = new ComplexKeyValue[100];
+            var rnd = new Random();
+            for (int i = 0; i < array.Length; i++)
+            {
+                array[i] = new ComplexKeyValue
+                {
+                    Key1 = rnd.Next(10),
+                    Key2 = rnd.Next(10),
+                    Value = i
+                };
+            }
+
+            Console.WriteLine("Исходный массив:");
+            ShowArray(array);
+            Console.WriteLine();
+
+            sort(array, compare);
+
+            Console.WriteLine("Отсортированный массив:");
+            ShowArray(array);
+            Console.WriteLine();
+        }
+
         static void SelectionSort<T>(IList<T> data, Func<T, T, int> compare)
         {
             for (int i = 0; i < data.Count - 1; i++)
             {
                 var iMin = i;
                 var minValue = data[iMin];
-                for (int j = i; j < data.Count; j++)
+                for (int j = i + 1; j < data.Count; j++)
                 {
                     if (compare(data[j], minValue) < 0)
                     {
@@ -221,13 +259,13 @@
             for (int i = 0; i < data.Length - 1; i++)
             {
                 var iMin = i;
-                var minValue = data[iMin].Key;
+                var minKey = data[iMin].Key;
                 for (int j = i; j < data.Length; j++)
                 {
-                    if (data[j].Key < minValue)
+                    if (data[j].Key < minKey)
                     {
                         iMin = j;
-                        minValue = data[j].Key;
+                        minKey = data[j].Key;
                     }
                 }
 
@@ -240,14 +278,14 @@
             }
         }
 
-        static void InsertionSort(int[] data)
+        static void InsertionSort<T>(IList<T> data, Func<T, T, int> compare)
         {
-            for (int i = 1; i < data.Length; i++)
+            for (int i = 1; i < data.Count; i++)
             {
                 int j = i - 1;
                 for (; j >= 0; j--)
                 {
-                    if (data[j] <= data[i])
+                    if (compare(data[j], data[i]) <= 0)
                     {
                         break;
                     }
@@ -289,6 +327,26 @@
                     count = 0;
                 }
 
+                prevKey = item.Key;
+            }
+
+            Console.WriteLine();
+        }
+
+        static void ShowArray(ComplexKeyValue[] array)
+        {
+            var count = 0;
+            var prevKey1 = array.First().Key1;
+            var prevKey2 = array.First().Key2;
+            foreach (var item in array)
+            {
+                Console.Write($"({item.Key1}, {item.Key2} : {item.Value}); ");
+                if (++count >= 5 && item.Key1 != prevKey1 && item.Key2 != prevKey2)
+                {
+                    Console.WriteLine();
+                    count = 0;
+                }
+
                 prevKey1 = item.Key1;
                 prevKey2 = item.Key2;
             }
@@ -298,11 +356,18 @@
 
         private class KeyValue
         {
+            public int Key { get; set; }
+
+            public int Value { get; set; }
+        }
+
+        private class ComplexKeyValue
+        {
             public int Key1 { get; set; }
 
             public int Key2 { get; set; }
 
-            public int Key3 { get; set; }
+            public int Value { get; set; }
         }
     }
 }

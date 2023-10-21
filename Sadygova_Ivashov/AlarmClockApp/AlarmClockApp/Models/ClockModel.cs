@@ -22,6 +22,8 @@ namespace AlarmClockApp.Models
             set => Settings.IsSoundOn = value;
         }
 
+        public bool IsAwaked { get; set; }
+
         public bool IsTimeToAwake()
         {
             if (!IsAlarmOn)
@@ -30,13 +32,19 @@ namespace AlarmClockApp.Models
             }
 
             var now = DateTime.Now.TimeOfDay;
-            if (now.Hours == Settings.AlarmTime.Hours
-                && now.Minutes == Settings.AlarmTime.Minutes)
+            if (now.Hours == Settings.AwakeTime.Hours
+                && now.Minutes == Settings.AwakeTime.Minutes)
             {
                 return true;
             }
 
             return false;
+        }
+
+        public void ResetAwakeTime()
+        {
+            Settings.AwakeTime += new TimeSpan(0, 3, 0);
+            IsAwaked = false;
         }
 
         public SettingsModel Settings { get; set; } = new SettingsModel();

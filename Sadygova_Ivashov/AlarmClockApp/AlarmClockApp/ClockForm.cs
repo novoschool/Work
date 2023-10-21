@@ -45,6 +45,8 @@ namespace AlarmClockApp
 
             if (_model.IsTimeToAwake())
             {
+                _model.IsAwaked = true;
+
                 if (_awakeForm == null || _awakeForm.IsDisposed)
                 {
                     _awakeForm = new AwakeForm();
@@ -56,6 +58,14 @@ namespace AlarmClockApp
                 if (_model.IsSoundOn)
                 {
                     SystemSounds.Beep.Play();
+                }
+            }
+            else if (_model.IsAwaked)
+            {
+                _model.ResetAwakeTime();
+                if (_awakeForm != null || !_awakeForm.IsDisposed)
+                {
+                    _awakeForm.Close();
                 }
             }
         }

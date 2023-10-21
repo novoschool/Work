@@ -25,6 +25,7 @@ namespace AlarmClockApp.Forms
             if (TimeSpan.TryParse(AlarmTimeTextBox.Text, out var alarmTime))
             {
                 Model.AlarmTime = alarmTime;
+                Model.AwakeTime = alarmTime;
             }
             else
             {

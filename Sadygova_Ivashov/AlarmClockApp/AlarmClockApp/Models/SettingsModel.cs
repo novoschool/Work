@@ -10,6 +10,8 @@ namespace AlarmClockApp.Models
     {
         public TimeSpan AlarmTime { get; set; } = DateTime.Now.TimeOfDay;
 
+        public TimeSpan AwakeTime { get; set;} = DateTime.Now.TimeOfDay;
+
         public string AlarmMessage { get; set; } = string.Empty;
 
         public bool IsAlarmOn { get; set; }
