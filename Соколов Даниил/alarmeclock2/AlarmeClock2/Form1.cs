@@ -58,9 +58,6 @@ namespace AlarmeClock2
                 //    SystemSounds.Question.Play();
                 //}
             }
-
-            
-            
         }
 
         private void AbautButton_Click(object sender, EventArgs e)
@@ -92,7 +89,6 @@ namespace AlarmeClock2
         private void TimerButtonStop_Click(object sender, EventArgs e)
         {
             StopwatchStop = !StopwatchStop;
-            //TimerButtonStop.Enabled =StopwatchStop;
         }
 
     }
