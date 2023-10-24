@@ -75,6 +75,7 @@
       <DependentUpon>AbautForms.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\SettingsModel.cs" />
+    <Compile Include="Models\Test.cs" />
     <Compile Include="Models\TimerModel.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -99,6 +100,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <None Include="Properties\DataSources\AlarmeClock2.Models.AlarmeClockModel.datasource" />
+    <None Include="Properties\DataSources\AlarmeClock2.Models.SettingsModel.datasource" />
+    <None Include="Properties\DataSources\AlarmeClock2.Models.Test.datasource" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

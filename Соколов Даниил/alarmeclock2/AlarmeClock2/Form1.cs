@@ -24,6 +24,52 @@ namespace AlarmeClock2
 
         private AwakeForm AwakeForm;
 
+        private List<Test> _testData = new List<Test>()
+        {
+            new Test
+            {
+                type = 1,
+                name = "Item 1",
+                power = 1,
+                OnOff = 3,
+            },
+            new Test
+            {
+                type = 3,
+                name = "Item 2",
+                power = 5,
+                OnOff = 2,
+            },
+            new Test
+            {
+                type = 2,
+                name = "Item 3",
+                power = 8,
+                OnOff = 5,
+            },
+            new Test
+            {
+                type = 1,
+                name = "Item 4",
+                power = 5,
+                OnOff = 7,
+            },
+            new Test
+            {
+                type = 7,
+                name = "Item 5",
+                power = 4,
+                OnOff = 7,
+            },
+            new Test
+            {
+                type = 5,
+                name = "Item 6",
+                power = 3,
+                OnOff = 7,
+            },
+        };
+
         public ClockForm()
         {
             InitializeComponent();
@@ -89,7 +135,31 @@ namespace AlarmeClock2
         private void TimerButtonStop_Click(object sender, EventArgs e)
         {
             StopwatchStop = !StopwatchStop;
+            if (StopwatchStop)
+            {
+                TimerButtonStop.Text = "Стоп";
+            }
+            else
+            {
+                TimerButtonStop.Text = "Старт";
+            }
         }
 
+        private void Timer_Tick(object sender, EventArgs e)
+        {
+
+        }
+
+        private void ClockForm_Load(object sender, EventArgs e)
+        {
+            TestComboBox.Items.AddRange(_testData.ToArray());
+            TestComboBox.DisplayMember = "name";
+        }
+
+        private void TestComboBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            var selectedItem = (Test)TestComboBox.SelectedItem;
+            MessageBox.Show($"Name: {selectedItem.name}, type = {selectedItem.type}, power = {selectedItem.power}, OnOff = {selectedItem.OnOff}");
+        }
     }
 }

@@ -36,6 +36,9 @@
             this.ClockTimer = new System.Windows.Forms.Timer(this.components);
             this.TimerLabel = new System.Windows.Forms.Label();
             this.TimerButtonOn = new System.Windows.Forms.Button();
+            this.TestComboBox = new System.Windows.Forms.ComboBox();
+            this.testBindingSource = new System.Windows.Forms.BindingSource(this.components);
+            ((System.ComponentModel.ISupportInitialize)(this.testBindingSource)).BeginInit();
             this.SuspendLayout();
             // 
             // DislayLable
@@ -116,10 +119,24 @@
             this.TimerButtonOn.UseVisualStyleBackColor = false;
             this.TimerButtonOn.Click += new System.EventHandler(this.TimerButtonOn_Click);
             // 
+            // TestComboBox
+            // 
+            this.TestComboBox.FormattingEnabled = true;
+            this.TestComboBox.Location = new System.Drawing.Point(380, 151);
+            this.TestComboBox.Name = "TestComboBox";
+            this.TestComboBox.Size = new System.Drawing.Size(121, 21);
+            this.TestComboBox.TabIndex = 6;
+            this.TestComboBox.SelectedIndexChanged += new System.EventHandler(this.TestComboBox_SelectedIndexChanged);
+            // 
+            // testBindingSource
+            // 
+            this.testBindingSource.DataSource = typeof(AlarmeClock2.Models.Test);
+            // 
             // ClockForm
             // 
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.None;
-            this.ClientSize = new System.Drawing.Size(521, 153);
+            this.ClientSize = new System.Drawing.Size(521, 181);
+            this.Controls.Add(this.TestComboBox);
             this.Controls.Add(this.TimerButtonOn);
             this.Controls.Add(this.TimerLabel);
             this.Controls.Add(this.AbautButton);
@@ -131,6 +148,8 @@
             this.Name = "ClockForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Часики";
+            this.Load += new System.EventHandler(this.ClockForm_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.testBindingSource)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -144,6 +163,8 @@
         private System.Windows.Forms.Timer ClockTimer;
         private System.Windows.Forms.Label TimerLabel;
         private System.Windows.Forms.Button TimerButtonOn;
+        private System.Windows.Forms.ComboBox TestComboBox;
+        private System.Windows.Forms.BindingSource testBindingSource;
     }
 }
 
