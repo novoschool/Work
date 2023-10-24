@@ -6,6 +6,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Drawing;
 using System.Linq;
+using System.Media;
 using System.Runtime.CompilerServices;
 using System.Runtime.InteropServices;
 using System.Text;
@@ -20,7 +21,7 @@ namespace AlarmClock._0._1
 
         private string _initialText;
 
-        //private AwakeForm _awakeForm;
+        private AwakeForm _awakeForm;
 
         public Form1()
         {
@@ -42,6 +43,22 @@ namespace AlarmClock._0._1
 
         private void ClockTimer_Tick(object sender, EventArgs e)
         {
+            if (_model.IsTimeToAwake())
+            {
+                if (_awakeForm == null || _awakeForm.IsDisposed)
+                {
+                    _awakeForm = new AwakeForm();
+                    _awakeForm.Model = _model.Settings;
+                }
+
+                _awakeForm.Show();
+
+                if (_model.Settings.IsSoundOn)
+                {
+                    SystemSounds.Beep.Play();
+                }
+            }
+
             ClockLabel.Text = DateTime.Now.ToLongTimeString();
         }
 
