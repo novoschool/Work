@@ -4,9 +4,9 @@
     {
         static void Main(string[] args)
         {
-            SingleSort(ShellSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
-            SingleKeyValueSort(ShellSort, (x, y) => x.Key < y.Key ? -1 : x.Key == y.Key ? 0 : 1);
-            //SingleComplexKeyValueSort(BubbleSort, (x, y) =>
+            SingleSort(QuickSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            SingleKeyValueSort(QuickSort, (x, y) => x.Key < y.Key ? -1 : x.Key == y.Key ? 0 : 1);
+            //SingleComplexKeyValueSort(HeapSort, (x, y) =>
             //    {
             //        if (x.Key1 < y.Key1)
             //        {
@@ -39,6 +39,14 @@
             //AlmostSortedTimeMeasure(SelectionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
             //ReverseSortedTimeMeasure(SelectionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
 
+            //Console.WriteLine("Сортировка вставкой:");
+            //Console.WriteLine();
+
+            //GeneralTimeMeasure(InsertionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            //SortedTimeMeasure(InsertionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            //AlmostSortedTimeMeasure(InsertionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            //ReverseSortedTimeMeasure(InsertionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+
             //Console.WriteLine("Пузырьковая сортировка:");
             //Console.WriteLine();
 
@@ -47,14 +55,6 @@
             //AlmostSortedTimeMeasure(BubbleSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
             //ReverseSortedTimeMeasure(BubbleSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
 
-            Console.WriteLine("Сортировка вставкой:");
-            Console.WriteLine();
-
-            GeneralTimeMeasure(InsertionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
-            SortedTimeMeasure(InsertionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
-            AlmostSortedTimeMeasure(InsertionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
-            ReverseSortedTimeMeasure(InsertionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
-
             Console.WriteLine("Сортировка Шелла:");
             Console.WriteLine();
 
@@ -62,6 +62,22 @@
             SortedTimeMeasure(ShellSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
             AlmostSortedTimeMeasure(ShellSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
             ReverseSortedTimeMeasure(ShellSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+
+            Console.WriteLine("Пирамидальная сортировка:");
+            Console.WriteLine();
+
+            GeneralTimeMeasure(HeapSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            SortedTimeMeasure(HeapSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            AlmostSortedTimeMeasure(HeapSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            ReverseSortedTimeMeasure(HeapSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+
+            Console.WriteLine("Быстрая сортировка:");
+            Console.WriteLine();
+
+            GeneralTimeMeasure(QuickSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            SortedTimeMeasure(QuickSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            AlmostSortedTimeMeasure(QuickSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            ReverseSortedTimeMeasure(QuickSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
         }
 
         private static void ReverseSortedTimeMeasure(Action<IList<int>, Func<int, int, int>> sort,
@@ -310,49 +326,36 @@
 
         static void ShellSort<T>(IList<T> data, Func<T, T, int> compare)
         {
-            int step = (int)Math.Truncate(Math.Sqrt(data.Count)); //data.Count / 10;
+            int step = data.Count / 2;
             while (step >= 1)
             {
-                for (int startIndex = 0; startIndex < step; startIndex++)
+                for (int i = 0; i < step; i++)
                 {
-                    for (int i = startIndex; i < data.Count; i += step)
+                    for (int j = 1; j < data.Count; j += step)
                     {
-                        int j = i - step;
-                        for (; j >= 0; j -= step)
+                        int k = j - step;
+                        for (; k >= 0; k -= step)
                         {
-                            if (compare(data[j], data[i]) <= 0)
+                            if (compare(data[k], data[j]) <= 0)
                             {
                                 break;
                             }
                         }
 
-                        if (j < i - step)
+                        if (k < j - step)
                         {
-                            var t = data[i];
-                            for (int k = i - step; k > j; k -= step)
+                            var t = data[j];
+                            for (int m = j - step; m > k; m -= step)
                             {
-                                data[k + step] = data[k];
+                                data[m + step] = data[m];
                             }
 
-                            data[j + step] = t;
+                            data[k + step] = t;
                         }
                     }
                 }
 
-                if (step == 1)
-                {
-                    break;
-                }
-
-                var nextStep = (int)Math.Truncate(Math.Sqrt(step));// step / 10;
-                if (nextStep == 0 && step > 1)
-                {
-                    step = 1;
-                }
-                else
-                {
-                    step = nextStep;
-                }
+                step /= 2;
             }
         }
 
@@ -368,6 +371,95 @@
                         data[j] = data[j + 1];
                         data[j + 1] = t;
                     }
+                }
+            }
+        }
+
+        static void HeapSort<T>(IList<T> data, Func<T, T, int> compare)
+        {
+            var left = data.Count / 2;
+            var right = data.Count;
+            while (left > 0)
+            {
+                left--;
+                Sift(data, compare, left, right);
+            }
+
+            while (right > 0)
+            {
+                var t = data[0];
+                data[0] = data[right - 1];
+                data[right - 1] = t;
+                right--;
+                Sift(data, compare, left, right);
+            }
+
+            void Sift(IList<T> data, Func<T, T, int> compare, int left, int right)
+            {
+                var i = left;
+                var j = 2 * i + 1;
+                var t = data[i];
+                while (j < right)
+                {
+                    if (j < right - 1 && compare(data[j], data[j + 1]) < 0)
+                    {
+                        j++;
+                    }
+
+                    if (compare(t, data[j]) >= 0)
+                    {
+                        break;
+                    }
+
+                    data[i] = data[j];
+                    i = j;
+                    j = 2 * i + 1;
+                }
+
+                data[i] = t;
+            }
+        }
+
+        static void QuickSort<T>(IList<T> data, Func<T, T, int> compare)
+        {
+            Sort(data, compare, 0, data.Count - 1);
+
+            void Sort(IList<T> data, Func<T, T, int> compare, int left, int right)
+            {
+                var i = left;
+                var j = right;
+                var middle = data[(left + right) / 2];
+                do
+                {
+                    while (compare(data[i], middle) < 0)
+                    {
+                        i++;
+                    }
+
+                    while (compare(middle, data[j]) < 0)
+                    {
+                        j--;
+                    }
+
+                    if (i <= j)
+                    {
+                        var t = data[i];
+                        data[i] = data[j];
+                        data[j] = t;
+                        i++;
+                        j--;
+                    }
+                }
+                while (i <= j);
+
+                if (left < j)
+                {
+                    Sort(data, compare, left, j);
+                }
+
+                if (i < right)
+                {
+                    Sort(data, compare, i, right);
                 }
             }
         }
