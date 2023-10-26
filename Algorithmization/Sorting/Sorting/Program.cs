@@ -4,8 +4,8 @@
     {
         static void Main(string[] args)
         {
-            SingleSort(QuickSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
-            SingleKeyValueSort(QuickSort, (x, y) => x.Key < y.Key ? -1 : x.Key == y.Key ? 0 : 1);
+            SingleSort(InsertionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            SingleKeyValueSort(InsertionSort, (x, y) => x.Key < y.Key ? -1 : x.Key == y.Key ? 0 : 1);
             //SingleComplexKeyValueSort(HeapSort, (x, y) =>
             //    {
             //        if (x.Key1 < y.Key1)
@@ -300,7 +300,34 @@
 
         static void InsertionSort<T>(IList<T> data, Func<T, T, int> compare)
         {
-            for (int i = 1; i < data.Count; i++)
+            InsertionSort(data, compare, 0, data.Count - 1);
+            //for (int i = 1; i < data.Count; i++)
+            //{
+            //    int j = i - 1;
+            //    for (; j >= 0; j--)
+            //    {
+            //        if (compare(data[j], data[i]) <= 0)
+            //        {
+            //            break;
+            //        }
+            //    }
+
+            //    if (j < i - 1)
+            //    {
+            //        var t = data[i];
+            //        for (int k = i - 1; k > j; k--)
+            //        {
+            //            data[k + 1] = data[k];
+            //        }
+
+            //        data[j + 1] = t;
+            //    }
+            //}
+        }
+
+        static void InsertionSort<T>(IList<T> data, Func<T, T, int> compare, int left, int right)
+        {
+            for (int i = left + 1; i <= right; i++)
             {
                 int j = i - 1;
                 for (; j >= 0; j--)
@@ -326,6 +353,7 @@
 
         static void ShellSort<T>(IList<T> data, Func<T, T, int> compare)
         {
+            // T ~ n ^ 1.2
             int step = data.Count / 2;
             while (step >= 1)
             {
@@ -377,7 +405,8 @@
 
         static void HeapSort<T>(IList<T> data, Func<T, T, int> compare)
         {
-            var left = data.Count / 2;
+            // T ~ n * log(n)
+            var left = (data.Count + 1) / 2;
             var right = data.Count;
             while (left > 0)
             {
@@ -422,13 +451,47 @@
 
         static void QuickSort<T>(IList<T> data, Func<T, T, int> compare)
         {
+            // T ~ n * log(n)
             Sort(data, compare, 0, data.Count - 1);
 
             void Sort(IList<T> data, Func<T, T, int> compare, int left, int right)
             {
+                if (right == left)
+                {
+                    return;
+                }
+
+                if (right - left <= 8)
+                {
+                    InsertionSort(data, compare, left, right);
+                    return;
+                }
+
+                var middleIdx = (left + right) / 2;
+                if (compare(data[right], data[middleIdx]) < 0)
+                {
+                    var t = data[right];
+                    data[right] = data[middleIdx];
+                    data[middleIdx] = t;
+                }
+
+                if (compare(data[middleIdx], data[left]) < 0)
+                {
+                    var t = data[left];
+                    data[left] = data[middleIdx];
+                    data[middleIdx] = t;
+                }
+
+                if (compare(data[right], data[middleIdx]) < 0)
+                {
+                    var t = data[right];
+                    data[right] = data[middleIdx];
+                    data[middleIdx] = t;
+                }
+
                 var i = left;
                 var j = right;
-                var middle = data[(left + right) / 2];
+                var middle = data[middleIdx];
                 do
                 {
                     while (compare(data[i], middle) < 0)
