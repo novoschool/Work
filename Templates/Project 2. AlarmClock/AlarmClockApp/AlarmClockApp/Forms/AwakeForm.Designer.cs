@@ -48,11 +48,12 @@
             // 
             // AwakePictureBox
             // 
-            this.AwakePictureBox.Location = new System.Drawing.Point(17, 124);
+            this.AwakePictureBox.Location = new System.Drawing.Point(12, 109);
             this.AwakePictureBox.Name = "AwakePictureBox";
             this.AwakePictureBox.Size = new System.Drawing.Size(607, 426);
             this.AwakePictureBox.TabIndex = 1;
             this.AwakePictureBox.TabStop = false;
+            this.AwakePictureBox.Click += new System.EventHandler(this.AwakePictureBox_Click);
             // 
             // AwakeButton
             // 
