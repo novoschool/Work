@@ -11,8 +11,6 @@ namespace ClockApp.forms.moderns
         public TimeSpan CurrentTime => DateTime.Now.TimeOfDay;
 
         public TimeSpan ShiftedTime => DateTime.Now.TimeOfDay + new TimeSpan(TimeShiftHours, 0, 0);
-    
-        
 
         public SettingModel Settings { get; set; } = new SettingModel();
 
@@ -23,6 +21,7 @@ namespace ClockApp.forms.moderns
             get => Settings.IsAlarmOn;
             set => Settings.IsAlarmOn = value;
         }
+
         public bool IsSoundOn
         {
             get => Settings.IsSoundOn;

@@ -19,7 +19,6 @@ namespace ClockApp
 
         private AwakeForm _awakeForm;
 
-
         public ClockApp()
         {
             InitializeComponent();
@@ -47,35 +46,26 @@ namespace ClockApp
                 }
             }
         }
-
-        private void timeMSKbutton_Click(object sender, EventArgs e)
-        {
-            Model.TimeShiftHours = -4;
-            timeKGDbutton.BackColor = Color.MistyRose;
-            timeEKBbutton.BackColor = Color.MistyRose;
-            timeMSKbutton.BackColor = Color.Coral;
-        }
-
         private void stopButton_Click(object sender, EventArgs e)
         {
             if (stopButton.Text == "Stop")
             {
                 clockTimer.Stop();
                 stopButton.Text = "Start";
-            } else
+            } 
+            else
             {
                 clockTimer.Start();
                 stopButton.Text = "Stop";
             }
         }
-
         private void infoProgramm_Click(object sender, EventArgs e)
         {
-            using (var aboutForm = new aboutForm()) {
+            using (var aboutForm = new aboutForm()) 
+            {
                 aboutForm.ShowDialog();
             }
         }
-
         private void settingsButton_Click(object sender, EventArgs e)
         {
             var SettingsForm = new settingsForm();
@@ -85,9 +75,9 @@ namespace ClockApp
             {
                 return;
             }
+
             DisplayAlarmMode();
         }
-
         private void DisplayAlarmMode()
         {
             if(Model.Settings.IsAlarmOn)
@@ -99,61 +89,57 @@ namespace ClockApp
                 CheckAlarmActive.Visible = false;
             }
         }
-
+        private void TimeMskButton_Click(object sender, EventArgs e)
+        {
+            LabelTime.Text = "MSK";
+            Model.TimeShiftHours = -4;
+            ButtonColor();
+            TimeMskButton.BackColor = Color.Coral;
+        }
         private void timeEKBbutton_Click(object sender, EventArgs e)
         {
+            LabelTime.Text = "EKB";
             Model.TimeShiftHours = -2;
-            timeKGDbutton.BackColor = Color.MistyRose;
+            ButtonColor();
             timeEKBbutton.BackColor = Color.Coral;
-            timeMSKbutton.BackColor = Color.MistyRose;
-            timeSAMbutton.BackColor = Color.MistyRose;
-            timeOMSbutton.BackColor = Color.MistyRose;
-            timeIRKbutton.BackColor = Color.MistyRose;
 
         }
-
         private void timeKGDbutton_Click(object sender, EventArgs e)
         {
+            LabelTime.Text = "KGD";
             Model.TimeShiftHours = -5;
+            ButtonColor();
             timeKGDbutton.BackColor = Color.Coral;
-            timeEKBbutton.BackColor = Color.MistyRose;
-            timeMSKbutton.BackColor = Color.MistyRose;
-            timeSAMbutton.BackColor = Color.MistyRose;
-            timeOMSbutton.BackColor = Color.MistyRose;
-            timeIRKbutton.BackColor = Color.MistyRose;
         }
-
         private void timeSAMbutton_Click(object sender, EventArgs e)
         {
+            LabelTime.Text = "SAM";
             Model.TimeShiftHours = -3;
-            timeKGDbutton.BackColor = Color.MistyRose;
-            timeEKBbutton.BackColor = Color.MistyRose;
-            timeMSKbutton.BackColor = Color.MistyRose;
+            ButtonColor();
             timeSAMbutton.BackColor = Color.Coral;
-            timeOMSbutton.BackColor = Color.MistyRose;
-            timeIRKbutton.BackColor = Color.MistyRose;
         }
-
         private void timeOMSbutton_Click(object sender, EventArgs e)
         {
+            LabelTime.Text = "OMS";
             Model.TimeShiftHours = -1;
-            timeKGDbutton.BackColor = Color.MistyRose;
-            timeEKBbutton.BackColor = Color.MistyRose;
-            timeMSKbutton.BackColor = Color.MistyRose;
-            timeSAMbutton.BackColor = Color.MistyRose;
+            ButtonColor();
             timeOMSbutton.BackColor = Color.Coral;
-            timeIRKbutton.BackColor = Color.MistyRose;
         }
-
         private void timeIRKbutton_Click(object sender, EventArgs e)
         {
+            LabelTime.Text = "IRK";
             Model.TimeShiftHours = 1;
+            ButtonColor();
+            timeIRKbutton.BackColor = Color.Coral;
+        }
+        private void ButtonColor()
+        {
             timeKGDbutton.BackColor = Color.MistyRose;
             timeEKBbutton.BackColor = Color.MistyRose;
-            timeMSKbutton.BackColor = Color.MistyRose;
+            TimeMskButton.BackColor = Color.MistyRose;
             timeSAMbutton.BackColor = Color.MistyRose;
             timeOMSbutton.BackColor = Color.MistyRose;
-            timeIRKbutton.BackColor = Color.Coral;
+            timeIRKbutton.BackColor = Color.MistyRose;
         }
     }
 }

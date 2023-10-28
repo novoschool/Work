@@ -389,7 +389,7 @@
 
         static void HeapSort<T>(IList<T> data, Func<T, T, int> compare)
         {
-            var left = data.Count / 2;
+            var left = (data.Count + 1) / 2;
             var right = data.Count;
             while (left > 0)
             {
@@ -438,9 +438,51 @@
 
             void Sort(IList<T> data, Func<T, T, int> compare, int left, int right)
             {
+
+                if (right == left)
+                {
+                    return;
+                }
+
+                var middleIdx = (left + right) / 2;
+
+                if (right - left >= 2)
+                {
+                    if (compare(data[right], data[middleIdx]) < 0)
+                    {
+                        var t = data[right];
+                        data[right] = data[middleIdx];
+                        data[middleIdx] = t;
+                    }
+
+                    if (compare(data[middleIdx], data[left]) < 0)
+                    {
+                        var t = data[left];
+                        data[left] = data[middleIdx];
+                        data[middleIdx] = t;
+                    }
+
+                    if (compare(data[right], data[middleIdx]) < 0)
+                    {
+                        var t = data[right];
+                        data[right] = data[middleIdx];
+                        data[middleIdx] = t;
+                    }
+                }
+                else
+                {
+                    if (compare(data[right], data[left]) < 0)
+                    {
+                        var t = data[right];
+                        data[right] = data[left];
+                        data[left] = t;
+                    }
+                }
+
                 var i = left;
                 var j = right;
-                var middle = data[(left + right) / 2];
+                var middle = data[middleIdx];
+
                 do
                 {
                     while (compare(data[i], middle) < 0)

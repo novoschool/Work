@@ -20,7 +20,6 @@ namespace ClockApp.forms
 
         private int _imageIndex = 0;
 
-
         public SettingModel Model { get; set; }
         public AwakeForm()
         {
@@ -52,6 +51,7 @@ namespace ClockApp.forms
             {
                 _imageIndex = 0;
             }
+
             AwakePictureBox.Load(_fileNames[_imageIndex]);
         }
     }

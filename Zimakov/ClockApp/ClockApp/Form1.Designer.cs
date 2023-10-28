@@ -35,14 +35,14 @@
             this.infoProgramm = new System.Windows.Forms.Button();
             this.clockTimer = new System.Windows.Forms.Timer(this.components);
             this.CheckAlarmActive = new System.Windows.Forms.Label();
-            this.button1 = new System.Windows.Forms.Button();
             this.displayTime = new System.Windows.Forms.Label();
             this.timeKGDbutton = new System.Windows.Forms.Button();
             this.timeEKBbutton = new System.Windows.Forms.Button();
-            this.timeMSKbutton = new System.Windows.Forms.Button();
+            this.TimeMskButton = new System.Windows.Forms.Button();
             this.timeSAMbutton = new System.Windows.Forms.Button();
             this.timeOMSbutton = new System.Windows.Forms.Button();
             this.timeIRKbutton = new System.Windows.Forms.Button();
+            this.LabelTime = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // displayLabel
@@ -112,18 +112,6 @@
             this.CheckAlarmActive.TabIndex = 4;
             this.CheckAlarmActive.Visible = false;
             // 
-            // button1
-            // 
-            this.button1.BackColor = System.Drawing.Color.Black;
-            this.button1.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.button1.ForeColor = System.Drawing.Color.PaleTurquoise;
-            this.button1.Location = new System.Drawing.Point(12, 147);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(93, 41);
-            this.button1.TabIndex = 5;
-            this.button1.Text = "Stop";
-            this.button1.UseVisualStyleBackColor = false;
-            // 
             // displayTime
             // 
             this.displayTime.BackColor = System.Drawing.Color.BlanchedAlmond;
@@ -163,18 +151,18 @@
             this.timeEKBbutton.UseVisualStyleBackColor = false;
             this.timeEKBbutton.Click += new System.EventHandler(this.timeEKBbutton_Click);
             // 
-            // timeMSKbutton
+            // TimeMskButton
             // 
-            this.timeMSKbutton.BackColor = System.Drawing.Color.MistyRose;
-            this.timeMSKbutton.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
-            this.timeMSKbutton.ForeColor = System.Drawing.Color.PaleVioletRed;
-            this.timeMSKbutton.Location = new System.Drawing.Point(420, 202);
-            this.timeMSKbutton.Name = "timeMSKbutton";
-            this.timeMSKbutton.Size = new System.Drawing.Size(113, 36);
-            this.timeMSKbutton.TabIndex = 7;
-            this.timeMSKbutton.Text = "MSK";
-            this.timeMSKbutton.UseVisualStyleBackColor = false;
-            this.timeMSKbutton.Click += new System.EventHandler(this.timeMSKbutton_Click);
+            this.TimeMskButton.BackColor = System.Drawing.Color.MistyRose;
+            this.TimeMskButton.Font = new System.Drawing.Font("Arial", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.TimeMskButton.ForeColor = System.Drawing.Color.PaleVioletRed;
+            this.TimeMskButton.Location = new System.Drawing.Point(420, 202);
+            this.TimeMskButton.Name = "TimeMskButton";
+            this.TimeMskButton.Size = new System.Drawing.Size(113, 36);
+            this.TimeMskButton.TabIndex = 7;
+            this.TimeMskButton.Text = "MSK";
+            this.TimeMskButton.UseVisualStyleBackColor = false;
+            this.TimeMskButton.Click += new System.EventHandler(this.TimeMskButton_Click);
             // 
             // timeSAMbutton
             // 
@@ -216,20 +204,32 @@
             this.timeIRKbutton.UseVisualStyleBackColor = false;
             this.timeIRKbutton.Click += new System.EventHandler(this.timeIRKbutton_Click);
             // 
+            // LabelTime
+            // 
+            this.LabelTime.BackColor = System.Drawing.Color.BlanchedAlmond;
+            this.LabelTime.Font = new System.Drawing.Font("Arial Narrow", 14.25F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.LabelTime.ForeColor = System.Drawing.Color.PaleVioletRed;
+            this.LabelTime.Location = new System.Drawing.Point(13, 192);
+            this.LabelTime.Name = "LabelTime";
+            this.LabelTime.Size = new System.Drawing.Size(120, 30);
+            this.LabelTime.TabIndex = 13;
+            this.LabelTime.Text = "defalt ( NSK )";
+            this.LabelTime.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
+            // 
             // ClockApp
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.Color.Azure;
-            this.ClientSize = new System.Drawing.Size(766, 339);
+            this.ClientSize = new System.Drawing.Size(667, 339);
+            this.Controls.Add(this.LabelTime);
             this.Controls.Add(this.timeIRKbutton);
             this.Controls.Add(this.timeOMSbutton);
             this.Controls.Add(this.timeSAMbutton);
             this.Controls.Add(this.timeKGDbutton);
             this.Controls.Add(this.timeEKBbutton);
-            this.Controls.Add(this.timeMSKbutton);
+            this.Controls.Add(this.TimeMskButton);
             this.Controls.Add(this.displayTime);
-            this.Controls.Add(this.button1);
             this.Controls.Add(this.CheckAlarmActive);
             this.Controls.Add(this.infoProgramm);
             this.Controls.Add(this.stopButton);
@@ -251,14 +251,14 @@
         private System.Windows.Forms.Button infoProgramm;
         private System.Windows.Forms.Timer clockTimer;
         private System.Windows.Forms.Label CheckAlarmActive;
-        private System.Windows.Forms.Button button1;
         private System.Windows.Forms.Label displayTime;
         private System.Windows.Forms.Button timeKGDbutton;
         private System.Windows.Forms.Button timeEKBbutton;
-        private System.Windows.Forms.Button timeMSKbutton;
+        private System.Windows.Forms.Button TimeMskButton;
         private System.Windows.Forms.Button timeSAMbutton;
         private System.Windows.Forms.Button timeOMSbutton;
         private System.Windows.Forms.Button timeIRKbutton;
+        private System.Windows.Forms.Label LabelTime;
     }
 }
 
