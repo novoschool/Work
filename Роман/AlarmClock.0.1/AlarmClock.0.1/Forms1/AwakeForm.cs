@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.IO;
 using System.Linq;
@@ -60,7 +61,7 @@ namespace AlarmClock._0._1.Forms1
 
         private void AwakePictureBox_Click(object sender, EventArgs e)
         {
-
+        
         }
     }
 }

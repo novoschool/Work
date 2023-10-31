@@ -34,6 +34,7 @@
             this.AboutButton = new System.Windows.Forms.Button();
             this.ClockLabel = new System.Windows.Forms.Label();
             this.ClockTimer = new System.Windows.Forms.Timer(this.components);
+            this.StopVoz = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // Старт
@@ -82,11 +83,22 @@
             this.ClockTimer.Interval = 1000;
             this.ClockTimer.Tick += new System.EventHandler(this.ClockTimer_Tick);
             // 
+            // StopVoz
+            // 
+            this.StopVoz.Location = new System.Drawing.Point(322, 100);
+            this.StopVoz.Name = "StopVoz";
+            this.StopVoz.Size = new System.Drawing.Size(75, 23);
+            this.StopVoz.TabIndex = 5;
+            this.StopVoz.Text = "Секунда мер";
+            this.StopVoz.UseVisualStyleBackColor = true;
+            this.StopVoz.Click += new System.EventHandler(this.StopVoz_Click_1);
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(412, 104);
+            this.ClientSize = new System.Drawing.Size(424, 126);
+            this.Controls.Add(this.StopVoz);
             this.Controls.Add(this.ClockLabel);
             this.Controls.Add(this.AboutButton);
             this.Controls.Add(this.StopButton);
@@ -94,6 +106,7 @@
             this.ForeColor = System.Drawing.Color.Cyan;
             this.Name = "Form1";
             this.Text = "Form1";
+            this.Load += new System.EventHandler(this.Form1_Load);
             this.ResumeLayout(false);
 
         }
@@ -104,6 +117,7 @@
         private System.Windows.Forms.Button AboutButton;
         private System.Windows.Forms.Label ClockLabel;
         private System.Windows.Forms.Timer ClockTimer;
+        private System.Windows.Forms.Button StopVoz;
     }
 }
 

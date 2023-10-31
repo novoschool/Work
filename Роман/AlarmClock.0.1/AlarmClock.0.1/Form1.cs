@@ -41,6 +41,11 @@ namespace AlarmClock._0._1
             DisplayAlarmMode();
         }
 
+        private void StopVoz_Click(object sender, EventArgs e)
+        {
+            
+        }
+
         private void ClockTimer_Tick(object sender, EventArgs e)
         {
             if (_model.IsTimeToAwake())
@@ -77,6 +82,16 @@ namespace AlarmClock._0._1
             {
                 Text = _initialText;
             }
+        }
+
+        private void Form1_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void StopVoz_Click_1(object sender, EventArgs e)
+        {
+
         }
     }
 }
