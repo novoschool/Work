@@ -48,8 +48,11 @@ namespace graphEditor
             //_y = e.Y;
 
 
-            _rectangelModel.SetDrawMode(e.X, e.Y);
+            //_rectangelModel.SetDrawMode(e.X, e.Y);
+            _rectangelModel.CheckAndSelect(e.X, e.Y);
             Refresh();
+
+
         }
 
         private void mainForm_MouseUp(object sender, MouseEventArgs e)
@@ -80,9 +83,38 @@ namespace graphEditor
             }
             else
             {
-                var pen = new Pen(Color.Blue, 3);
-                g.FillRectangle(Brushes.Yellow, _rectangelModel.Left, _rectangelModel.Top, Math.Abs(_rectangelModel.Width), Math.Abs(_rectangelModel.Height));
+                var pen = new Pen(Color.Gray, 3);
+                g.FillRectangle(Brushes.Pink, _rectangelModel.Left, _rectangelModel.Top, Math.Abs(_rectangelModel.Width), Math.Abs(_rectangelModel.Height));
                 g.DrawRectangle(pen, _rectangelModel.Left, _rectangelModel.Top, Math.Abs(_rectangelModel.Width), Math.Abs(_rectangelModel.Height));
+            }
+
+            if(_rectangelModel.IsSelected)
+            {
+                g.FillRectangle(Brushes.White, _rectangelModel.Left - 5, _rectangelModel.Top - 5, 10, 10);
+                g.DrawRectangle(Pens.Black, _rectangelModel.Left - 5, _rectangelModel.Top - 5, 10, 10);
+
+                g.FillRectangle(Brushes.White, _rectangelModel.Right - 5, _rectangelModel.Top - 5, 10, 10);
+                g.DrawRectangle(Pens.Black, _rectangelModel.Right - 5, _rectangelModel.Top - 5, 10, 10);
+
+                g.FillRectangle(Brushes.White, _rectangelModel.Left - 5, _rectangelModel.Bottom - 5, 10, 10);
+                g.DrawRectangle(Pens.Black, _rectangelModel.Left - 5, _rectangelModel.Bottom - 5, 10, 10);
+
+                g.FillRectangle(Brushes.Black, _rectangelModel.Right - 5, _rectangelModel.Bottom - 5, 10, 10);
+                g.DrawRectangle(Pens.Black, _rectangelModel.Right - 5, _rectangelModel.Bottom - 5, 10, 10);
+
+
+                g.FillRectangle(Brushes.White, (_rectangelModel.Left + _rectangelModel.Right) / 2 - 5, _rectangelModel.Top - 5, 10, 10);
+                g.DrawRectangle(Pens.Black, (_rectangelModel.Left + _rectangelModel.Right) / 2 - 5, _rectangelModel.Top - 5, 10, 10);
+
+                g.FillRectangle(Brushes.White, (_rectangelModel.Left + _rectangelModel.Right) / 2 - 5, _rectangelModel.Bottom - 5, 10, 10);
+                g.DrawRectangle(Pens.Black, (_rectangelModel.Left + _rectangelModel.Right) / 2 - 5, _rectangelModel.Bottom - 5, 10, 10);
+
+                g.FillRectangle(Brushes.White, _rectangelModel.Left - 5, (_rectangelModel.Top + _rectangelModel.Bottom) / 2 - 5, 10, 10);
+                g.DrawRectangle(Pens.Black, _rectangelModel.Left - 5, (_rectangelModel.Top + _rectangelModel.Bottom) / 2 - 5, 10, 10);
+
+                g.FillRectangle(Brushes.White, _rectangelModel.Right - 5, (_rectangelModel.Top + _rectangelModel.Bottom) / 2 - 5, 10, 10);
+                g.DrawRectangle(Pens.Black, _rectangelModel.Right - 5, (_rectangelModel.Top + _rectangelModel.Bottom) / 2 - 5, 10, 10);
+
             }
         }
 
@@ -105,7 +137,7 @@ namespace graphEditor
             //    _y = e.Y;
             //}
 
-            _rectangelModel.Draw(e.X, e.Y);
+            //_rectangelModel.Draw(e.X, e.Y);
             Refresh();
         }
     }
