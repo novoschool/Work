@@ -72,7 +72,7 @@
             this.ClockLabel.Font = new System.Drawing.Font("Microsoft Sans Serif", 48F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ClockLabel.Location = new System.Drawing.Point(13, 12);
             this.ClockLabel.Name = "ClockLabel";
-            this.ClockLabel.Size = new System.Drawing.Size(303, 81);
+            this.ClockLabel.Size = new System.Drawing.Size(303, 111);
             this.ClockLabel.TabIndex = 4;
             this.ClockLabel.Text = "00:00:00";
             this.ClockLabel.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -85,7 +85,7 @@
             // 
             // StopVoz
             // 
-            this.StopVoz.Location = new System.Drawing.Point(322, 100);
+            this.StopVoz.Location = new System.Drawing.Point(322, 99);
             this.StopVoz.Name = "StopVoz";
             this.StopVoz.Size = new System.Drawing.Size(75, 23);
             this.StopVoz.TabIndex = 5;
@@ -97,7 +97,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(424, 126);
+            this.ClientSize = new System.Drawing.Size(424, 144);
             this.Controls.Add(this.StopVoz);
             this.Controls.Add(this.ClockLabel);
             this.Controls.Add(this.AboutButton);

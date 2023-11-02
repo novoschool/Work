@@ -91,7 +91,7 @@ namespace AlarmClock._0._1
 
         private void StopVoz_Click_1(object sender, EventArgs e)
         {
-
+            new StopVor().ShowDialog(this);
         }
     }
 }
