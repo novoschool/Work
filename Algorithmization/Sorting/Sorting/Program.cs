@@ -596,6 +596,7 @@
 
         static void MergeSort<T>(IList<T> data, Func<T, T, int> compare)
         {
+            // T ~ n * log(n)
             var buffer = new T[data.Count];
             bool up = true;
 

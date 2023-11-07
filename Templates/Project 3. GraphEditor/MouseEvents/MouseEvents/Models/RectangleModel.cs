@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data.SqlTypes;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -8,6 +9,10 @@ namespace MouseEvents.Models
 {
     internal class RectangleModel
     {
+        private int _dx;
+
+        private int _dy;
+
         public int X { get; set; }
 
         public int Y { get; set; }
@@ -24,9 +29,15 @@ namespace MouseEvents.Models
 
         public int Top => Height > 0 ? Y : Y + Height;
 
-        public bool DrawMode { get; private set; }
-
         public bool IsSelected { get; private set; }
+
+        public FigureActionMode ActionMode { get; private set; }
+
+        public bool IsAction => ActionMode != FigureActionMode.None;
+
+        public int MarkerHalfWidth { get; } = 3;
+
+        public int MarkerHalfHeight { get; } = 3;
 
         public void Normalize()
         {
@@ -45,22 +56,56 @@ namespace MouseEvents.Models
 
         public void SetDrawMode(int x, int y)
         {
-            DrawMode = true;
+            ActionMode = FigureActionMode.Drawing;
             X = x;
             Y = y;
             Width = 0;
             Height = 0;
         }
 
-        public void ResetDrawMode()
+        public void ResetMode()
         {
-            DrawMode = false;
+            ActionMode = FigureActionMode.None;
             Normalize();
         }
 
         public void Draw(int x, int y)
         {
-            if (!DrawMode)
+            if (ActionMode != FigureActionMode.Drawing)
+            {
+                return;
+            }
+
+            Width = x - X;
+            Height = y - Y;
+        }
+
+        public void SetMovingMode(int x, int y)
+        {
+            ActionMode = FigureActionMode.Moving;
+            _dx = x - X;
+            _dy = y - Y;
+        }
+
+        public void Move(int x, int y)
+        {
+            if (ActionMode != FigureActionMode.Moving)
+            {
+                return;
+            }
+
+            X = x - _dx;
+            Y = y - _dy;
+        }
+
+        public void SetResizingBottomRightMode(int x, int y)
+        {
+            ActionMode = FigureActionMode.ResizingBottomRight;
+        }
+
+        public void ResizeBottomRight(int x, int y)
+        {
+            if (ActionMode!= FigureActionMode.ResizingBottomRight)
             {
                 return;
             }
@@ -71,7 +116,12 @@ namespace MouseEvents.Models
 
         public bool IsPointInside(int x, int y)
         {
-            return x >= Left && x <= Right && y >= Top && y <= Bottom;
+            return IsPointInside(x, y, Left, Right, Top, Bottom);
+        }
+
+        public bool IsPointInside(int x, int y, int left, int right, int top, int bottom)
+        {
+            return x >= left && x <= right && y >= top && y <= bottom;
         }
 
         public void CheckAndSelect(int x, int y)
@@ -83,6 +133,31 @@ namespace MouseEvents.Models
             }
 
             IsSelected = false;
+        }
+
+        public PossibleAction PossibleAction(int x, int y)
+        {
+            if (!IsSelected)
+            {
+                if (IsPointInside(x, y))
+                {
+                    return Models.PossibleAction.Select;
+                }
+
+                return Models.PossibleAction.None;
+            }
+
+            if (!IsPointInside(x, y))
+            {
+                return Models.PossibleAction.None;
+            }
+
+            if (IsPointInside(x, y, Right - MarkerHalfWidth, Right + MarkerHalfWidth, Bottom - MarkerHalfHeight, Bottom + MarkerHalfHeight))
+            {
+                return Models.PossibleAction.ResizeBottomRight;
+            }
+
+            return Models.PossibleAction.Move;
         }
 
         public void Select()

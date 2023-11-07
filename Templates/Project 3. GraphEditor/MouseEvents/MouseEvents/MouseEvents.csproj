@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\FigureActionMode.cs" />
+    <Compile Include="Models\PossibleAction.cs" />
     <Compile Include="Models\RectangleModel.cs" />
     <Compile Include="MouseEventsForm.cs">
       <SubType>Form</SubType>
