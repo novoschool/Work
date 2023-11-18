@@ -12,7 +12,7 @@ namespace MultipleRectangleEditor.Models
 
         public RectangleModel SelectedRectangle { get; private set; }
 
-        public int SelectedIndex { get; private set; }
+        public int SelectedIndex { get; private set; } = -1;
 
         public void AddNewRectangle(int x, int y)
         {
@@ -52,6 +52,69 @@ namespace MultipleRectangleEditor.Models
                     Rectangles.RemoveAt(Rectangles.Count - 1);
                 }
             }
+        }
+
+        public void CheckAndSelect(int x, int y)
+        {
+            if (SelectedIndex >= 0 && SelectedRectangle.PossibleAction(x, y) != PossibleAction.None)
+            {
+                return;
+            }
+
+            int index = Rectangles.Count - 1;
+            while (index >= 0)
+            {
+                if (Rectangles[index].IsPointInside(x, y))
+                {
+                    break;
+                }
+
+                index--;
+            }
+
+            Select(index);
+        }
+
+        public PossibleAction GetPossibleAction(int x, int y)
+        {
+            if (SelectedRectangle != null)
+            {
+                var action = SelectedRectangle.PossibleAction(x, y);
+                if (action != PossibleAction.None)
+                {
+                    return action;
+                }
+            }
+
+            int index = Rectangles.Count - 1;
+            while (index >= 0)
+            {
+                if (Rectangles[index].IsPointInside(x, y))
+                {
+                    break;
+                }
+
+                index--;
+            }
+
+            if (index >= 0)
+            {
+                return PossibleAction.Select;
+            }
+
+            return PossibleAction.None;
+        }
+
+        public void RemoveSelected()
+        {
+            if (SelectedIndex < 0)
+            {
+                return;
+            }
+
+            int index = SelectedIndex;
+            Select(-1);
+            Rectangles.RemoveAt(index);
         }
     }
 }
