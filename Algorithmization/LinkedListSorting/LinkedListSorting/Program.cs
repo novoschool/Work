@@ -8,15 +8,69 @@ namespace LinkedListSorting
     {
         static void Main(string[] args)
         {
-            SingleSort((x, y) => x < y ? -1 : x == y ? 0 : 1);
+            //SingleSort((x, y) => x < y ? -1 : x == y ? 0 : 1);
 
-            Console.WriteLine("Сортировка слиянием:");
-            Console.WriteLine();
+            //Console.WriteLine("Сортировка слиянием:");
+            //Console.WriteLine();
 
-            GeneralTimeMeasure((x, y) => x < y ? -1 : x == y ? 0 : 1);
-            SortedTimeMeasure((x, y) => x < y ? -1 : x == y ? 0 : 1);
-            AlmostSortedTimeMeasure((x, y) => x < y ? -1 : x == y ? 0 : 1);
-            ReverseSortedTimeMeasure((x, y) => x < y ? -1 : x == y ? 0 : 1);
+            //GeneralTimeMeasure((x, y) => x < y ? -1 : x == y ? 0 : 1);
+            //SortedTimeMeasure((x, y) => x < y ? -1 : x == y ? 0 : 1);
+            //AlmostSortedTimeMeasure((x, y) => x < y ? -1 : x == y ? 0 : 1);
+            //ReverseSortedTimeMeasure((x, y) => x < y ? -1 : x == y ? 0 : 1);
+
+            //var queue = new Entities.Queue<int>();
+            //queue.Enqueue(25);
+            //queue.Enqueue(12);
+            //queue.Enqueue(74);
+
+            //Console.WriteLine("Initial queue:");
+            //ShowList(queue.List);
+
+            //var value = queue.Dequeue();
+            //Console.WriteLine($"Dequeued: {value}");
+            //Console.WriteLine("Queue content:");
+            //ShowList(queue.List);
+
+            //value = queue.Dequeue();
+            //Console.WriteLine($"Dequeued: {value}");
+            //Console.WriteLine("Queue content:");
+            //ShowList(queue.List);
+
+            //var stack = new Entities.Stack<int>();
+            //stack.Push(25);
+            //stack.Push(12);
+            //stack.Push(74);
+
+            //Console.WriteLine("Initial stack:");
+            //ShowList(stack.List);
+
+            //var value = stack.Pop();
+            //Console.WriteLine($"Popped: {value}");
+            //Console.WriteLine("Stack content:");
+            //ShowList(stack.List);
+
+            //value = stack.Pop();
+            //Console.WriteLine($"Popped: {value}");
+            //Console.WriteLine("Stack content:");
+            //ShowList(stack.List);
+
+            var deque = new Entities.Deque<int>();
+            deque.EnqueueFirst(25);
+            deque.EnqueueFirst(12);
+            deque.EnqueueLast(74);
+
+            Console.WriteLine("Initial queue:");
+            ShowList(deque.List);
+
+            var value = deque.DequeueFirst();
+            Console.WriteLine($"Dequeued: {value}");
+            Console.WriteLine("Queue content:");
+            ShowList(deque.List);
+
+            value = deque.DequeueLast();
+            Console.WriteLine($"Dequeued: {value}");
+            Console.WriteLine("Queue content:");
+            ShowList(deque.List);
         }
 
         private static void SingleSort(Func<int, int, int> compare)
