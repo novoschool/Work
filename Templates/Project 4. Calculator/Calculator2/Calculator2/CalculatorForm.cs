@@ -42,5 +42,16 @@ namespace Calculator2
             _service.Clear(_model);
             DisplayRegister();
         }
+
+        private void OperatorButton_Click(object sender, EventArgs e)
+        {
+            _service.InsertOperator(_model, ((Button)sender).Text);
+            DisplayRegister();
+        }
+
+        private void MoveXToYButton_Click(object sender, EventArgs e)
+        {
+            _service.MoveXToY(_model);
+        }
     }
 }

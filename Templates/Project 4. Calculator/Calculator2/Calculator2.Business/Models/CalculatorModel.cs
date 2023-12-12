@@ -9,5 +9,11 @@ namespace Calculator2.Business.Models
     public class CalculatorModel
     {
         public double XRegister { get; set; }
+
+        public double YRegister { get; set; }
+
+        public string Operator { get; set; }
+
+        public bool DigitInputMode { get; set; }
     }
 }

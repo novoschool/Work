@@ -40,6 +40,12 @@
             this.Digit9Button = new System.Windows.Forms.Button();
             this.Digit8Button = new System.Windows.Forms.Button();
             this.ClearButton = new System.Windows.Forms.Button();
+            this.AddButton = new System.Windows.Forms.Button();
+            this.SubtractButton = new System.Windows.Forms.Button();
+            this.DivideButton = new System.Windows.Forms.Button();
+            this.MultiplyButton = new System.Windows.Forms.Button();
+            this.MoveXToYButton = new System.Windows.Forms.Button();
+            this.EqualButton = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // DisplayLabel
@@ -169,17 +175,88 @@
             this.ClearButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
             this.ClearButton.Location = new System.Drawing.Point(277, 160);
             this.ClearButton.Name = "ClearButton";
-            this.ClearButton.Size = new System.Drawing.Size(170, 71);
+            this.ClearButton.Size = new System.Drawing.Size(148, 71);
             this.ClearButton.TabIndex = 12;
             this.ClearButton.Text = "C";
             this.ClearButton.UseVisualStyleBackColor = true;
             this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            // 
+            // AddButton
+            // 
+            this.AddButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.AddButton.Location = new System.Drawing.Point(277, 237);
+            this.AddButton.Name = "AddButton";
+            this.AddButton.Size = new System.Drawing.Size(71, 71);
+            this.AddButton.TabIndex = 13;
+            this.AddButton.Text = "+";
+            this.AddButton.UseVisualStyleBackColor = true;
+            this.AddButton.Click += new System.EventHandler(this.OperatorButton_Click);
+            // 
+            // SubtractButton
+            // 
+            this.SubtractButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.SubtractButton.Location = new System.Drawing.Point(354, 237);
+            this.SubtractButton.Name = "SubtractButton";
+            this.SubtractButton.Size = new System.Drawing.Size(71, 71);
+            this.SubtractButton.TabIndex = 14;
+            this.SubtractButton.Text = "-";
+            this.SubtractButton.UseVisualStyleBackColor = true;
+            this.SubtractButton.Click += new System.EventHandler(this.OperatorButton_Click);
+            // 
+            // DivideButton
+            // 
+            this.DivideButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.DivideButton.Location = new System.Drawing.Point(354, 314);
+            this.DivideButton.Name = "DivideButton";
+            this.DivideButton.Size = new System.Drawing.Size(71, 71);
+            this.DivideButton.TabIndex = 15;
+            this.DivideButton.Text = "/";
+            this.DivideButton.UseVisualStyleBackColor = true;
+            this.DivideButton.Click += new System.EventHandler(this.OperatorButton_Click);
+            // 
+            // MultiplyButton
+            // 
+            this.MultiplyButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.MultiplyButton.Location = new System.Drawing.Point(277, 314);
+            this.MultiplyButton.Name = "MultiplyButton";
+            this.MultiplyButton.Size = new System.Drawing.Size(71, 71);
+            this.MultiplyButton.TabIndex = 16;
+            this.MultiplyButton.Text = "*";
+            this.MultiplyButton.UseVisualStyleBackColor = true;
+            this.MultiplyButton.Click += new System.EventHandler(this.OperatorButton_Click);
+            // 
+            // MoveXToYButton
+            // 
+            this.MoveXToYButton.Location = new System.Drawing.Point(181, 517);
+            this.MoveXToYButton.Name = "MoveXToYButton";
+            this.MoveXToYButton.Size = new System.Drawing.Size(75, 23);
+            this.MoveXToYButton.TabIndex = 17;
+            this.MoveXToYButton.Text = "X -> Y";
+            this.MoveXToYButton.UseVisualStyleBackColor = true;
+            this.MoveXToYButton.Click += new System.EventHandler(this.MoveXToYButton_Click);
+            // 
+            // EqualButton
+            // 
+            this.EqualButton.Font = new System.Drawing.Font("Microsoft Sans Serif", 36F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.EqualButton.Location = new System.Drawing.Point(277, 391);
+            this.EqualButton.Name = "EqualButton";
+            this.EqualButton.Size = new System.Drawing.Size(148, 71);
+            this.EqualButton.TabIndex = 18;
+            this.EqualButton.Text = "=";
+            this.EqualButton.UseVisualStyleBackColor = true;
+            this.EqualButton.Click += new System.EventHandler(this.OperatorButton_Click);
             // 
             // CalculatorForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(512, 577);
+            this.Controls.Add(this.EqualButton);
+            this.Controls.Add(this.MoveXToYButton);
+            this.Controls.Add(this.MultiplyButton);
+            this.Controls.Add(this.DivideButton);
+            this.Controls.Add(this.SubtractButton);
+            this.Controls.Add(this.AddButton);
             this.Controls.Add(this.ClearButton);
             this.Controls.Add(this.Digit8Button);
             this.Controls.Add(this.Digit9Button);
@@ -215,6 +292,12 @@
         private System.Windows.Forms.Button Digit9Button;
         private System.Windows.Forms.Button Digit8Button;
         private System.Windows.Forms.Button ClearButton;
+        private System.Windows.Forms.Button AddButton;
+        private System.Windows.Forms.Button SubtractButton;
+        private System.Windows.Forms.Button DivideButton;
+        private System.Windows.Forms.Button MultiplyButton;
+        private System.Windows.Forms.Button MoveXToYButton;
+        private System.Windows.Forms.Button EqualButton;
     }
 }
 
