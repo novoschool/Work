@@ -10,13 +10,15 @@ namespace ArithmeticTree.Entities
     {
         public TreeNodeType Type { get; set; }
 
-        public string OpCode { get; set; }
+        public string? OpCode { get; set; }
 
         public double Number { get; set; }
 
-        public TreeNode Left { get; set; }
+        public TreeNode? Left { get; set; }
 
-        public TreeNode Right { get; set; }
+        public TreeNode? Right { get; set; }
+
+        public TreeNode? Parent { get; set; }
 
         public void ProcessLeftToRight(StringBuilder sb)
         {

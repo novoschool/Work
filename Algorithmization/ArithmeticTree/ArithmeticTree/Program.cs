@@ -12,6 +12,7 @@ namespace ArithmeticTree
             {
                 Type = TreeNodeType.Operation,
                 OpCode = "*",
+                Parent = null,
             };
 
             tree.Root = rootNode;
@@ -19,33 +20,47 @@ namespace ArithmeticTree
             {
                 Type = TreeNodeType.Operation,
                 OpCode = "+",
-                Left = new TreeNode
-                {
-                    Type = TreeNodeType.Number,
-                    Number = 5,
-                },
-                Right = new TreeNode
-                {
-                    Type = TreeNodeType.Number,
-                    Number = 3,
-                },
+                Parent = rootNode,
             };
+
+            var subNode = new TreeNode
+            {
+                Type = TreeNodeType.Number,
+                Number = 5,
+                Parent = leftNode,
+            };
+            leftNode.Left = subNode;
+
+            subNode = new TreeNode
+            {
+                Type = TreeNodeType.Number,
+                Number = 3,
+                Parent = leftNode,
+            };
+            leftNode.Right = subNode;
 
             var rightNode = new TreeNode
             {
                 Type = TreeNodeType.Operation,
                 OpCode = "-",
-                Left = new TreeNode
-                {
-                    Type = TreeNodeType.Number,
-                    Number = 8,
-                },
-                Right = new TreeNode
-                {
-                    Type = TreeNodeType.Number,
-                    Number = 2,
-                },
+                Parent = rootNode,
             };
+
+            subNode = new TreeNode
+            {
+                Type = TreeNodeType.Number,
+                Number = 8,
+                Parent = rightNode,
+            };
+            rightNode.Left = subNode;
+
+            subNode = new TreeNode
+            {
+                Type = TreeNodeType.Number,
+                Number = 2,
+                Parent = rightNode,
+            };
+            rightNode.Right = subNode;
 
             rootNode.Left = leftNode;
             rootNode.Right = rightNode;
@@ -67,6 +82,22 @@ namespace ArithmeticTree
 
             var result = tree.Calculate();
             Console.WriteLine($"Результат вычисления: {result}.");
+
+            var it = new TreeLeftToRightIterator(tree);
+            Console.WriteLine("Iterator run:");
+            while (it.Current != null)
+            {
+                if (it.Current.Type == TreeNodeType.Operation)
+                {
+                    Console.Write($"{it.Current.OpCode} ");
+                }
+                else
+                {
+                    Console.Write($"{it.Current.Number} ");
+                }
+
+                it.MoveNext();
+            }
         }
     }
 }

@@ -8,7 +8,7 @@ namespace ArithmeticTree.Entities
 {
     internal class Tree
     {
-        public TreeNode Root { get; set; }
+        public TreeNode? Root { get; set; }
 
         public void ProcessLeftToRight(StringBuilder sb)
         {
