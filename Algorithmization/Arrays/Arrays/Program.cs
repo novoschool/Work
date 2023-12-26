@@ -5,13 +5,15 @@
         static void Main(string[] args)
         {
             var rnd = new Random();
-            var arraySizes = new[] { 100, 1000, 10000, 10000 };
+            var arraySizes = new[] { 1000, 10000, 100000, 1000000 };
+            int value = 0;
+            int step = 5;
             foreach (var size in arraySizes)
             {
                 int[] array = new int[size];
 
-                int value = 0;
-                int step = 5;
+                value = 0;
+                step = 5;
 
                 for (int i = 0; i < size; i++)
                 {
@@ -19,13 +21,14 @@
                     array[i] = value;
                 }
 
-                int valueToFind = rnd.Next(array.Last());
+                LinearSearch(array, 0);
+                BinarySearch(array, 0);
 
                 DateTime start = DateTime.Now;
 
                 for (int i = 0; i < 1000; i++)
                 {
-                    valueToFind = rnd.Next(array.Last());
+                    int valueToFind = rnd.Next(array.Last());
                     int index = LinearSearch(array, valueToFind);
                 }
 
@@ -45,7 +48,7 @@
 
                 for (int i = 0; i < 1000; i++)
                 {
-                    valueToFind = rnd.Next(array.Last());
+                    var valueToFind = rnd.Next(array.Last());
                     int index2 = BinarySearch(array, valueToFind);
                 }
 
@@ -78,8 +81,8 @@
             //}
             //while (!int.TryParse(input, out valueToFind));
 
-
-            //value = Arrays2d(value, step);
+            value = 0;
+            value = Arrays2d(value, step);
         }
 
         private static int BinarySearch(int[] array, int valueToFind)

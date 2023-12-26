@@ -1,11 +1,28 @@
-﻿namespace Sorting
+﻿using System.Runtime.CompilerServices;
+
+namespace Sorting
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            SingleSort(MergeSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
-            SingleKeyValueSort(MergeSort, (x, y) => x.Key < y.Key ? -1 : x.Key == y.Key ? 0 : 1);
+            int SimpleIntCompare(int x, int y)
+            {
+                if (x < y)
+                {
+                    return -1;
+                }
+
+                if (x == y)
+                {
+                    return 0;
+                }
+
+                return 1;
+            }
+
+            SingleSort(BubbleSort, SimpleIntCompare);
+            SingleKeyValueSort(BubbleSort, (x, y) => x.Key < y.Key ? -1 : x.Key == y.Key ? 0 : 1);
             //SingleComplexKeyValueSort(HeapSort, (x, y) =>
             //    {
             //        if (x.Key1 < y.Key1)
@@ -34,10 +51,10 @@
             //Console.WriteLine("Сортировка выбором:");
             //Console.WriteLine();
 
-            //GeneralTimeMeasure(SelectionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
-            //SortedTimeMeasure(SelectionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
-            //AlmostSortedTimeMeasure(SelectionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
-            //ReverseSortedTimeMeasure(SelectionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            //GeneralTimeMeasure(SelectionSort, SimpleIntCompare);
+            //SortedTimeMeasure(SelectionSort, SimpleIntCompare);
+            //AlmostSortedTimeMeasure(SelectionSort, SimpleIntCompare);
+            //ReverseSortedTimeMeasure(SelectionSort, SimpleIntCompare);
 
             //Console.WriteLine("Сортировка вставкой:");
             //Console.WriteLine();
@@ -317,28 +334,6 @@
         static void InsertionSort<T>(IList<T> data, Func<T, T, int> compare)
         {
             InsertionSort(data, compare, 0, data.Count - 1);
-            //for (int i = 1; i < data.Count; i++)
-            //{
-            //    int j = i - 1;
-            //    for (; j >= 0; j--)
-            //    {
-            //        if (compare(data[j], data[i]) <= 0)
-            //        {
-            //            break;
-            //        }
-            //    }
-
-            //    if (j < i - 1)
-            //    {
-            //        var t = data[i];
-            //        for (int k = i - 1; k > j; k--)
-            //        {
-            //            data[k + 1] = data[k];
-            //        }
-
-            //        data[j + 1] = t;
-            //    }
-            //}
         }
 
         static void InsertionSort<T>(IList<T> data, Func<T, T, int> compare, int left, int right)

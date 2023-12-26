@@ -7,38 +7,37 @@ namespace BinarySearchTree
         static void Main(string[] args)
         {
             var tree = new Tree<int>((a, b) => a < b ? -1 : a == b ? 0 : 1);
-            var rootNode = new TreeNode<int> { Value = 48 };
-            tree.Root = rootNode;
+            var rnd = new Random();
 
-            var leftSubTree = new TreeNode<int>
+            for (int i = 0; i < 40; i++)
             {
-                Value = 32,
-                Left = new TreeNode<int>
+                var value = 2 * i + rnd.Next(20);
+                var (inserted, node) = tree.Insert(value);
+                if (inserted)
                 {
-                    Value = 20,
-                    Left = new TreeNode<int>
-                    {
-                        Value = 8,
-                    },
-                    Right = new TreeNode<int>
-                    {
-                        Value = 30,
-                    },
-                },
-                Right = new TreeNode<int>
+                    Console.WriteLine($"Value {value} was inserted to tree.");
+                }
+                else
                 {
-                    Value = 40,
-                    Right = new TreeNode<int>
-                    {
-                        Value = 44,
-                    },
-                },
-            };
+                    Console.WriteLine($"Value {value} already existed in tree.");
+                }
+            }
 
-            tree.Root.Left = leftSubTree;
-
-            tree.ProcessLeftToRight(x => Console.Write($"{x} "));
+            tree.ProcessLeftToRight((x, level) => Console.Write($"{x}[{level}] "));
             Console.WriteLine();
+
+            foreach (var value in new[] { 10, 20, 30, 40, 50, 60, 70, 80, 90 })
+            {
+                var searchResult = tree.Search(value);
+                if (searchResult != null)
+                {
+                    Console.WriteLine($"Value {value} found.");
+                }
+                else
+                {
+                    Console.WriteLine($"Value {value} not found.");
+                }
+            }
         }
     }
 }

@@ -17,9 +17,32 @@ namespace BinarySearchTree.Entities
             CompareFunc = compareFunc;
         }
 
-        public void ProcessLeftToRight(Action<T> action)
+        public void ProcessLeftToRight(Action<T, int> action)
         {
-            Root?.ProcessLeftToRight(action);
+            Root?.ProcessLeftToRight(action, 0);
+        }
+
+        public TreeNode<T> Search(T value)
+        {
+            return Root?.Search(value, CompareFunc);
+        }
+
+        public (bool, TreeNode<T>) Insert(T value)
+        {
+            if (Root != null)
+            {
+                return Root.Insert(value, CompareFunc);
+            }
+
+            Root = new TreeNode<T>
+            {
+                Value = value,
+                Left = null,
+                Right = null,
+                Parent = null,
+            };
+
+            return (true, Root);
         }
     }
 }
