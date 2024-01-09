@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34003.232
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MultipleRectangleEditor", "MultipleRectangleEditor\MultipleRectangleEditor.csproj", "{31F42C62-1D48-4F65-9E33-42CD66601BAE}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{31F42C62-1D48-4F65-9E33-42CD66601BAE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{31F42C62-1D48-4F65-9E33-42CD66601BAE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{31F42C62-1D48-4F65-9E33-42CD66601BAE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{31F42C62-1D48-4F65-9E33-42CD66601BAE}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {CD7BEB37-A20E-479A-B620-968A2E37B371}
+	EndGlobalSection
+EndGlobal
