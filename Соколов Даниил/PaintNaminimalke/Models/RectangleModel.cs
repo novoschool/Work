@@ -68,7 +68,21 @@ namespace PaintNaminimalke.Models
             Height = y - Y;
         }
 
+        public bool IsPoinInside(int x, int y)
+        {
+            return x >= Left && x <= Right && y >= Top && y <= Bottom;
+        }
 
+        public void CheckAndSelect(int x, int y)
+        {
+            if (IsPoinInside(x, y))
+            {
+                IsSelected = true;
+                return;
+            }
+
+            IsSelected = false;
+        }
 
     }
 }

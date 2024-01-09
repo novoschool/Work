@@ -38,8 +38,10 @@ namespace PaintNaminimalke
             {
                 return;
             }
-            
-            _rectangleModel.SetDrawMode(e.X, e.Y);
+
+
+            _rectangleModel.CheckAndSelect(e.X, e.Y);
+            //_rectangleModel.SetDrawMode(e.X, e.Y);
             Refresh();
         }
         
@@ -53,6 +55,7 @@ namespace PaintNaminimalke
             _rectangleModel.ResetDrawMode();
             Refresh();
         }
+
 
         private void Form1_MouseMove(object sender, MouseEventArgs e)
         {
@@ -80,6 +83,35 @@ namespace PaintNaminimalke
                     Math.Abs(_rectangleModel.Width), Math.Abs(_rectangleModel.Height));
                 g.DrawRectangle(pen, _rectangleModel.Left, _rectangleModel.Top,
                     Math.Abs(_rectangleModel.Width), Math.Abs(_rectangleModel.Height));
+            }
+
+
+            if (_rectangleModel.IsSelected)
+            {
+                g.FillRectangle(Brushes.White, _rectangleModel.Left - 5, _rectangleModel.Top - 5, 10 , 10);
+                g.DrawRectangle(Pens.Black, _rectangleModel.Left - 5, _rectangleModel.Top - 5, 10, 10);
+
+                g.FillRectangle(Brushes.White, _rectangleModel.Right - 5, _rectangleModel.Top - 5, 10, 10);
+                g.DrawRectangle(Pens.Black, _rectangleModel.Right - 5, _rectangleModel.Top - 5, 10, 10);
+
+                g.FillRectangle(Brushes.White, _rectangleModel.Left - 5, _rectangleModel.Bottom - 5, 10, 10);
+                g.DrawRectangle(Pens.Black, _rectangleModel.Left - 5, _rectangleModel.Bottom - 5, 10, 10);
+
+                g.FillRectangle(Brushes.Black, _rectangleModel.Right - 5, _rectangleModel.Bottom - 5, 10, 10);
+                g.DrawRectangle(Pens.Black, _rectangleModel.Right - 5, _rectangleModel.Bottom - 5, 10, 10);
+
+
+                g.FillRectangle(Brushes.White, (_rectangleModel.Left + _rectangleModel.Right) / 2 - 5, _rectangleModel.Top - 5, 10, 10);
+                g.DrawRectangle(Pens.Black, (_rectangleModel.Left + _rectangleModel.Right) / 2 - 5, _rectangleModel.Top - 5, 10, 10);
+
+                g.FillRectangle(Brushes.White, (_rectangleModel.Left + _rectangleModel.Right) / 2 - 5, _rectangleModel.Bottom - 5, 10, 10);
+                g.DrawRectangle(Pens.Black, (_rectangleModel.Left + _rectangleModel.Right) / 2 - 5, _rectangleModel.Bottom - 5, 10, 10);
+
+                g.FillRectangle(Brushes.White, _rectangleModel.Left - 5, (_rectangleModel.Top + _rectangleModel.Bottom) / 2 - 5 , 10, 10);
+                g.DrawRectangle(Pens.Black, _rectangleModel.Left - 5, (_rectangleModel.Top + _rectangleModel.Bottom) / 2 - 5, 10, 10);
+
+                g.FillRectangle(Brushes.White, _rectangleModel.Right - 5, (_rectangleModel.Top + _rectangleModel.Bottom) / 2 - 5, 10, 10);
+                g.DrawRectangle(Pens.Black, _rectangleModel.Right - 5, (_rectangleModel.Top + _rectangleModel.Bottom) / 2 - 5, 10, 10);
             }
         }
     }
