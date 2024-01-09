@@ -1,11 +1,28 @@
-﻿namespace Sorting
+﻿using System.Runtime.CompilerServices;
+
+namespace Sorting
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            SingleSort(QuickSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
-            SingleKeyValueSort(QuickSort, (x, y) => x.Key < y.Key ? -1 : x.Key == y.Key ? 0 : 1);
+            int SimpleIntCompare(int x, int y)
+            {
+                if (x < y)
+                {
+                    return -1;
+                }
+
+                if (x == y)
+                {
+                    return 0;
+                }
+
+                return 1;
+            }
+
+            SingleSort(BubbleSort, SimpleIntCompare);
+            SingleKeyValueSort(BubbleSort, (x, y) => x.Key < y.Key ? -1 : x.Key == y.Key ? 0 : 1);
             //SingleComplexKeyValueSort(HeapSort, (x, y) =>
             //    {
             //        if (x.Key1 < y.Key1)
@@ -34,10 +51,10 @@
             //Console.WriteLine("Сортировка выбором:");
             //Console.WriteLine();
 
-            //GeneralTimeMeasure(SelectionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
-            //SortedTimeMeasure(SelectionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
-            //AlmostSortedTimeMeasure(SelectionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
-            //ReverseSortedTimeMeasure(SelectionSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            //GeneralTimeMeasure(SelectionSort, SimpleIntCompare);
+            //SortedTimeMeasure(SelectionSort, SimpleIntCompare);
+            //AlmostSortedTimeMeasure(SelectionSort, SimpleIntCompare);
+            //ReverseSortedTimeMeasure(SelectionSort, SimpleIntCompare);
 
             //Console.WriteLine("Сортировка вставкой:");
             //Console.WriteLine();
@@ -78,6 +95,22 @@
             SortedTimeMeasure(QuickSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
             AlmostSortedTimeMeasure(QuickSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
             ReverseSortedTimeMeasure(QuickSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+
+            Console.WriteLine("Быстрая сортировка (оптимизированная):");
+            Console.WriteLine();
+
+            GeneralTimeMeasure(QuickSortOptimized, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            SortedTimeMeasure(QuickSortOptimized, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            AlmostSortedTimeMeasure(QuickSortOptimized, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            ReverseSortedTimeMeasure(QuickSortOptimized, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+
+            Console.WriteLine("Сортировка слиянием:");
+            Console.WriteLine();
+
+            GeneralTimeMeasure(MergeSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            SortedTimeMeasure(MergeSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            AlmostSortedTimeMeasure(MergeSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
+            ReverseSortedTimeMeasure(MergeSort, (x, y) => x < y ? -1 : x == y ? 0 : 1);
         }
 
         private static void ReverseSortedTimeMeasure(Action<IList<int>, Func<int, int, int>> sort,
@@ -105,7 +138,7 @@
 
                 DateTime endTime = DateTime.Now;
 
-                Console.WriteLine($"Количество элементов (обратно упорядочен): {itemCount}, среднее время сортировки: {(endTime - startTime).TotalSeconds / runCount}");
+                Console.WriteLine($"Количество элементов (обратно упорядочен): {itemCount}, среднее время сортировки: {(endTime - startTime).TotalSeconds / runCount:E4}");
             }
 
             Console.WriteLine();
@@ -138,7 +171,7 @@
 
                 DateTime endTime = DateTime.Now;
 
-                Console.WriteLine($"Количество элементов (почти упорядочен): {itemCount}, среднее время сортировки: {(endTime - startTime).TotalSeconds / runCount}");
+                Console.WriteLine($"Количество элементов (почти упорядочен): {itemCount}, среднее время сортировки: {(endTime - startTime).TotalSeconds / runCount:E4}");
             }
 
             Console.WriteLine();
@@ -169,7 +202,7 @@
 
                 DateTime endTime = DateTime.Now;
 
-                Console.WriteLine($"Количество элементов (упорядочен): {itemCount}, среднее время сортировки: {(endTime - startTime).TotalSeconds / runCount}");
+                Console.WriteLine($"Количество элементов (упорядочен): {itemCount}, среднее время сортировки: {(endTime - startTime).TotalSeconds / runCount:E4}");
             }
 
             Console.WriteLine();
@@ -198,7 +231,7 @@
 
                 DateTime endTime = DateTime.Now;
 
-                Console.WriteLine($"Количество элементов: {itemCount}, среднее время сортировки: {(endTime - startTime).TotalSeconds / runCount}");
+                Console.WriteLine($"Количество элементов: {itemCount}, среднее время сортировки: {(endTime - startTime).TotalSeconds / runCount:E4}");
             }
 
             Console.WriteLine();
@@ -300,7 +333,12 @@
 
         static void InsertionSort<T>(IList<T> data, Func<T, T, int> compare)
         {
-            for (int i = 1; i < data.Count; i++)
+            InsertionSort(data, compare, 0, data.Count - 1);
+        }
+
+        static void InsertionSort<T>(IList<T> data, Func<T, T, int> compare, int left, int right)
+        {
+            for (int i = left + 1; i <= right; i++)
             {
                 int j = i - 1;
                 for (; j >= 0; j--)
@@ -326,6 +364,7 @@
 
         static void ShellSort<T>(IList<T> data, Func<T, T, int> compare)
         {
+            // T ~ n ^ 1.2
             int step = data.Count / 2;
             while (step >= 1)
             {
@@ -377,7 +416,8 @@
 
         static void HeapSort<T>(IList<T> data, Func<T, T, int> compare)
         {
-            var left = data.Count / 2;
+            // T ~ n * log(n)
+            var left = (data.Count + 1) / 2;
             var right = data.Count;
             while (left > 0)
             {
@@ -422,13 +462,20 @@
 
         static void QuickSort<T>(IList<T> data, Func<T, T, int> compare)
         {
+            // T ~ n * log(n)
             Sort(data, compare, 0, data.Count - 1);
 
             void Sort(IList<T> data, Func<T, T, int> compare, int left, int right)
             {
+                if (right == left)
+                {
+                    return;
+                }
+
+                var middleIdx = (left + right) / 2;
                 var i = left;
                 var j = right;
-                var middle = data[(left + right) / 2];
+                var middle = data[middleIdx];
                 do
                 {
                     while (compare(data[i], middle) < 0)
@@ -460,6 +507,167 @@
                 if (i < right)
                 {
                     Sort(data, compare, i, right);
+                }
+            }
+        }
+
+        static void QuickSortOptimized<T>(IList<T> data, Func<T, T, int> compare)
+        {
+            // T ~ n * log(n)
+            Sort(data, compare, 0, data.Count - 1);
+
+            void Sort(IList<T> data, Func<T, T, int> compare, int left, int right)
+            {
+                if (right == left)
+                {
+                    return;
+                }
+
+                if (right - left <= 8)
+                {
+                    InsertionSort(data, compare, left, right);
+                    return;
+                }
+
+                var middleIdx = (left + right) / 2;
+                if (compare(data[right], data[middleIdx]) < 0)
+                {
+                    var t = data[right];
+                    data[right] = data[middleIdx];
+                    data[middleIdx] = t;
+                }
+
+                if (compare(data[middleIdx], data[left]) < 0)
+                {
+                    var t = data[left];
+                    data[left] = data[middleIdx];
+                    data[middleIdx] = t;
+                }
+
+                if (compare(data[right], data[middleIdx]) < 0)
+                {
+                    var t = data[right];
+                    data[right] = data[middleIdx];
+                    data[middleIdx] = t;
+                }
+
+                var i = left;
+                var j = right;
+                var middle = data[middleIdx];
+                do
+                {
+                    while (compare(data[i], middle) < 0)
+                    {
+                        i++;
+                    }
+
+                    while (compare(middle, data[j]) < 0)
+                    {
+                        j--;
+                    }
+
+                    if (i <= j)
+                    {
+                        var t = data[i];
+                        data[i] = data[j];
+                        data[j] = t;
+                        i++;
+                        j--;
+                    }
+                }
+                while (i <= j);
+
+                if (left < j)
+                {
+                    Sort(data, compare, left, j);
+                }
+
+                if (i < right)
+                {
+                    Sort(data, compare, i, right);
+                }
+            }
+        }
+
+        static void MergeSort<T>(IList<T> data, Func<T, T, int> compare)
+        {
+            // T ~ n * log(n)
+            var buffer = new T[data.Count];
+            bool up = true;
+
+            for (int mergeStep = 1; mergeStep < data.Count; mergeStep *= 2, up = !up)
+            {
+                IList<T> src;
+                IList<T> dst;
+
+                if (up)
+                {
+                    src = data;
+                    dst = buffer;
+                }
+                else
+                {
+                    src = buffer;
+                    dst = data;
+                }
+
+                var left = 0;
+                var right = mergeStep;
+                var dstIndex = 0;
+                int leftBound;
+                int rightBound;
+
+                do
+                {
+                    leftBound = right - 1;
+                    if (leftBound >= data.Count)
+                    {
+                        leftBound = data.Count - 1;
+                    }
+
+                    rightBound = right + mergeStep - 1;
+                    if (rightBound >= data.Count)
+                    {
+                        rightBound = data.Count - 1;
+                    }
+
+                    while (left <= leftBound && right <= rightBound)
+                    {
+                        if (compare(src[left], src[right]) <= 0)
+                        {
+                            dst[dstIndex++] = src[left];
+                            left++;
+                        }
+                        else
+                        {
+                            dst[dstIndex++] = src[right];
+                            right++;
+                        }
+                    }
+
+                    while (left <= leftBound)
+                    {
+                        dst[dstIndex++] = src[left];
+                        left++;
+                    }
+
+                    while (right <= rightBound)
+                    {
+                        dst[dstIndex++] = src[right];
+                        right++;
+                    }
+
+                    left = right;
+                    right = left + mergeStep;
+                }
+                while (left < data.Count);
+            }
+
+            if (!up)
+            {
+                for (int i = 0; i < data.Count; i++)
+                {
+                    data[i] = buffer[i];
                 }
             }
         }
