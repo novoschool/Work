@@ -51,7 +51,9 @@ namespace CardFile
 
         private void DeleteButton_Click(object sender, RoutedEventArgs e)
         {
-
+            var window = new AddEmployeeWindow();
+            ViewModel.EditEmployee(window);
+            ViewModel.DeleteEmployee(window);
         }
 
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)

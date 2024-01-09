@@ -28,16 +28,76 @@ namespace CardFile.Business.Services
                 Id = 1,
                 Name = "Новосибирский Приборостроительный",
                 ManufacturedProduction = "Компасы",
-                ValueOutputProduction = 100,
+                ValueOutputProduction = 10,
                 //LastName = "Захаров",
                 CreationDate = new DateTime(1985, 11, 8),
                 RenovationNeed = 20,
                 EmployeesNumber = 1057,
                 LastRenovationDate = new DateTime(2019, 7, 15),
             });
-            
+            _storage.Employees.Add(new Employee
+            {
+                Id = 2,
+                Name = "Новосибирский Приборостроительный",
+                ManufacturedProduction = "Компасы",
+                ValueOutputProduction = 20,
+                //LastName = "Захаров",
+                CreationDate = new DateTime(1985, 11, 8),
+                RenovationNeed = 20,
+                EmployeesNumber = 1057,
+                LastRenovationDate = new DateTime(2019, 7, 15),
+            });
+            _storage.Employees.Add(new Employee
+            {
+                Id = 3,
+                Name = "Новосибирский Приборостроительный",
+                ManufacturedProduction = "Компасы",
+                ValueOutputProduction = 30,
+                //LastName = "Захаров",
+                CreationDate = new DateTime(1985, 11, 8),
+                RenovationNeed = 20,
+                EmployeesNumber = 1057,
+                LastRenovationDate = new DateTime(2019, 7, 15),
+            });
+            _storage.Employees.Add(new Employee
+            {
+                Id = 4,
+                Name = "Новосибирский Приборостроительный",
+                ManufacturedProduction = "Компасы",
+                ValueOutputProduction = 40,
+                //LastName = "Захаров",
+                CreationDate = new DateTime(1985, 11, 8),
+                RenovationNeed = 20,
+                EmployeesNumber = 1057,
+                LastRenovationDate = new DateTime(2019, 7, 15),
+            });
+            _storage.Employees.Add(new Employee
+            {
+                Id = 5,
+                Name = "Новосибирский Приборостроительный",
+                ManufacturedProduction = "Компасы",
+                ValueOutputProduction = 50,
+                //LastName = "Захаров",
+                CreationDate = new DateTime(1985, 11, 8),
+                RenovationNeed = 20,
+                EmployeesNumber = 1057,
+                LastRenovationDate = new DateTime(2019, 7, 15),
+            });
+
+
 
             EmployeeStorage.MaxId = _storage.Employees.Max(e => e.Id);
+        }
+
+        public void Delete(Employee employee)
+        {
+            for (int i = 0; i < _storage.Employees.Count; i++)
+            {
+                if (_storage.Employees[i].Id == employee.Id)
+                {
+                    _storage.Employees.RemoveAt(i);
+                }
+            }
         }
 
         public void SaveEmployee(Employee employee)

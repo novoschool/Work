@@ -56,6 +56,25 @@ namespace CardFile.ViewModels
             window.ViewModel = employee;
         }
 
+        public void DeleteEmployee(IEmployeeWindow window)
+        {
+            var employeeViewModel = window.ViewModel;
+            _service.Delete(new Employee
+            {
+                Id = employeeViewModel.Id,
+                Name = employeeViewModel.Name,
+                ManufacturedProduction = employeeViewModel.ManufacturedProduction,
+                ValueOutputProduction = employeeViewModel.ValueOutputProduction,
+                LastName = employeeViewModel.LastName,
+                CreationDate = employeeViewModel.CreationDate,
+                RenovationNeed = employeeViewModel.RenovationNeed,
+                EmployeesNumber = employeeViewModel.EmployeesNumber,
+                LastRenovationDate = employeeViewModel.LastRenovationDate,
+            });
+
+            GetAllEmployees();
+        }
+
         public void SaveEmployee(IEmployeeWindow window)
         {
             var employeeViewModel = window.ViewModel;

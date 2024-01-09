@@ -14,7 +14,7 @@ namespace CardFile.Business.Models
 
         public string ManufacturedProduction { get; set; }
 
-        public int ValueOutputProduction { get; set; }
+        public decimal ValueOutputProduction { get; set; }
 
         public string LastName { get; set; }
 
