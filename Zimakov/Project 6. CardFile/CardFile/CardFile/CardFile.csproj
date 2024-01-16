@@ -109,6 +109,10 @@
       <Project>{411D30AB-6653-42F6-895D-D2AD93880D1A}</Project>
       <Name>CardFile.Business</Name>
     </ProjectReference>
+    <ProjectReference Include="..\CardFile.Core\CardFile.Core.csproj">
+      <Project>{625CAEFE-5EAB-42D4-85BA-C2889F4A596E}</Project>
+      <Name>CardFile.Core</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

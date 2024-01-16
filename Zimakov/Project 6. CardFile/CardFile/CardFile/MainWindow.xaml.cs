@@ -1,5 +1,6 @@
 ﻿using CardFile.ViewModels;
 using CardFile.Views;
+using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -58,6 +59,44 @@ namespace CardFile
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ViewModel.UpdateButtons();
+        }
+
+        private void OpenMenu_Click(object sender, RoutedEventArgs e)
+        {
+            var dlg = new OpenFileDialog { Filter = "Файл картотеки|*.crdtxt|Все файлы|*.*" };
+            if (dlg.ShowDialog() == true)
+            {
+                ViewModel.Open(dlg.FileName);
+            } 
+        }
+
+        private void SaveMenu_Click(object sender, RoutedEventArgs e)
+        {
+            if (ViewModel.HasFileName)
+            {
+                ViewModel.Save();
+            }
+            else
+            {
+                var dlg = new SaveFileDialog { Filter = "Файл картотеки|*.crdtxt|Все файлы|*.*" };
+                if (dlg.ShowDialog() == true)
+                {
+                    ViewModel.SaveAs(dlg.FileName);
+                }
+            }
+        }
+
+        private void SaveAsMenu_Click(object sender, RoutedEventArgs e)
+        {
+            var dlg = new SaveFileDialog { Filter = "Файл картотеки|*.crdtxt|Все файлы|*.*" };
+            if (dlg.ShowDialog() == true)
+            {
+                ViewModel.SaveAs(dlg.FileName);
+            }
+        }
+        private void Exit_Click(object sender, RoutedEventArgs e)
+        {
+            Close();
         }
     }
 }

@@ -1,4 +1,6 @@
 ﻿using CardFile.Business.Models;
+using CardFile.Core.Entities;
+using CardFile.Data.File;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -76,6 +78,21 @@ namespace CardFile.Business.Services
             {
                 
             }
+        }
+
+        public void Save(string fileName)
+        {
+            var repository = new FileEmployeeRepositoryFactory().CreateRepository(fileName);
+            repository.SaveAll(_storage.Employees);
+        }
+
+        public void Open(string fileName)
+        {
+            var repository = new FileEmployeeRepositoryFactory().CreateRepository(fileName);
+            _storage.Employees.Clear();
+            _storage.Employees.AddRange(repository.GetAll());
+            EmployeeStorage.MaxId = _storage.Employees.Max(e => e.Id);
+
         }
     }
 }

@@ -9,30 +9,41 @@
     <Window.DataContext>
         <viewmodels:MainWindowViewModel/>
     </Window.DataContext>
-    
-    <Grid>
-        <Grid.RowDefinitions>
-            <RowDefinition />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
-        
-        <DataGrid Grid.Row="0" Margin="5" ItemsSource="{Binding Employees}" SelectedItem="{Binding SelectedEmployee}" AutoGenerateColumns="False"
-                  CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" SelectionChanged="DataGrid_SelectionChanged">
-            <DataGrid.Columns>
-                <DataGridTextColumn Header="Марка" Binding="{Binding Stamp}" />
-                <DataGridTextColumn Header="Модель" Binding="{Binding CarModel}" />
-                <DataGridTextColumn Header="Гос. номер" Binding="{Binding GosNumber}" />
-                <DataGridTextColumn Header="Год выпуска" Binding="{Binding BirthDateText}" />
-                <DataGridTextColumn Header="Дата последнего использования" Binding="{Binding EmploymentDateText}" />
-                <DataGridTextColumn Header="Пробег" Binding="{Binding MileageText}" />
-                <DataGridTextColumn Header="Цена" Binding="{Binding PriceText}" />
-            </DataGrid.Columns>
-        </DataGrid>
-        
-        <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <Button Content="Добавить" Margin="5" Padding="5" Click="AddButton_Click" />
-            <Button Content="Правка" Margin="5" Padding="5" IsEnabled="{Binding CanEdit}" Click="EditButton_Click" />
-            <Button Content="Удалить" Margin="5" Padding="5" IsEnabled="{Binding CanDelete}" Click="DeleteButton_Click" />
-        </StackPanel>
-    </Grid>
+    <DockPanel>
+        <Menu DockPanel.Dock="Top">
+            <MenuItem Header="Файл">
+                <MenuItem Header="Open file..." Click="OpenMenu_Click"/>
+                <MenuItem Header="Save" Click="SaveMenu_Click"/>
+                <MenuItem Header="Save as..." Click="SaveAsMenu_Click"/>
+                <Separator />
+                <MenuItem Header="Exit" Click="Exit_Click"/>
+                
+            </MenuItem>
+        </Menu>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <DataGrid Grid.Row="0" Margin="5" ItemsSource="{Binding Employees}" SelectedItem="{Binding SelectedEmployee}" AutoGenerateColumns="False"
+                      CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" SelectionChanged="DataGrid_SelectionChanged">
+                <DataGrid.Columns>
+                    <DataGridTextColumn Header="Марка" Binding="{Binding Stamp}" />
+                    <DataGridTextColumn Header="Модель" Binding="{Binding CarModel}" />
+                    <DataGridTextColumn Header="Гос. номер" Binding="{Binding GosNumber}" />
+                    <DataGridTextColumn Header="Год выпуска" Binding="{Binding BirthDateText}" />
+                    <DataGridTextColumn Header="Дата последнего использования" Binding="{Binding EmploymentDateText}" />
+                    <DataGridTextColumn Header="Пробег" Binding="{Binding MileageText}" />
+                    <DataGridTextColumn Header="Цена" Binding="{Binding PriceText}" />
+                </DataGrid.Columns>
+            </DataGrid>
+
+            <StackPanel Grid.Row="1" Orientation="Horizontal">
+                <Button Content="Добавить" Margin="5" Padding="5" Click="AddButton_Click" />
+                <Button Content="Правка" Margin="5" Padding="5" IsEnabled="{Binding CanEdit}" Click="EditButton_Click" />
+                <Button Content="Удалить" Margin="5" Padding="5" IsEnabled="{Binding CanDelete}" Click="DeleteButton_Click" />
+            </StackPanel>
+        </Grid>
+    </DockPanel>
 </Window>
