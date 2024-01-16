@@ -48,6 +48,28 @@ namespace CardFile.Business.Services
             _storage.Employees.Add(new Employee
             {
                 Id = 3,
+                FirstName = "Герта",
+                StrongName = "Алексеевна",
+                LastName = "Фролова",
+                BirthDate = new DateTime(1978, 3, 11),
+                Position = "Бизнес-аналитик",
+                Division = "Отдел анализа",
+                EmploymentDate = new DateTime(2020, 2, 3),
+            });
+            _storage.Employees.Add(new Employee
+            {
+                Id = 4,
+                FirstName = "Людмила",
+                MiddleName = "Алексеевна",
+                LastName = "Фролова",
+                BirthDate = new DateTime(1978, 3, 11),
+                Position = "Бизнес-аналитик",
+                Division = "Отдел анализа",
+                EmploymentDate = new DateTime(2020, 2, 3),
+            });
+            _storage.Employees.Add(new Employee
+            {
+                Id = 5,
                 FirstName = "Вера",
                 MiddleName = "Владимировна",
                 LastName = "Тищенко",
@@ -83,6 +105,7 @@ namespace CardFile.Business.Services
                 existingEmployee.Position = employee.Position;
                 existingEmployee.Division = employee.Division;
                 existingEmployee.EmploymentDate = employee.EmploymentDate;
+                existingEmployee.StrongName = employee.StrongName;
             }
         }
     }
