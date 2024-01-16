@@ -73,6 +73,16 @@ namespace CardFile.ViewModels
             GetAllEmployees();
         }
 
+        public void DeleteEmployee(IEmployeeWindow window)
+        {
+            _service.DeleteEmployee(new Employee
+            {
+                
+            });
+
+            GetAllEmployees();
+        }
+
         public void EditEmployee(IEmployeeWindow window)
         {
             var employee = SelectedEmployee;

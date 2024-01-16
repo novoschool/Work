@@ -63,5 +63,19 @@ namespace CardFile.Business.Services
                 existingEmployee.DateOfLastUse = employee.DateOfLastUse;
             }
         }
+
+        public void DeleteEmployee(Employee employee)
+        {
+            if (employee.Id == 0)
+            {
+                EmployeeStorage.MaxId++;
+                employee.Id = EmployeeStorage.MaxId;
+                _storage.Employees.Add(employee);
+            }
+            else
+            {
+                
+            }
+        }
     }
 }
