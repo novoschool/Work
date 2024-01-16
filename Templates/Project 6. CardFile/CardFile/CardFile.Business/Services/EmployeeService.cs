@@ -85,5 +85,16 @@ namespace CardFile.Business.Services
                 existingEmployee.EmploymentDate = employee.EmploymentDate;
             }
         }
+
+        public void DeleteEmployee(int employeeId)
+        {
+            var existingEmployee = _storage.Employees.FirstOrDefault(e => e.Id == employeeId);
+            if (existingEmployee == null)
+            {
+                throw new IndexOutOfRangeException();
+            }
+
+            _storage.Employees.Remove(existingEmployee);
+        }
     }
 }

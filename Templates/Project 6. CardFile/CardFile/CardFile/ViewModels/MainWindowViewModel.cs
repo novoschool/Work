@@ -95,6 +95,16 @@ namespace CardFile.ViewModels
             OnPropertyChanged(nameof(CanDelete));
         }
 
+        public void DeleteEmployee()
+        {
+            if (SelectedEmployee == null)
+            {
+                return;
+            }
+
+            _service.DeleteEmployee(SelectedEmployee.Id);
+        }
+
         private void OnPropertyChanged(string propertyName)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));

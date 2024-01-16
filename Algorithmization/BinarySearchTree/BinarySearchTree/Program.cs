@@ -38,6 +38,21 @@ namespace BinarySearchTree
                     Console.WriteLine($"Value {value} not found.");
                 }
             }
+
+            for (int i = 0; i < 10; i++)
+            {
+                var value = rnd.Next(100);
+                var removed = tree.Remove(value);
+                if (!removed)
+                {
+                    Console.WriteLine($"Value {value} not found.");
+                    continue;
+                }
+
+                Console.WriteLine($"Value {value} found and removed.");
+                tree.ProcessLeftToRight((x, level) => Console.Write($"{x}[{level}] "));
+                Console.WriteLine();
+            }
         }
     }
 }

@@ -18,6 +18,7 @@
                 <RowDefinition />
                 <RowDefinition />
                 <RowDefinition />
+                <RowDefinition />
             </Grid.RowDefinitions>
 
             <Grid.ColumnDefinitions>
@@ -46,6 +47,8 @@
             <Button Grid.Row="2" Grid.Column="3" Content="*" FontSize="36" Margin="5" Padding="5" Click="OperatorButton_Click" />
             <Button Grid.Row="2" Grid.Column="4" Content="/" FontSize="36" Margin="5" Padding="5" Click="OperatorButton_Click" />
             <Button Grid.Row="3" Grid.Column="3" Grid.ColumnSpan="2" Content="=" FontSize="36" Margin="5" Padding="5" Click="OperatorButton_Click" />
+
+            <TextBlock Grid.Row="4" Grid.Column="0" Grid.ColumnSpan="5" Text="{Binding DisplayString}" Margin="5" HorizontalAlignment="Center" />
         </Grid>
     </StackPanel>
 </Window>
