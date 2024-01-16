@@ -8,22 +8,22 @@ namespace BinarySearchTree.Entities
 {
     internal class TreeNode<T>
     {
-        public T Value { get; set; }
+        public T? Value { get; set; }
 
-        public TreeNode<T> Left { get; set; }
+        public TreeNode<T>? Left { get; set; }
 
-        public TreeNode<T> Right { get; set; }
+        public TreeNode<T>? Right { get; set; }
 
-        public TreeNode<T> Parent { get; set; }
+        public TreeNode<T>? Parent { get; set; }
 
-        public void ProcessLeftToRight(Action<T, int> action, int level)
+        public void ProcessLeftToRight(Action<T?, int> action, int level)
         {
             Left?.ProcessLeftToRight(action, level + 1);
             action(Value, level);
             Right?.ProcessLeftToRight(action, level + 1);
         }
 
-        public TreeNode<T> Search(T value, Func<T, T, int> compare)
+        public TreeNode<T>? Search(T value, Func<T, T, int> compare)
         {
             var compareResult = compare(value, Value);
             if (compareResult == 0)

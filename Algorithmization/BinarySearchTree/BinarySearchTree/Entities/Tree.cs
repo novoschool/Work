@@ -8,7 +8,7 @@ namespace BinarySearchTree.Entities
 {
     internal class Tree<T>
     {
-        public TreeNode<T> Root { get; set; }
+        public TreeNode<T>? Root { get; set; }
 
         public Func<T, T, int> CompareFunc { get; private set; }
 
@@ -17,12 +17,12 @@ namespace BinarySearchTree.Entities
             CompareFunc = compareFunc;
         }
 
-        public void ProcessLeftToRight(Action<T, int> action)
+        public void ProcessLeftToRight(Action<T?, int> action)
         {
             Root?.ProcessLeftToRight(action, 0);
         }
 
-        public TreeNode<T> Search(T value)
+        public TreeNode<T>? Search(T value)
         {
             return Root?.Search(value, CompareFunc);
         }

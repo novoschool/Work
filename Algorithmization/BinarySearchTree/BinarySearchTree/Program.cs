@@ -11,7 +11,7 @@ namespace BinarySearchTree
 
             for (int i = 0; i < 40; i++)
             {
-                var value = 2 * i + rnd.Next(20);
+                var value = rnd.Next(100);
                 var (inserted, node) = tree.Insert(value);
                 if (inserted)
                 {
@@ -36,6 +36,39 @@ namespace BinarySearchTree
                 else
                 {
                     Console.WriteLine($"Value {value} not found.");
+                }
+            }
+
+            var kvpTree = new Tree<Entities.KeyValuePair>((x, y) => x.Key < y.Key ? -1 : x.Key == y.Key ? 0 : 1);
+
+            for (int i = 0; i < 80; i++)
+            {
+                var key = rnd.Next(100);
+                var value = rnd.Next(100);
+                var (inserted, node) = kvpTree.Insert(new Entities.KeyValuePair { Key = key, Value = value });
+                if (inserted)
+                {
+                    Console.WriteLine($"Value ({key}, {value}) was inserted to tree.");
+                }
+                else
+                {
+                    Console.WriteLine($"Key {key} already existed in tree. Value {value} was not inserted.");
+                }
+            }
+
+            kvpTree.ProcessLeftToRight((x, level) => Console.Write($"({x.Key}, {x.Value}) [{level}] "));
+            Console.WriteLine();
+
+            foreach (var key in new[] { 10, 20, 30, 40, 50, 60, 70, 80, 90 })
+            {
+                var searchResult = kvpTree.Search(new Entities.KeyValuePair { Key = key });
+                if (searchResult != null)
+                {
+                    Console.WriteLine($"Key {key} found. Value = {searchResult.Value.Value}");
+                }
+                else
+                {
+                    Console.WriteLine($"Key {key} not found.");
                 }
             }
         }
