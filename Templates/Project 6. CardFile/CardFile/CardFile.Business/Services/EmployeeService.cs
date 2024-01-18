@@ -102,15 +102,25 @@ namespace CardFile.Business.Services
         public void Save(string fileName)
         {
             var repository = new FileEmployeeRepositoryFactory().CreateRepository(fileName);
+            if (repository == null)
+            {
+                return;
+            }
+
             repository.SaveAll(_storage.Employees);
         }
 
         public void Open(string fileName)
         {
             var repository = new FileEmployeeRepositoryFactory().CreateRepository(fileName);
+            if (repository == null)
+            {
+                return;
+            }
+
             _storage.Employees.Clear();
             _storage.Employees.AddRange(repository.GetAll());
-            EmployeeStorage.MaxId = _storage.Employees.Max(e => e.Id);
+            EmployeeStorage.MaxId = _storage.Employees.Any() ? _storage.Employees.Max(e => e.Id) : 0;
         }
     }
 }

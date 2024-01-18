@@ -25,6 +25,8 @@ namespace CardFile
     {
         internal MainWindowViewModel ViewModel => (MainWindowViewModel)DataContext;
 
+        private const string FileNameFilter = "Текстовые файлы картотеки|*.crdtxt|Двоичные файлы картотеки|*.crdbin|Все файлы|*.*";
+
         public MainWindow()
         {
             InitializeComponent();
@@ -62,7 +64,7 @@ namespace CardFile
 
         private void OpenMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            var dlg = new OpenFileDialog { Filter = "Файлы картотеки|*.crdtxt|Все файлы|*.*" };
+            var dlg = new OpenFileDialog { Filter = FileNameFilter };
             if (dlg.ShowDialog() == true)
             {
                 ViewModel.Open(dlg.FileName);
@@ -77,7 +79,7 @@ namespace CardFile
             }
             else
             {
-                var dlg = new SaveFileDialog { Filter = "Файлы картотеки|*.crdtxt|Все файлы|*.*" };
+                var dlg = new SaveFileDialog { Filter = FileNameFilter };
                 if (dlg.ShowDialog() == true)
                 {
                     ViewModel.SaveAs(dlg.FileName);
@@ -87,7 +89,7 @@ namespace CardFile
 
         private void SaveAsMenuItem_Click(object sender, RoutedEventArgs e)
         {
-            var dlg = new SaveFileDialog { Filter = "Файлы картотеки|*.crdtxt|Все файлы|*.*" };
+            var dlg = new SaveFileDialog { Filter = FileNameFilter };
             if (dlg.ShowDialog() == true)
             {
                 ViewModel.SaveAs(dlg.FileName);

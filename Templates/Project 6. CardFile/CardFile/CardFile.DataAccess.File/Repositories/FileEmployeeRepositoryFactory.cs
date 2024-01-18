@@ -18,6 +18,9 @@ namespace CardFile.DataAccess.File.Repositories
                 case ".crdtxt":
                     return new TextFileEmployeeRepository { FileName = fileName };
 
+                case ".crdbin":
+                    return new BinaryFileEmployeeRepository { FileName = fileName };
+
                 default:
                     return null;
             }
