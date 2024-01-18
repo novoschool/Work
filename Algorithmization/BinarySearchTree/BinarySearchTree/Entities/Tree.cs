@@ -44,5 +44,33 @@ namespace BinarySearchTree.Entities
 
             return (true, Root);
         }
+
+        public bool Remove(T value)
+        {
+            var node = Search(value);
+            if(node != null)
+            {
+                return false;
+            }
+
+            if (node.Right == null)
+            {
+                var parent = node.Parent;
+                var left = node.Left;
+                if (parent != null)
+                {
+                    if(parent.Right == node)
+                    {
+                        parent.Right = left;
+                    }
+                    else
+                    {
+                        parent.Left = left;
+                    }
+                }
+            }
+
+            return true;
+        }
     }
 }
