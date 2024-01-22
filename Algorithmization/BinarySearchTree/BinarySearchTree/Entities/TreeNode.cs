@@ -8,7 +8,7 @@ namespace BinarySearchTree.Entities
 {
     internal class TreeNode<T>
     {
-        public T? Value { get; set; }
+        public T Value { get; set; }
 
         public TreeNode<T>? Left { get; set; }
 
