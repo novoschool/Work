@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=13.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.13.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -44,13 +47,18 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repositories\BinaryFileEmployeeRepository.cs" />
     <Compile Include="Repositories\FileEmployeeRepositoryFactory.cs" />
+    <Compile Include="Repositories\JsonFileEmployeeRepository.cs" />
     <Compile Include="Repositories\TextFileEmployeeRepository.cs" />
+    <Compile Include="Repositories\XmlFileEmployeeRepository.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\CardFile.Core\CardFile.Core.csproj">
       <Project>{22F56004-7E80-4C6B-B100-F397859538FC}</Project>
       <Name>CardFile.Core</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
