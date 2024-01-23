@@ -23,6 +23,7 @@ namespace BinarySearchTree.Entities
         }
 
         public TreeNode<T> Search(T value)
+       
         {
             return Root?.Search(value, CompareFunc);
         }
@@ -43,6 +44,9 @@ namespace BinarySearchTree.Entities
             };
 
             return (true, Root);
+             
+             pu
+
         }
     }
 }
