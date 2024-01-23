@@ -1,5 +1,6 @@
 ﻿using CardFile.Business.Models;
 using CardFile.Business.Services;
+using CardFile.Core.Entities;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -24,6 +25,8 @@ namespace CardFile.ViewModels
 
         public bool CanDelete => SelectedEmployee != null;
 
+        public string FileName { get; set; }
+
         public MainWindowViewModel()
         {
             GetAllEmployees();
@@ -38,14 +41,13 @@ namespace CardFile.ViewModels
                 Employees.Add(new EmployeeViewModel
                 {
                     Id = employee.Id,
-                    Name = employee.Name,
-                    ManufacturedProduction = employee.ManufacturedProduction,
-                    ValueOutputProduction = employee.ValueOutputProduction,
+                    FirstName = employee.FirstName,
+                    MiddleName = employee.MiddleName,
                     LastName = employee.LastName,
-                    CreationDate = employee.CreationDate,
-                    RenovationNeed = employee.RenovationNeed,
-                    EmployeesNumber = employee.EmployeesNumber,
-                    LastRenovationDate = employee.LastRenovationDate,
+                    BirthDate = employee.BirthDate,
+                    Position = employee.Position,
+                    Division = employee.Division,
+                    EmploymentDate = employee.EmploymentDate,
                 });
             }
         }
@@ -56,39 +58,19 @@ namespace CardFile.ViewModels
             window.ViewModel = employee;
         }
 
-        public void DeleteEmployee(IEmployeeWindow window)
-        {
-            var employeeViewModel = window.ViewModel;
-            _service.Delete(new Employee
-            {
-                Id = employeeViewModel.Id,
-                Name = employeeViewModel.Name,
-                ManufacturedProduction = employeeViewModel.ManufacturedProduction,
-                ValueOutputProduction = employeeViewModel.ValueOutputProduction,
-                LastName = employeeViewModel.LastName,
-                CreationDate = employeeViewModel.CreationDate,
-                RenovationNeed = employeeViewModel.RenovationNeed,
-                EmployeesNumber = employeeViewModel.EmployeesNumber,
-                LastRenovationDate = employeeViewModel.LastRenovationDate,
-            });
-
-            GetAllEmployees();
-        }
-
         public void SaveEmployee(IEmployeeWindow window)
         {
             var employeeViewModel = window.ViewModel;
             _service.SaveEmployee(new Employee
             {
                 Id = employeeViewModel.Id,
-                Name = employeeViewModel.Name,
-                ManufacturedProduction = employeeViewModel.ManufacturedProduction,
-                ValueOutputProduction = employeeViewModel.ValueOutputProduction,
+                FirstName = employeeViewModel.FirstName,
+                MiddleName = employeeViewModel.MiddleName,
                 LastName = employeeViewModel.LastName,
-                CreationDate = employeeViewModel.CreationDate,
-                RenovationNeed = employeeViewModel.RenovationNeed,
-                EmployeesNumber = employeeViewModel.EmployeesNumber,
-                LastRenovationDate = employeeViewModel.LastRenovationDate,
+                BirthDate = employeeViewModel.BirthDate,
+                Position = employeeViewModel.Position,
+                Division = employeeViewModel.Division,
+                EmploymentDate = employeeViewModel.EmploymentDate,
             });
 
             GetAllEmployees();
@@ -100,14 +82,13 @@ namespace CardFile.ViewModels
             window.ViewModel = new EmployeeViewModel
             {
                 Id = employee.Id,
-                Name = employee.Name,
-                ManufacturedProduction = employee.ManufacturedProduction,
-                ValueOutputProduction = employee.ValueOutputProduction,
+                FirstName = employee.FirstName,
+                MiddleName = employee.MiddleName,
                 LastName = employee.LastName,
-                CreationDate = employee.CreationDate,
-                RenovationNeed = employee.RenovationNeed,
-                EmployeesNumber = employee.EmployeesNumber,
-                LastRenovationDate = employee.LastRenovationDate,
+                BirthDate = employee.BirthDate,
+                Position = employee.Position,
+                Division = employee.Division,
+                EmploymentDate = employee.EmploymentDate,
             };
         }
 
@@ -115,6 +96,37 @@ namespace CardFile.ViewModels
         {
             OnPropertyChanged(nameof(CanEdit));
             OnPropertyChanged(nameof(CanDelete));
+        }
+
+        public void DeleteSelectedItem()
+        {
+            if (SelectedEmployee == null) 
+            {
+                return;
+            }
+
+            _service.Delete(SelectedEmployee.Id);
+            GetAllEmployees();
+        }
+
+        public void SaveAs(string fileName)
+        {
+            FileName = fileName;
+            _service.Save(FileName);
+        }
+
+        public bool HasFileName => !string.IsNullOrEmpty(FileName);
+
+        public void Save()
+        {
+            _service.Save(FileName);
+        }
+
+        public void Open(string fileName)
+        {
+            FileName = fileName;
+            _service.Open(FileName);
+            GetAllEmployees();
         }
 
         private void OnPropertyChanged(string propertyName)

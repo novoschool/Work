@@ -1,4 +1,6 @@
 ﻿using CardFile.Business.Models;
+using CardFile.Core.Entities;
+using CardFile.DataAccess.File.Repositories;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -26,78 +28,38 @@ namespace CardFile.Business.Services
             _storage.Employees.Add(new Employee
             {
                 Id = 1,
-                Name = "Новосибирский Приборостроительный",
-                ManufacturedProduction = "Компасы",
-                ValueOutputProduction = 10,
-                //LastName = "Захаров",
-                CreationDate = new DateTime(1985, 11, 8),
-                RenovationNeed = 20,
-                EmployeesNumber = 1057,
-                LastRenovationDate = new DateTime(2019, 7, 15),
+                FirstName = "Андрей",
+                MiddleName = "Григорьевич",
+                LastName = "Захаров",
+                BirthDate = new DateTime(1985, 11, 8),
+                Position = "Руководитель проекта",
+                Division = "Отдел разработки",
+                EmploymentDate = new DateTime(2019, 7, 15),
             });
             _storage.Employees.Add(new Employee
             {
                 Id = 2,
-                Name = "Новосибирский Приборостроительный",
-                ManufacturedProduction = "Компасы",
-                ValueOutputProduction = 20,
-                //LastName = "Захаров",
-                CreationDate = new DateTime(1985, 11, 8),
-                RenovationNeed = 20,
-                EmployeesNumber = 1057,
-                LastRenovationDate = new DateTime(2019, 7, 15),
+                FirstName = "Людмила",
+                MiddleName = "Алексеевна",
+                LastName = "Фролова",
+                BirthDate = new DateTime(1978, 3, 11),
+                Position = "Бизнес-аналитик",
+                Division = "Отдел анализа",
+                EmploymentDate = new DateTime(2020, 2, 3),
             });
             _storage.Employees.Add(new Employee
             {
                 Id = 3,
-                Name = "Новосибирский Приборостроительный",
-                ManufacturedProduction = "Компасы",
-                ValueOutputProduction = 30,
-                //LastName = "Захаров",
-                CreationDate = new DateTime(1985, 11, 8),
-                RenovationNeed = 20,
-                EmployeesNumber = 1057,
-                LastRenovationDate = new DateTime(2019, 7, 15),
+                FirstName = "Вера",
+                MiddleName = "Владимировна",
+                LastName = "Тищенко",
+                BirthDate = new DateTime(1989, 6, 10),
+                Position = "Руководитель группы",
+                Division = "Отдел тестирования",
+                EmploymentDate = new DateTime(2021, 11, 18),
             });
-            _storage.Employees.Add(new Employee
-            {
-                Id = 4,
-                Name = "Новосибирский Приборостроительный",
-                ManufacturedProduction = "Компасы",
-                ValueOutputProduction = 40,
-                //LastName = "Захаров",
-                CreationDate = new DateTime(1985, 11, 8),
-                RenovationNeed = 20,
-                EmployeesNumber = 1057,
-                LastRenovationDate = new DateTime(2019, 7, 15),
-            });
-            _storage.Employees.Add(new Employee
-            {
-                Id = 5,
-                Name = "Новосибирский Приборостроительный",
-                ManufacturedProduction = "Компасы",
-                ValueOutputProduction = 50,
-                //LastName = "Захаров",
-                CreationDate = new DateTime(1985, 11, 8),
-                RenovationNeed = 20,
-                EmployeesNumber = 1057,
-                LastRenovationDate = new DateTime(2019, 7, 15),
-            });
-
-
 
             EmployeeStorage.MaxId = _storage.Employees.Max(e => e.Id);
-        }
-
-        public void Delete(Employee employee)
-        {
-            for (int i = 0; i < _storage.Employees.Count; i++)
-            {
-                if (_storage.Employees[i].Id == employee.Id)
-                {
-                    _storage.Employees.RemoveAt(i);
-                }
-            }
         }
 
         public void SaveEmployee(Employee employee)
@@ -116,15 +78,49 @@ namespace CardFile.Business.Services
                     throw new IndexOutOfRangeException();
                 }
 
-                existingEmployee.Name = employee.Name;
+                existingEmployee.FirstName = employee.FirstName;
                 existingEmployee.LastName = employee.LastName;
-                existingEmployee.ManufacturedProduction = employee.ManufacturedProduction;
-                existingEmployee.ValueOutputProduction = employee.ValueOutputProduction;
-                existingEmployee.CreationDate = employee.CreationDate;
-                existingEmployee.RenovationNeed = employee.RenovationNeed;
-                existingEmployee.EmployeesNumber = employee.EmployeesNumber;
-                existingEmployee.LastRenovationDate = employee.LastRenovationDate;
+                existingEmployee.MiddleName = employee.MiddleName;
+                existingEmployee.BirthDate = employee.BirthDate;
+                existingEmployee.Position = employee.Position;
+                existingEmployee.Division = employee.Division;
+                existingEmployee.EmploymentDate = employee.EmploymentDate;
             }
+        }
+
+        public void Delete(int employeeId)
+        {
+            var existingEmployee = _storage.Employees.FirstOrDefault(e => e.Id == employeeId);
+            if (existingEmployee == null)
+            {
+                throw new IndexOutOfRangeException();
+            }
+
+            _storage.Employees.Remove(existingEmployee);
+        }
+
+        public void Save(string fileName)
+        {
+            var repository = new FileEmployeeRepositoryFactory().CreateRepository(fileName);
+            if (repository == null)
+            {
+                return;
+            }
+
+            repository.SaveAll(_storage.Employees);
+        }
+
+        public void Open(string fileName)
+        {
+            var repository = new FileEmployeeRepositoryFactory().CreateRepository(fileName);
+            if (repository == null)
+            {
+                return;
+            }
+
+            _storage.Employees.Clear();
+            _storage.Employees.AddRange(repository.GetAll());
+            EmployeeStorage.MaxId = _storage.Employees.Any() ? _storage.Employees.Max(e => e.Id) : 0;
         }
     }
 }

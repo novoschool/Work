@@ -25,7 +25,7 @@ namespace CardFile.Views
             get => (EmployeeViewModel)DataContext;
             set => DataContext = value;
         }
-        
+
         public AddEmployeeWindow()
         {
             InitializeComponent();

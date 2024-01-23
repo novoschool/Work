@@ -26,26 +26,26 @@
 
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Создание сотрудника" Margin="10" TextAlignment="Center" FontSize="16" />
 
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="Название" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
-        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Name}" Margin="5" />
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Фамилия" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding LastName}" Margin="5" />
 
-        <TextBlock Grid.Row="2" Grid.Column="0" Text="Продукция" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding ManufacturedProduction}" Margin="5" />
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Имя" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding FirstName}" Margin="5" />
 
-        <TextBlock Grid.Row="3" Grid.Column="0" Text="Выпуск" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
-        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding ValueOutputProduction}" Margin="5" />
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Отчество" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding MiddleName}" Margin="5" />
 
-        <TextBlock Grid.Row="4" Grid.Column="0" Text="Дата создания" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
-        <DatePicker Grid.Row="4" Grid.Column="1" SelectedDate="{Binding CreationDate}" Margin="5" />
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="Дата рождения" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
+        <DatePicker Grid.Row="4" Grid.Column="1" SelectedDate="{Binding BirthDate}" Margin="5" />
 
-        <TextBlock Grid.Row="5" Grid.Column="0" Text="Нужда в ремонте" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
-        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding RenovationNeed}" Margin="5" />
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="Должность" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Position}" Margin="5" />
 
-        <TextBlock Grid.Row="6" Grid.Column="0" Text="Число сотрудников" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
-        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding EmployeesNumber}" Margin="5" />
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="Подразделение" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
+        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Division}" Margin="5" />
 
-        <TextBlock Grid.Row="7" Grid.Column="0" Text="Дата последнего ремонта" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
-        <DatePicker Grid.Row="7" Grid.Column="1" SelectedDate="{Binding LastRenovationDate}" Margin="5" />
+        <TextBlock Grid.Row="7" Grid.Column="0" Text="Дата трудоустройства" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
+        <DatePicker Grid.Row="7" Grid.Column="1" SelectedDate="{Binding EmploymentDate}" Margin="5" />
 
         <StackPanel Orientation="Horizontal" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center">
             <Button Name="OkButton" Content="OK" Margin="5" Padding="5" Click="OkButton_Click" />
