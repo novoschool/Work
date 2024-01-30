@@ -28,35 +28,13 @@ namespace CardFile.Business.Services
             _storage.Employees.Add(new Employee
             {
                 Id = 1,
-                FirstName = "Андрей",
-                MiddleName = "Григорьевич",
-                LastName = "Захаров",
-                BirthDate = new DateTime(1985, 11, 8),
-                Position = "Руководитель проекта",
-                Division = "Отдел разработки",
-                EmploymentDate = new DateTime(2019, 7, 15),
-            });
-            _storage.Employees.Add(new Employee
-            {
-                Id = 2,
-                FirstName = "Людмила",
-                MiddleName = "Алексеевна",
-                LastName = "Фролова",
-                BirthDate = new DateTime(1978, 3, 11),
-                Position = "Бизнес-аналитик",
-                Division = "Отдел анализа",
-                EmploymentDate = new DateTime(2020, 2, 3),
-            });
-            _storage.Employees.Add(new Employee
-            {
-                Id = 3,
-                FirstName = "Вера",
-                MiddleName = "Владимировна",
-                LastName = "Тищенко",
-                BirthDate = new DateTime(1989, 6, 10),
-                Position = "Руководитель группы",
-                Division = "Отдел тестирования",
-                EmploymentDate = new DateTime(2021, 11, 18),
+                FirstName = "Олег",
+                MiddleName = "Олегович",
+                LastName = "Олегов",
+                BirthDate = new DateTime(2004, 11, 8),
+                Specialization = "ИСиП",
+                Course = 4,
+                DateOfReceipt = new DateTime(2021, 1, 1),
             });
 
             EmployeeStorage.MaxId = _storage.Employees.Max(e => e.Id);
@@ -82,9 +60,9 @@ namespace CardFile.Business.Services
                 existingEmployee.LastName = employee.LastName;
                 existingEmployee.MiddleName = employee.MiddleName;
                 existingEmployee.BirthDate = employee.BirthDate;
-                existingEmployee.Position = employee.Position;
-                existingEmployee.Division = employee.Division;
-                existingEmployee.EmploymentDate = employee.EmploymentDate;
+                existingEmployee.Specialization = employee.Specialization;
+                existingEmployee.Course = employee.Course;
+                existingEmployee.DateOfReceipt = employee.DateOfReceipt;
             }
         }
 

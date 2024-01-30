@@ -27,6 +27,9 @@ namespace CardFile.DataAccess.File.Repositories
                 case ".crdjson":
                     return new JsonFileEmployeeRepository { FileName = fileName };
 
+                case ".crdzip":
+                    return new ZipFileEmployeeRepository { FileName = fileName };
+
                 default:
                     return null;
             }

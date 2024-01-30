@@ -35,20 +35,20 @@ namespace CardFile.Core.Entities
         }
 
         [XmlElement("Position")]
-        public string Position { get; set; }
+        public string Specialization { get; set; }
 
         [XmlElement("Division")]
-        public string Division { get; set; }
+        public int Course { get; set; }
 
         [XmlIgnore]
-        public DateTime EmploymentDate { get; set; }
+        public DateTime DateOfReceipt { get; set; }
 
         [XmlAttribute("EmploymentDate")]
         [JsonIgnore]
-        public string EmploymentDateText
+        public string DateOfReceiptText
         {
-            get => EmploymentDate.ToString();
-            set => EmploymentDate = DateTime.Parse(value);
+            get => DateOfReceipt.ToString();
+            set => DateOfReceipt = DateTime.Parse(value);
         }
     }
 }

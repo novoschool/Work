@@ -24,7 +24,7 @@
             <ColumnDefinition />
         </Grid.ColumnDefinitions>
 
-        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Создание сотрудника" Margin="10" TextAlignment="Center" FontSize="16" />
+        <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Студент" Margin="10" TextAlignment="Center" FontSize="16" />
 
         <TextBlock Grid.Row="1" Grid.Column="0" Text="Фамилия" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
         <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding LastName}" Margin="5" />
@@ -38,14 +38,14 @@
         <TextBlock Grid.Row="4" Grid.Column="0" Text="Дата рождения" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
         <DatePicker Grid.Row="4" Grid.Column="1" SelectedDate="{Binding BirthDate}" Margin="5" />
 
-        <TextBlock Grid.Row="5" Grid.Column="0" Text="Должность" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
-        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Position}" Margin="5" />
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="Специальность" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Specialization}" Margin="5" />
 
-        <TextBlock Grid.Row="6" Grid.Column="0" Text="Подразделение" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
-        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Division}" Margin="5" />
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="Курс" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
+        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Course}" Margin="5" />
 
-        <TextBlock Grid.Row="7" Grid.Column="0" Text="Дата трудоустройства" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
-        <DatePicker Grid.Row="7" Grid.Column="1" SelectedDate="{Binding EmploymentDate}" Margin="5" />
+        <TextBlock Grid.Row="7" Grid.Column="0" Text="Дата поступления" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
+        <DatePicker Grid.Row="7" Grid.Column="1" SelectedDate="{Binding DateOfReceipt}" Margin="5" />
 
         <StackPanel Orientation="Horizontal" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center">
             <Button Name="OkButton" Content="OK" Margin="5" Padding="5" Click="OkButton_Click" />

@@ -23,7 +23,6 @@ namespace CardFile.DataAccess.File.Repositories
                 {
                     var id = br.ReadInt32();
 
-                    //var firstName = br.ReadString();
                     var firstNameByteCount = br.ReadInt32();
                     var firstNameBytes = br.ReadBytes(firstNameByteCount);
                     var firstName = Encoding.UTF8.GetString(firstNameBytes);
@@ -32,10 +31,10 @@ namespace CardFile.DataAccess.File.Repositories
                     var lastName = br.ReadString();
                     var ticks = br.ReadInt64();
                     var birthDate = new DateTime(ticks);
-                    var position = br.ReadString();
-                    var division = br.ReadString();
+                    var Specialization = br.ReadString();
+                    var Course = br.ReadInt64();
                     ticks = br.ReadInt64();
-                    var employmentDate = new DateTime(ticks);
+                    var DateOfReceipt = new DateTime(ticks);
 
                     result.Add(new Employee
                     {
@@ -44,9 +43,9 @@ namespace CardFile.DataAccess.File.Repositories
                         MiddleName = middleName,
                         LastName = lastName,
                         BirthDate = birthDate,
-                        Position = position,
-                        Division = division,
-                        EmploymentDate = employmentDate,
+                        Specialization = Specialization,
+                        Course = (int)Course,
+                        DateOfReceipt = DateOfReceipt,
                     });
                 }
 
@@ -62,7 +61,6 @@ namespace CardFile.DataAccess.File.Repositories
                 {
                     bw.Write(employee.Id);
 
-                    //bw.Write(employee.FirstName);
                     var firstNameBytes = Encoding.UTF8.GetBytes(employee.FirstName);
                     bw.Write(firstNameBytes.Length);
                     bw.Write(firstNameBytes);
@@ -70,9 +68,9 @@ namespace CardFile.DataAccess.File.Repositories
                     bw.Write(employee.MiddleName);
                     bw.Write(employee.LastName);
                     bw.Write(employee.BirthDate.Ticks);
-                    bw.Write(employee.Position);
-                    bw.Write(employee.Division);
-                    bw.Write(employee.EmploymentDate.Ticks);
+                    bw.Write(employee.Specialization);
+                    bw.Write(employee.Course);
+                    bw.Write(employee.DateOfReceipt.Ticks);
                 }
             }
         }

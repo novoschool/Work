@@ -20,12 +20,12 @@ namespace CardFile.ViewModels
 
         public string BirthDateText => BirthDate.ToShortDateString();
 
-        public string Position { get; set; }
+        public string Specialization { get; set; }
 
-        public string Division { get; set; }
+        public int Course { get; set; }
 
-        public DateTime EmploymentDate { get; set; } = new DateTime(2020, 1, 1);
+        public DateTime DateOfReceipt { get; set; } = new DateTime(2020, 1, 1);
 
-        public string EmploymentDateText => EmploymentDate.ToShortDateString();
+        public string DateOfReceiptText => DateOfReceipt.ToShortDateString();
     }
 }

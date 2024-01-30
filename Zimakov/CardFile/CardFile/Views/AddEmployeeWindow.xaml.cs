@@ -15,9 +15,6 @@ using System.Windows.Shapes;
 
 namespace CardFile.Views
 {
-    /// <summary>
-    /// Interaction logic for AddEmployeeWindow.xaml
-    /// </summary>
     public partial class AddEmployeeWindow : Window, IEmployeeWindow
     {
         public EmployeeViewModel ViewModel

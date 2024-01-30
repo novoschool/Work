@@ -39,12 +39,16 @@ namespace CardFile.DataAccess.File.Repositories
                         break;
                     }
 
-                    var position = sr.ReadLine();
-                    var division = sr.ReadLine();
+                    var Specialization = sr.ReadLine();
+                    int Course;
+                    if (!int.TryParse(line, out Course))
+                    {
+                        break;
+                    }
 
                     line = sr.ReadLine();
-                    DateTime employmentDate;
-                    if (!DateTime.TryParse(line, out employmentDate))
+                    DateTime DateOfReceipt;
+                    if (!DateTime.TryParse(line, out DateOfReceipt))
                     {
                         break;
                     }
@@ -56,9 +60,9 @@ namespace CardFile.DataAccess.File.Repositories
                         LastName = lastName,
                         MiddleName = middleName,
                         BirthDate = birthDate,
-                        Position = position,
-                        Division = division,
-                        EmploymentDate = employmentDate,
+                        Specialization = Specialization,
+                        Course = Course,
+                        DateOfReceipt = DateOfReceipt,
                     });
                 }
 
@@ -77,9 +81,9 @@ namespace CardFile.DataAccess.File.Repositories
                     sw.WriteLine(employee.MiddleName);
                     sw.WriteLine(employee.LastName);
                     sw.WriteLine(employee.BirthDate);
-                    sw.WriteLine(employee.Position);
-                    sw.WriteLine(employee.Division);
-                    sw.WriteLine(employee.EmploymentDate);
+                    sw.WriteLine(employee.Specialization);
+                    sw.WriteLine(employee.Course);
+                    sw.WriteLine(employee.DateOfReceipt);
                 }
             }
         }

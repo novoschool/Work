@@ -45,9 +45,9 @@ namespace CardFile.ViewModels
                     MiddleName = employee.MiddleName,
                     LastName = employee.LastName,
                     BirthDate = employee.BirthDate,
-                    Position = employee.Position,
-                    Division = employee.Division,
-                    EmploymentDate = employee.EmploymentDate,
+                    Specialization = employee.Specialization,
+                    Course = employee.Course,
+                    DateOfReceipt = employee.DateOfReceipt,
                 });
             }
         }
@@ -68,9 +68,9 @@ namespace CardFile.ViewModels
                 MiddleName = employeeViewModel.MiddleName,
                 LastName = employeeViewModel.LastName,
                 BirthDate = employeeViewModel.BirthDate,
-                Position = employeeViewModel.Position,
-                Division = employeeViewModel.Division,
-                EmploymentDate = employeeViewModel.EmploymentDate,
+                Specialization = employeeViewModel.Specialization,
+                Course = employeeViewModel.Course,
+                DateOfReceipt = employeeViewModel.DateOfReceipt,
             });
 
             GetAllEmployees();
@@ -86,9 +86,9 @@ namespace CardFile.ViewModels
                 MiddleName = employee.MiddleName,
                 LastName = employee.LastName,
                 BirthDate = employee.BirthDate,
-                Position = employee.Position,
-                Division = employee.Division,
-                EmploymentDate = employee.EmploymentDate,
+                Specialization = employee.Specialization,
+                Course = employee.Course,
+                DateOfReceipt = employee.DateOfReceipt,
             };
         }
 

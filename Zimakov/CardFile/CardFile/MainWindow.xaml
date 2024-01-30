@@ -34,9 +34,9 @@
                     <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}" />
                     <DataGridTextColumn Header="Отчество" Binding="{Binding MiddleName}" />
                     <DataGridTextColumn Header="Дата рождения" Binding="{Binding BirthDateText}" />
-                    <DataGridTextColumn Header="Должность" Binding="{Binding Position}" />
-                    <DataGridTextColumn Header="Подразделение" Binding="{Binding Division}" />
-                    <DataGridTextColumn Header="Дата трудоустройства" Binding="{Binding EmploymentDateText}" />
+                    <DataGridTextColumn Header="Специальность" Binding="{Binding Specialization}" />
+                    <DataGridTextColumn Header="Курс" Binding="{Binding Course}" />
+                    <DataGridTextColumn Header="Дата поступления" Binding="{Binding DateOfReceiptText}" />
                 </DataGrid.Columns>
             </DataGrid>
         
