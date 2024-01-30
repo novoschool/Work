@@ -41,13 +41,13 @@ namespace CardFile.ViewModels
                 Employees.Add(new EmployeeViewModel
                 {
                     Id = employee.Id,
-                    FirstName = employee.FirstName,
-                    MiddleName = employee.MiddleName,
-                    LastName = employee.LastName,
-                    BirthDate = employee.BirthDate,
-                    Position = employee.Position,
-                    Division = employee.Division,
-                    EmploymentDate = employee.EmploymentDate,
+                    Rocket = employee.FirstName,
+                    TypeWH = employee.MiddleName,
+                    Basing = employee.LastName,
+                    PuttingOnDuty = employee.BirthDate,
+                    DeadZone = employee.Position,
+                    Range = employee.Division,
+                    RepairDate = employee.EmploymentDate,
                 });
             }
         }
@@ -64,13 +64,13 @@ namespace CardFile.ViewModels
             _service.SaveEmployee(new Employee
             {
                 Id = employeeViewModel.Id,
-                FirstName = employeeViewModel.FirstName,
-                MiddleName = employeeViewModel.MiddleName,
-                LastName = employeeViewModel.LastName,
-                BirthDate = employeeViewModel.BirthDate,
-                Position = employeeViewModel.Position,
-                Division = employeeViewModel.Division,
-                EmploymentDate = employeeViewModel.EmploymentDate,
+                FirstName = employeeViewModel.Rocket,
+                MiddleName = employeeViewModel.TypeWH,
+                LastName = employeeViewModel.Basing,
+                BirthDate = employeeViewModel.PuttingOnDuty,
+                Position = employeeViewModel.DeadZone,
+                Division = employeeViewModel.Range,
+                EmploymentDate = employeeViewModel.RepairDate,
             });
 
             GetAllEmployees();
@@ -82,13 +82,13 @@ namespace CardFile.ViewModels
             window.ViewModel = new EmployeeViewModel
             {
                 Id = employee.Id,
-                FirstName = employee.FirstName,
-                MiddleName = employee.MiddleName,
-                LastName = employee.LastName,
-                BirthDate = employee.BirthDate,
-                Position = employee.Position,
-                Division = employee.Division,
-                EmploymentDate = employee.EmploymentDate,
+                Rocket = employee.Rocket,
+                TypeWH = employee.TypeWH,
+                Basing = employee.Basing,
+                PuttingOnDuty = employee.PuttingOnDuty,
+                DeadZone = employee.DeadZone,
+                Range = employee.Range,
+                RepairDate = employee.RepairDate,
             };
         }
 

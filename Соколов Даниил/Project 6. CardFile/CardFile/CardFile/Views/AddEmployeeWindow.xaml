@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CardFile.Views"
         mc:Ignorable="d"
-        Title="AddEmployeeWindow" Height="330" Width="300" MinHeight="330" MinWidth="300" MaxHeight="330" MaxWidth="300">
+        Title="AddBBRRocketWindow" Height="330" Width="300" MinHeight="330" MinWidth="300" MaxHeight="330" MaxWidth="300">
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -26,26 +26,26 @@
 
         <TextBlock Grid.Row="0" Grid.Column="0" Grid.ColumnSpan="2" Text="Создание сотрудника" Margin="10" TextAlignment="Center" FontSize="16" />
 
-        <TextBlock Grid.Row="1" Grid.Column="0" Text="Фамилия" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
-        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding LastName}" Margin="5" />
+        <TextBlock Grid.Row="1" Grid.Column="0" Text="Ракета" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
+        <TextBox Grid.Row="1" Grid.Column="1" Text="{Binding Rocket}" Margin="5" />
 
-        <TextBlock Grid.Row="2" Grid.Column="0" Text="Имя" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
-        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding FirstName}" Margin="5" />
+        <TextBlock Grid.Row="2" Grid.Column="0" Text="Тип БЧ" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
+        <TextBox Grid.Row="2" Grid.Column="1" Text="{Binding TypeWH}" Margin="5" />
 
-        <TextBlock Grid.Row="3" Grid.Column="0" Text="Отчество" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
-        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding MiddleName}" Margin="5" />
+        <TextBlock Grid.Row="3" Grid.Column="0" Text="Базирование" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
+        <TextBox Grid.Row="3" Grid.Column="1" Text="{Binding Basing}" Margin="5" />
 
-        <TextBlock Grid.Row="4" Grid.Column="0" Text="Дата рождения" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
-        <DatePicker Grid.Row="4" Grid.Column="1" SelectedDate="{Binding BirthDate}" Margin="5" />
+        <TextBlock Grid.Row="5" Grid.Column="0" Text="Мёртвая зона" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
+        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding DeadZone}" Margin="5" />
 
-        <TextBlock Grid.Row="5" Grid.Column="0" Text="Должность" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
-        <TextBox Grid.Row="5" Grid.Column="1" Text="{Binding Position}" Margin="5" />
+        <TextBlock Grid.Row="6" Grid.Column="0" Text="Дальность" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
+        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Range}" Margin="5" />
 
-        <TextBlock Grid.Row="6" Grid.Column="0" Text="Подразделение" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
-        <TextBox Grid.Row="6" Grid.Column="1" Text="{Binding Division}" Margin="5" />
+        <TextBlock Grid.Row="4" Grid.Column="0" Text="Постановка на дижурство" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
+        <DatePicker Grid.Row="4" Grid.Column="1" SelectedDate="{Binding PuttingOnDuty}" Margin="5" />
 
-        <TextBlock Grid.Row="7" Grid.Column="0" Text="Дата трудоустройства" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
-        <DatePicker Grid.Row="7" Grid.Column="1" SelectedDate="{Binding EmploymentDate}" Margin="5" />
+        <TextBlock Grid.Row="7" Grid.Column="0" Text="Дата ремонта" Margin="5" TextAlignment="Right" VerticalAlignment="Center" />
+        <DatePicker Grid.Row="7" Grid.Column="1" SelectedDate="{Binding RepairDate}" Margin="5" />
 
         <StackPanel Orientation="Horizontal" Grid.Row="8" Grid.Column="0" Grid.ColumnSpan="2" HorizontalAlignment="Right" VerticalAlignment="Center">
             <Button Name="OkButton" Content="OK" Margin="5" Padding="5" Click="OkButton_Click" />

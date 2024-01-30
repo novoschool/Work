@@ -32,8 +32,8 @@ namespace CardFile.DataAccess.File.Repositories
                     var lastName = br.ReadString();
                     var ticks = br.ReadInt64();
                     var birthDate = new DateTime(ticks);
-                    var position = br.ReadString();
-                    var division = br.ReadString();
+                    var position = br.ReadInt32();
+                    var division = br.ReadInt32();
                     ticks = br.ReadInt64();
                     var employmentDate = new DateTime(ticks);
 

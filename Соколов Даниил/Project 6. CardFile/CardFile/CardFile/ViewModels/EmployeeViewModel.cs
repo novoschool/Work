@@ -10,22 +10,22 @@ namespace CardFile.ViewModels
     {
         public int Id { get; set; }
 
-        public string FirstName { get; set; }
+        public string Rocket { get; set; }
 
-        public string MiddleName { get; set; }
+        public string TypeWH { get; set; }
 
-        public string LastName { get; set; }
+        public string Basing { get; set; }
 
-        public DateTime BirthDate { get; set; } = new DateTime(2000, 1, 1);
+        public DateTime PuttingOnDuty { get; set; } = new DateTime(2000, 1, 1);
 
-        public string BirthDateText => BirthDate.ToShortDateString();
+        public string PuttingOnDutyText => PuttingOnDuty.ToShortDateString();
 
-        public string Position { get; set; }
+        public int DeadZone { get; set; }
 
-        public string Division { get; set; }
+        public int Range { get; set; }
 
-        public DateTime EmploymentDate { get; set; } = new DateTime(2020, 1, 1);
+        public DateTime RepairDate { get; set; } = new DateTime(2020, 1, 1);
 
-        public string EmploymentDateText => EmploymentDate.ToShortDateString();
+        public string RepairDateText => RepairDate.ToShortDateString();
     }
 }

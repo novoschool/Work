@@ -39,8 +39,16 @@ namespace CardFile.DataAccess.File.Repositories
                         break;
                     }
 
-                    var position = sr.ReadLine();
-                    var division = sr.ReadLine();
+                    int position;
+                    if (!int.TryParse(line, out position))
+                    {
+                        break;
+                    }
+                    int division;
+                    if (!int.TryParse(line, out division))
+                    {
+                        break;
+                    }
 
                     line = sr.ReadLine();
                     DateTime employmentDate;

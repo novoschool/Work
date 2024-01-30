@@ -42,11 +42,11 @@ namespace CardFile.Core.Entities
 
         [XmlElement("Position")]
 
-        public string Position { get; set; }
+        public int Position { get; set; }
 
         [XmlElement("Division")]
 
-        public string Division { get; set; }
+        public int Division { get; set; }
 
         [XmlIgnore]
 
@@ -57,8 +57,8 @@ namespace CardFile.Core.Entities
 
         public string EmploymentDateText
         {
-            get => BirthDate.ToString();
-            set => BirthDate = DateTime.Parse(value);
+            get => EmploymentDate.ToString();
+            set => EmploymentDate = DateTime.Parse(value);
         }
     }
 }

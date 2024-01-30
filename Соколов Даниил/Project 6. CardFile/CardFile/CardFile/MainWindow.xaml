@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CardFile" xmlns:viewmodels="clr-namespace:CardFile.ViewModels"
         mc:Ignorable="d"
-        Title="Картотека" Height="450" Width="800">
+        Title="Картотека" Height="450" Width="938">
     <Window.DataContext>
         <viewmodels:MainWindowViewModel/>
     </Window.DataContext>
@@ -30,13 +30,13 @@
             <DataGrid Grid.Row="0" Margin="5" ItemsSource="{Binding Employees}" SelectedItem="{Binding SelectedEmployee}" AutoGenerateColumns="False"
                       CanUserAddRows="False" CanUserDeleteRows="False" IsReadOnly="True" SelectionChanged="DataGrid_SelectionChanged">
                 <DataGrid.Columns>
-                    <DataGridTextColumn Header="Фамилия" Binding="{Binding LastName}" />
-                    <DataGridTextColumn Header="Имя" Binding="{Binding FirstName}" />
-                    <DataGridTextColumn Header="Отчество" Binding="{Binding MiddleName}" />
-                    <DataGridTextColumn Header="Дата рождения" Binding="{Binding BirthDateText}" />
-                    <DataGridTextColumn Header="Должность" Binding="{Binding Position}" />
-                    <DataGridTextColumn Header="Подразделение" Binding="{Binding Division}" />
-                    <DataGridTextColumn Header="Дата трудоустройства" Binding="{Binding EmploymentDateText}" />
+                    <DataGridTextColumn Header="Ракета" Binding="{Binding Rocket}" />
+                    <DataGridTextColumn Header="Тип БЧ" Binding="{Binding TypeWH}" />
+                    <DataGridTextColumn Header="Базирование" Binding="{Binding Basing}" />
+                    <DataGridTextColumn Header="Мёртвая зона" Binding="{Binding DeadZone}" />
+                    <DataGridTextColumn Header="Дальность" Binding="{Binding Range}" />
+                    <DataGridTextColumn Header="Постановка на дижурство" Binding="{Binding PuttingOnDutyText}" />
+                    <DataGridTextColumn Header="Дата обязательного ремонта" Binding="{Binding RepairDateText}" />
                 </DataGrid.Columns>
             </DataGrid>
         

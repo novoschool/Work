@@ -28,36 +28,36 @@ namespace CardFile.Business.Services
             _storage.Employees.Add(new Employee
             {
                 Id = 1,
-                FirstName = "Андрей",
-                MiddleName = "Григорьевич",
-                LastName = "Захаров",
-                BirthDate = new DateTime(1985, 11, 8),
-                Position = "Руководитель проекта",
-                Division = "Отдел разработки",
-                EmploymentDate = new DateTime(2019, 7, 15),
+                FirstName = "Сармат",
+                MiddleName = "РБЧ",
+                LastName = "Шахтное",
+                BirthDate = new DateTime(2019, 11, 8),
+                Position = 1320,
+                Division = 9465,
+                EmploymentDate = new DateTime(2035, 7, 15),
             });
             _storage.Employees.Add(new Employee
             {
                 Id = 2,
-                FirstName = "Людмила",
-                MiddleName = "Алексеевна",
-                LastName = "Фролова",
-                BirthDate = new DateTime(1978, 3, 11),
-                Position = "Бизнес-аналитик",
-                Division = "Отдел анализа",
-                EmploymentDate = new DateTime(2020, 2, 3),
+                FirstName = "Тополь-М",
+                MiddleName = "РБЧ",
+                LastName = "Мобильное",
+                BirthDate = new DateTime(1997, 3, 11),
+                Position = 2424,
+                Division = 10843,
+                EmploymentDate = new DateTime(2027, 2, 3),
             });
-            _storage.Employees.Add(new Employee
-            {
-                Id = 3,
-                FirstName = "Вера",
-                MiddleName = "Владимировна",
-                LastName = "Тищенко",
-                BirthDate = new DateTime(1989, 6, 10),
-                Position = "Руководитель группы",
-                Division = "Отдел тестирования",
-                EmploymentDate = new DateTime(2021, 11, 18),
-            });
+            //_storage.Employees.Add(new Employee
+            //{
+            //    Id = 3,
+            //    FirstName = "Вера",
+            //    MiddleName = "Владимировна",
+            //    LastName = "Тищенко",
+            //    BirthDate = new DateTime(1989, 6, 10),
+            //    Position = "Руководитель группы",
+            //    Division = "Отдел тестирования",
+            //    EmploymentDate = new DateTime(2021, 11, 18),
+            //});
 
             EmployeeStorage.MaxId = _storage.Employees.Max(e => e.Id);
         }
