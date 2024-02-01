@@ -51,7 +51,12 @@ namespace HashTable.Entities
                 if (_dataSet[index].Key.Equals(key))
                 {
                     _dataSet[index].Value = value;
-                    _dataSet[index].IsRemoved = false;
+                    if (_dataSet[index].IsRemoved)
+                    {
+                        _dataSet[index].IsRemoved = false;
+                        Count++;
+                    }
+
                     return false;
                 }
 
