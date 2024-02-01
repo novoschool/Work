@@ -25,7 +25,9 @@ namespace CardFile
     {
         internal MainWindowViewModel ViewModel => (MainWindowViewModel)DataContext;
 
-        private const string FileNameFilter = "Текстовые файлы картотеки|*.crdtxt|Двоичные файлы картотеки|*.crdbin|Все файлы|*.*";
+        private const string FileNameFilter =
+            "Текстовые файлы картотеки|*.crdtxt|Двоичные файлы картотеки|*.crdbin|" +
+            "XML-файлы картотеки|*.crdxml|JSON-файлы картотеки|*.crdjson|Все файлы|*.*";
 
         public MainWindow()
         {
