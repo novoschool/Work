@@ -97,10 +97,6 @@ values
 returning ""Id""
 ";
 
-            var query2 = @"
-select max(""Id"") max_id
-from ""Employee""
-";
             using (var connection = new NpgsqlConnection(ConnectionString))
             {
                 connection.Open();
@@ -108,7 +104,6 @@ from ""Employee""
                 using (var cmd = new NpgsqlCommand(query, connection))
                 {
                     cmd.CommandType = System.Data.CommandType.Text;
-                    cmd.Parameters.AddWithValue("id", employee.Id);
                     cmd.Parameters.AddWithValue("firstName", employee.FirstName);
                     cmd.Parameters.AddWithValue("middleName", employee.MiddleName);
                     cmd.Parameters.AddWithValue("lastName", employee.LastName);
@@ -119,14 +114,6 @@ from ""Employee""
                     var result = (int)cmd.ExecuteScalar();
                     return result;
                 }
-
-                //using (var cmd = new NpgsqlCommand(query2, connection))
-                //{
-                //    cmd.CommandType = System.Data.CommandType.Text;
-                //    var reader = cmd.ExecuteReader();
-                //    var result = reader.GetInt32(0);
-                //    return result;
-                //}
             }
         }
 
@@ -170,6 +157,26 @@ where
         public void SaveAll(IEnumerable<Employee> employees)
         {
             throw new NotImplementedException();
+        }
+
+        public void Delete(int employeeId)
+        {
+            var query = @"
+delete from public.""Employee""
+where
+    ""Id"" = @id
+";
+            using (var connection = new NpgsqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                using (var cmd = new NpgsqlCommand(query, connection))
+                {
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.Parameters.AddWithValue("id", employeeId);
+                    cmd.ExecuteNonQuery();
+                }
+            }
         }
     }
 }

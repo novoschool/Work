@@ -30,13 +30,7 @@ namespace CardFile.Business.Services
 
         public void Delete(int employeeId)
         {
-            //var existingEmployee = _storage.Employees.FirstOrDefault(e => e.Id == employeeId);
-            //if (existingEmployee == null)
-            //{
-            //    throw new IndexOutOfRangeException();
-            //}
-
-            //_storage.Employees.Remove(existingEmployee);
+            _employeeRepository.Delete(employeeId);
         }
     }
 }

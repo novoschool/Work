@@ -126,6 +126,27 @@ namespace BinarySearchTree
                 }
             }
 
+            const int totalOperationCount = 1000000;
+            foreach (var insertCount in new[] { 10, 100, 1000, 10000, 100000 })
+            {
+                var repeatCount = totalOperationCount / insertCount;
+                var beginTime = DateTime.Now;
+                for (int i = 0; i < repeatCount; i++)
+                {
+                    var testDictionary = new MySortedDictionary<string, int?>();
+                    for (int j = 0; j < insertCount; j++)
+                    {
+                        var key = rnd.Next(2 * repeatCount).ToString();
+                        var value = rnd.Next(2 * repeatCount);
+                        testDictionary[key] = value;
+                    }
+                }
+
+                var endTime = DateTime.Now;
+                var timeDiff = (endTime - beginTime).TotalSeconds;
+                Console.WriteLine($"Insert count: {insertCount}. Operation time: {timeDiff / totalOperationCount}");
+            }
+
             Console.ReadLine();
         }
     }

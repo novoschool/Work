@@ -58,31 +58,83 @@ namespace HashTable
             //    }
             //}
 
-            var complexTable = new MyHashTable<ComplexKey, string?>();
-            for (int i = 0; i < 80; i++)
+            var dictionary = new MyDictionary<string, int?>();
+
+            for (int i = 0; i < 100; i++)
             {
-                var keyString = rnd.Next(10).ToString();
-                var keyInt = rnd.Next(10);
-                var value = GenerateRandomString(rnd);
+                var key = rnd.Next(100).ToString();
+                var value = rnd.Next(100);
+                dictionary[key] = value;
+                Console.WriteLine($"Добавлена пара (\"{key}\", {value}). В таблице {dictionary.Count} элементов.");
+            }
 
-                var key = new ComplexKey
+            for (int i = 0; i < 100; i++)
+            {
+                var key = rnd.Next(100).ToString();
+                var value = dictionary[key];
+                if (value.HasValue)
                 {
-                    StringProperty = keyString,
-                    IntProperty = keyInt,
-                };
-
-                var inserted = complexTable.Add(key, value);
-                if (inserted)
-                {
-                    Console.WriteLine($"Добавлена пара [(\"{key.StringProperty}\", {key.IntProperty}), "
-                        + $"<<<{value}>>>]. В таблице {complexTable.Count} элементов.");
+                    Console.WriteLine($"По ключу \"{key}\" найдено значение {value}.");
                 }
                 else
                 {
-                    Console.WriteLine($"Значение по ключу (\"{key.StringProperty}\", {key.IntProperty}) " + 
-                        $"заменено на <<<{value}>>>. В таблице {complexTable.Count} элементов.");
+                    Console.WriteLine($"По ключу \"{key}\" значение не найдено.");
                 }
             }
+
+            for (int i = 0; i < 100; i++)
+            {
+                var key = rnd.Next(100).ToString();
+                dictionary[key] = null;
+                Console.WriteLine($"Значение по ключу \"{key}\" исключено из таблицы. В таблице {dictionary.Count} элементов.");
+            }
+
+            const int totalOperationCount = 1000000;
+            foreach (var insertCount in new[] { 10, 100, 1000, 10000, 100000 })
+            {
+                var repeatCount = totalOperationCount / insertCount;
+                var beginTime = DateTime.Now;
+                for (int i = 0; i < repeatCount; i++)
+                {
+                    var testDictionary = new MyDictionary<string, int?>();
+                    for (int j = 0; j < insertCount; j++)
+                    {
+                        var key = rnd.Next(2 * repeatCount).ToString();
+                        var value = rnd.Next(2 * repeatCount);
+                        testDictionary[key] = value;
+                    }
+                }
+
+                var endTime = DateTime.Now;
+                var timeDiff = (endTime - beginTime).TotalSeconds;
+                Console.WriteLine($"Insert count: {insertCount}. Operation time: {timeDiff / totalOperationCount}");
+            }
+
+            //var complexTable = new MyHashTable<ComplexKey, string?>();
+            //for (int i = 0; i < 80; i++)
+            //{
+            //    var keyString = rnd.Next(10).ToString();
+            //    var keyInt = rnd.Next(10);
+            //    var value = GenerateRandomString(rnd);
+
+            //    var key = new ComplexKey
+            //    {
+            //        StringProperty = keyString,
+            //        IntProperty = keyInt,
+            //    };
+
+            //    var inserted = complexTable.Add(key, value);
+            //    if (inserted)
+            //    {
+            //        Console.WriteLine($"Добавлена пара [(\"{key.StringProperty}\", {key.IntProperty}), "
+            //            + $"<<<{value}>>>]. В таблице {complexTable.Count} элементов.");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine($"Значение по ключу (\"{key.StringProperty}\", {key.IntProperty}) " + 
+            //            $"заменено на <<<{value}>>>. В таблице {complexTable.Count} элементов.");
+            //    }
+            //}
         }
 
         private static string GenerateRandomString(Random rnd)
