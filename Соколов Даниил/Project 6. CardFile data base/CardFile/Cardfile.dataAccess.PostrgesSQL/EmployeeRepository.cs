@@ -4,6 +4,7 @@ using Npgsql;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -17,7 +18,7 @@ namespace Cardfile.dataAccess.PostrgesSQL
         {
             var query = @"
                 select 
-                    ""id"",
+                    ""Id"",
                     ""Rocket"",
                     ""TypeWH"",
                     ""Basing"",
@@ -57,14 +58,124 @@ namespace Cardfile.dataAccess.PostrgesSQL
             }
         }
 
-        public void Save(Employee employee)
+        public int Save(Employee employee)
         {
-            throw new NotImplementedException();
+            if (employee.Id == 0)
+            {
+                return Insert(employee);
+            }
+            else
+            {
+                return Update(employee);
+            }
         }
+
+        private int Insert(Employee employee)
+        {
+            var query = @"
+insert into public.""BimBimBamBams""
+(
+""Rocket"",
+""TypeWH"",
+""Basing"",
+""DeadZone"",
+""Range"",
+""PuttingOnDuty"",
+""RepairDate""
+)
+values
+(
+@firstName,
+@middleName,
+@lastName,
+@division,
+@position,
+@birthDate,
+@employmentDate
+)
+returning ""Id""
+";
+            using (var connection = new NpgsqlConnection(ConnectionString))
+            {
+            
+                connection.Open();
+                using (var cmd =new NpgsqlCommand(query,connection))
+                {
+                    cmd.CommandType = System.Data.CommandType.Text; 
+                    cmd.Parameters.AddWithValue("firstName", employee.FirstName);
+                    cmd.Parameters.AddWithValue("middlename", employee.MiddleName);    
+                    cmd.Parameters.AddWithValue("lastName",employee.LastName);
+                    cmd.Parameters.AddWithValue("birthDate", employee.BirthDate);
+                    cmd.Parameters.AddWithValue("position", employee.Position);
+                    cmd.Parameters.AddWithValue("division", employee.Division);
+                    cmd.Parameters.AddWithValue("employmentDate", employee.EmploymentDate);
+                    var result = (int)cmd.ExecuteScalar();
+                    return result;
+                }
+            }
+        }
+        
+        private int Update(Employee employee)
+        {
+            var query = @"
+update public.""BimBimBamBams""
+set 
+    ""Rocket"" = @firstName,
+    ""TypeWH"" = @middleName,
+    ""Basing"" = @lasName,
+    ""DeadZone"" = @division,
+    ""Range"" = @position,
+    ""PuttingOnDuty"" = @birthDate,
+    ""RepairDate"" =@employmentDate
+where
+    ""Id"" = @id
+";
+            using (var connection = new NpgsqlConnection(ConnectionString))
+            {
+                connection.Open();
+                using(var cmd = new NpgsqlCommand(query,connection))
+                {
+                    cmd.CommandType = System.Data.CommandType.Text;
+                    cmd.Parameters.AddWithValue("id", employee.Id);
+                    cmd.Parameters.AddWithValue("firstName", employee.FirstName);
+                    cmd.Parameters.AddWithValue("middlename", employee.MiddleName);
+                    cmd.Parameters.AddWithValue("lastName", employee.LastName);
+                    cmd.Parameters.AddWithValue("birthDate", employee.BirthDate);
+                    cmd.Parameters.AddWithValue("position", employee.Position);
+                    cmd.Parameters.AddWithValue("division", employee.Division);
+                    cmd.Parameters.AddWithValue("employmentDate", employee.EmploymentDate);
+
+                    cmd.ExecuteNonQuery();
+                    return employee.Id;
+                }
+            }
+        }
+        
 
         public void SaveAll(IEnumerable<Employee> employees)
         {
             throw new NotImplementedException();
+        }
+        public void Delete(int employeeId)
+        {
+            var query = @"
+delete from public.""BimBimBamBams""
+where
+        ""Id"" = @id
+";
+
+            using (var connection = new NpgsqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                using(var cmd = new NpgsqlCommand(query,connection))
+                {
+                    cmd.CommandType= System.Data.CommandType.Text;
+                    cmd.Parameters.AddWithValue("id", employeeId);
+                    cmd.ExecuteNonQuery ();
+                }
+            }
+                
         }
     }
 }

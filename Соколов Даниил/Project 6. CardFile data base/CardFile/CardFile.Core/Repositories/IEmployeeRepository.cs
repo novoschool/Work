@@ -13,6 +13,8 @@ namespace CardFile.Core.Repositories
 
         void SaveAll(IEnumerable<Employee> employees);
 
-        void Save(Employee employee);
+        int Save(Employee employee);
+
+        void Delete(int employeeId);
     }
 }

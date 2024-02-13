@@ -13,6 +13,11 @@ namespace CardFile.DataAccess.File.Repositories
     {
         public string FileName { get; set; }
 
+        public void Delete(int employeeId)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Employee> GetAll()
         {
             using (var br = new BinaryReader(System.IO.File.Open(FileName, FileMode.Open)))
@@ -80,6 +85,11 @@ namespace CardFile.DataAccess.File.Repositories
                     bw.Write(employee.EmploymentDate.Ticks);
                 }
             }
+        }
+
+        int IEmployeeRepository.Save(Employee employee)
+        {
+            throw new NotImplementedException();
         }
     }
 }

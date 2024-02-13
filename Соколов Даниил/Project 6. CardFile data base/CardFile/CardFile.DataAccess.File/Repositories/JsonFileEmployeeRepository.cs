@@ -14,6 +14,11 @@ namespace CardFile.DataAccess.File.Repositories
     {
         public string FileName {  get; set; }
 
+        public void Delete(int employeeId)
+        {
+            throw new NotImplementedException();
+        }
+
         public IEnumerable<Employee> GetAll()
         {
             using(var sr = new StreamReader(FileName))
@@ -38,6 +43,9 @@ namespace CardFile.DataAccess.File.Repositories
             }
         }
 
-        
+        int IEmployeeRepository.Save(Employee employee)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
