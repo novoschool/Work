@@ -41,7 +41,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\EmployeeStorage.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Services\EmployeeService.cs" />
   </ItemGroup>
@@ -50,10 +49,16 @@
       <Project>{22F56004-7E80-4C6B-B100-F397859538FC}</Project>
       <Name>CardFile.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CardFile.DataAccess.File\CardFile.DataAccess.File.csproj">
-      <Project>{4DE749C2-377A-4970-95CA-2C6A9DA8B09E}</Project>
-      <Name>CardFile.DataAccess.File</Name>
+    <ProjectReference Include="..\CardFile.DataAccess.PostgreSQL\CardFile.DataAccess.PostgreSQL.csproj">
+      <Project>{1ADC910F-7281-484E-945C-EDDFEAA2505A}</Project>
+      <Name>CardFile.DataAccess.PostgreSQL</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

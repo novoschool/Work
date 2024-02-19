@@ -58,29 +58,118 @@ namespace HashTable
             //    }
             //}
 
-            var complexTable = new MyHashTable<ComplexKey, string?>();
-            for (int i = 0; i < 80; i++)
+            //var complexTable = new MyHashTable<ComplexKey, string?>();
+            //for (int i = 0; i < 80; i++)
+            //{
+            //    var keyString = rnd.Next(10).ToString();
+            //    var keyInt = rnd.Next(10);
+            //    var value = GenerateRandomString(rnd);
+
+            //    var key = new ComplexKey
+            //    {
+            //        StringProperty = keyString,
+            //        IntProperty = keyInt,
+            //    };
+
+            //    var inserted = complexTable.Add(key, value);
+            //    if (inserted)
+            //    {
+            //        Console.WriteLine($"Добавлена пара [(\"{key.StringProperty}\", {key.IntProperty}), "
+            //            + $"<<<{value}>>>]. В таблице {complexTable.Count} элементов.");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine($"Значение по ключу (\"{key.StringProperty}\", {key.IntProperty}) " + 
+            //            $"заменено на <<<{value}>>>. В таблице {complexTable.Count} элементов.");
+            //    }
+            //}
+
+            //var dictionary = new MyDictionary<string, int?>();
+            //var sb = new StringBuilder();
+            //for (int i = 0; i < 100; i++)
+            //{
+            //    var key = rnd.Next(100).ToString();
+            //    var value = rnd.Next(100);
+
+            //    dictionary[key] = value;
+            //    Console.WriteLine($"Значение по ключу \"{key}\" установлено {value}. В таблице {dictionary.Count} элементов.");
+            //}
+
+            //dictionary.Enumerate((key, value) => sb.Append($"(\"{key}\", {value}) "));
+            //Console.WriteLine($"Содержимое коллекции: {sb}");
+
+            //for (int i = 0; i < 100; i++)
+            //{
+            //    var key = rnd.Next(100).ToString();
+            //    var value = dictionary[key];
+            //    if (value.HasValue)
+            //    {
+            //        Console.WriteLine($"По ключу \"{key}\" найдено значение {value}.");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine($"По ключу \"{key}\" значение не найдено.");
+            //    }
+            //}
+
+            //for (int i = 0; i < 100; i++)
+            //{
+            //    var key = rnd.Next(100).ToString();
+            //    var removed = dictionary.Remove(key);
+            //    if (removed)
+            //    {
+            //        Console.WriteLine($"Значение по ключу \"{key}\" исключено из таблицы. В таблице {dictionary.Count} элементов.");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine($"Значение по ключу \"{key}\" в таблице отсутствует. В таблице {dictionary.Count} элементов.");
+            //    }
+            //}
+
+            var dictionary = new Dictionary<string, int?>();
+            var sb = new StringBuilder();
+            for (int i = 0; i < 100; i++)
             {
-                var keyString = rnd.Next(10).ToString();
-                var keyInt = rnd.Next(10);
-                var value = GenerateRandomString(rnd);
+                var key = rnd.Next(100).ToString();
+                var value = rnd.Next(100);
 
-                var key = new ComplexKey
-                {
-                    StringProperty = keyString,
-                    IntProperty = keyInt,
-                };
+                dictionary[key] = value;
+                Console.WriteLine($"Значение по ключу \"{key}\" установлено {value}. В таблице {dictionary.Count} элементов.");
+            }
 
-                var inserted = complexTable.Add(key, value);
-                if (inserted)
+            Console.Write("Содержимое коллекции: ");
+            foreach (var kvp in dictionary)
+            {
+                Console.Write($"(\"{kvp.Key}\", {kvp.Value}) ");
+            }
+
+            Console.WriteLine();
+
+            for (int i = 0; i < 100; i++)
+            {
+                var key = rnd.Next(100).ToString();
+                if (dictionary.ContainsKey(key))
                 {
-                    Console.WriteLine($"Добавлена пара [(\"{key.StringProperty}\", {key.IntProperty}), "
-                        + $"<<<{value}>>>]. В таблице {complexTable.Count} элементов.");
+                    var value = dictionary[key];
+                    Console.WriteLine($"По ключу \"{key}\" найдено значение {value}.");
                 }
                 else
                 {
-                    Console.WriteLine($"Значение по ключу (\"{key.StringProperty}\", {key.IntProperty}) " + 
-                        $"заменено на <<<{value}>>>. В таблице {complexTable.Count} элементов.");
+                    Console.WriteLine($"По ключу \"{key}\" значение не найдено.");
+                }
+            }
+
+            for (int i = 0; i < 100; i++)
+            {
+                var key = rnd.Next(100).ToString();
+                var removed = dictionary.Remove(key);
+                if (removed)
+                {
+                    Console.WriteLine($"Значение по ключу \"{key}\" исключено из таблицы. В таблице {dictionary.Count} элементов.");
+                }
+                else
+                {
+                    Console.WriteLine($"Значение по ключу \"{key}\" в таблице отсутствует. В таблице {dictionary.Count} элементов.");
                 }
             }
         }

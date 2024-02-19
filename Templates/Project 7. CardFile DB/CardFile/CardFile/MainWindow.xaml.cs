@@ -25,10 +25,6 @@ namespace CardFile
     {
         internal MainWindowViewModel ViewModel => (MainWindowViewModel)DataContext;
 
-        private const string FileNameFilter =
-            "Текстовые файлы картотеки|*.crdtxt|Двоичные файлы картотеки|*.crdbin|" +
-            "XML-файлы картотеки|*.crdxml|JSON-файлы картотеки|*.crdjson|Все файлы|*.*";
-
         public MainWindow()
         {
             InitializeComponent();
@@ -62,40 +58,6 @@ namespace CardFile
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ViewModel.UpdateButtons();
-        }
-
-        private void OpenMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            var dlg = new OpenFileDialog { Filter = FileNameFilter };
-            if (dlg.ShowDialog() == true)
-            {
-                ViewModel.Open(dlg.FileName);
-            }
-        }
-
-        private void SaveMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            if (ViewModel.HasFileName)
-            {
-                ViewModel.Save();
-            }
-            else
-            {
-                var dlg = new SaveFileDialog { Filter = FileNameFilter };
-                if (dlg.ShowDialog() == true)
-                {
-                    ViewModel.SaveAs(dlg.FileName);
-                }
-            }
-        }
-
-        private void SaveAsMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            var dlg = new SaveFileDialog { Filter = FileNameFilter };
-            if (dlg.ShowDialog() == true)
-            {
-                ViewModel.SaveAs(dlg.FileName);
-            }
         }
 
         private void ExitMenuItem_Click(object sender, RoutedEventArgs e)

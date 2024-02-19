@@ -7,9 +7,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardFile", "CardFile\CardFi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardFile.Business", "CardFile.Business\CardFile.Business.csproj", "{411D30AB-6653-42F6-895D-D2AD93880D1A}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardFile.DataAccess.File", "CardFile.DataAccess.File\CardFile.DataAccess.File.csproj", "{4DE749C2-377A-4970-95CA-2C6A9DA8B09E}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardFile.Core", "CardFile.Core\CardFile.Core.csproj", "{22F56004-7E80-4C6B-B100-F397859538FC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardFile.DataAccess.PostgreSQL", "CardFile.DataAccess.PostgreSQL\CardFile.DataAccess.PostgreSQL.csproj", "{1ADC910F-7281-484E-945C-EDDFEAA2505A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -25,14 +25,14 @@ Global
 		{411D30AB-6653-42F6-895D-D2AD93880D1A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{411D30AB-6653-42F6-895D-D2AD93880D1A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{411D30AB-6653-42F6-895D-D2AD93880D1A}.Release|Any CPU.Build.0 = Release|Any CPU
-		{4DE749C2-377A-4970-95CA-2C6A9DA8B09E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{4DE749C2-377A-4970-95CA-2C6A9DA8B09E}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{4DE749C2-377A-4970-95CA-2C6A9DA8B09E}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{4DE749C2-377A-4970-95CA-2C6A9DA8B09E}.Release|Any CPU.Build.0 = Release|Any CPU
 		{22F56004-7E80-4C6B-B100-F397859538FC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{22F56004-7E80-4C6B-B100-F397859538FC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{22F56004-7E80-4C6B-B100-F397859538FC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{22F56004-7E80-4C6B-B100-F397859538FC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1ADC910F-7281-484E-945C-EDDFEAA2505A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1ADC910F-7281-484E-945C-EDDFEAA2505A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1ADC910F-7281-484E-945C-EDDFEAA2505A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1ADC910F-7281-484E-945C-EDDFEAA2505A}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

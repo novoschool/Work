@@ -87,27 +87,63 @@ namespace BinarySearchTree
             //    Console.WriteLine();
             //}
 
-            var dictionary = new MySortedDictionary<MyKey, int?>();
+            //var dictionary = new MySortedDictionary<MyKey, int?>();
+
+            //for (int i = 0; i < 80; i++)
+            //{
+            //    var field1 = rnd.Next(10).ToString();
+            //    var field2 = rnd.Next(10);
+            //    var value = rnd.Next(100);
+            //    //var inserted = dictionary.Add(new MyKey { Field1 = field1, Field2 = field2, }, value);
+            //    //if (inserted)
+            //    //{
+            //    //    Console.WriteLine($"Value ((\"{field1}\", {field2}), {value}) was inserted to dictionary.");
+            //    //}
+            //    //else
+            //    //{
+            //    //    Console.WriteLine($"Key (\"{field1}\", {field2}) already existed in dictionary. Value {value} replaced previous value.");
+            //    //}
+            //    dictionary[new MyKey { Field1 = field1, Field2 = field2, }] = value;
+            //    Console.WriteLine($"Value ((\"{field1}\", {field2}), {value}) was inserted to dictionary.");
+            //}
+
+            //dictionary.ProcessLeftToRight((x, level) => Console.Write($"((\"{x.Key.Field1}\", {x.Key.Field2}), {x.Value}) "));
+            //Console.WriteLine();
+
+            //for (int i = 0; i < 80; i++)
+            //{
+            //    var field1 = rnd.Next(10).ToString();
+            //    var field2 = rnd.Next(10);
+
+            //    var value = dictionary[new MyKey { Field1 = field1, Field2 = field2, }];
+            //    if (value != null)
+            //    {
+            //        Console.WriteLine($"Key (\"{field1}\", {field2}) already exists in dictionary. Its value = {value}.");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine($"Key (\"{field1}\", {field2}) not found in dictionary.");
+            //    }
+            //}
+
+            //Console.ReadLine();
+
+            var dictionary = new SortedDictionary<MyKey, int?>();
 
             for (int i = 0; i < 80; i++)
             {
                 var field1 = rnd.Next(10).ToString();
                 var field2 = rnd.Next(10);
                 var value = rnd.Next(100);
-                //var inserted = dictionary.Add(new MyKey { Field1 = field1, Field2 = field2, }, value);
-                //if (inserted)
-                //{
-                //    Console.WriteLine($"Value ((\"{field1}\", {field2}), {value}) was inserted to dictionary.");
-                //}
-                //else
-                //{
-                //    Console.WriteLine($"Key (\"{field1}\", {field2}) already existed in dictionary. Value {value} replaced previous value.");
-                //}
                 dictionary[new MyKey { Field1 = field1, Field2 = field2, }] = value;
                 Console.WriteLine($"Value ((\"{field1}\", {field2}), {value}) was inserted to dictionary.");
             }
 
-            dictionary.ProcessLeftToRight((x, level) => Console.Write($"((\"{x.Key.Field1}\", {x.Key.Field2}), {x.Value}) "));
+            foreach (var kvp in dictionary)
+            {
+                Console.Write($"((\"{kvp.Key.Field1}\", {kvp.Key.Field2}), {kvp.Value}) ");
+            }
+
             Console.WriteLine();
 
             for (int i = 0; i < 80; i++)
@@ -115,9 +151,10 @@ namespace BinarySearchTree
                 var field1 = rnd.Next(10).ToString();
                 var field2 = rnd.Next(10);
 
-                var value = dictionary[new MyKey { Field1 = field1, Field2 = field2, }];
-                if (value != null)
+                var key = new MyKey { Field1 = field1, Field2 = field2, };
+                if (dictionary.ContainsKey(key))
                 {
+                    var value = dictionary[key];
                     Console.WriteLine($"Key (\"{field1}\", {field2}) already exists in dictionary. Its value = {value}.");
                 }
                 else
