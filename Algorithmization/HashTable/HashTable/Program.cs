@@ -58,58 +58,6 @@ namespace HashTable
             //    }
             //}
 
-            var dictionary = new MyDictionary<string, int?>();
-
-            for (int i = 0; i < 100; i++)
-            {
-                var key = rnd.Next(100).ToString();
-                var value = rnd.Next(100);
-                dictionary[key] = value;
-                Console.WriteLine($"Добавлена пара (\"{key}\", {value}). В таблице {dictionary.Count} элементов.");
-            }
-
-            for (int i = 0; i < 100; i++)
-            {
-                var key = rnd.Next(100).ToString();
-                var value = dictionary[key];
-                if (value.HasValue)
-                {
-                    Console.WriteLine($"По ключу \"{key}\" найдено значение {value}.");
-                }
-                else
-                {
-                    Console.WriteLine($"По ключу \"{key}\" значение не найдено.");
-                }
-            }
-
-            for (int i = 0; i < 100; i++)
-            {
-                var key = rnd.Next(100).ToString();
-                dictionary[key] = null;
-                Console.WriteLine($"Значение по ключу \"{key}\" исключено из таблицы. В таблице {dictionary.Count} элементов.");
-            }
-
-            const int totalOperationCount = 1000000;
-            foreach (var insertCount in new[] { 10, 100, 1000, 10000, 100000 })
-            {
-                var repeatCount = totalOperationCount / insertCount;
-                var beginTime = DateTime.Now;
-                for (int i = 0; i < repeatCount; i++)
-                {
-                    var testDictionary = new MyDictionary<string, int?>();
-                    for (int j = 0; j < insertCount; j++)
-                    {
-                        var key = rnd.Next(2 * repeatCount).ToString();
-                        var value = rnd.Next(2 * repeatCount);
-                        testDictionary[key] = value;
-                    }
-                }
-
-                var endTime = DateTime.Now;
-                var timeDiff = (endTime - beginTime).TotalSeconds;
-                Console.WriteLine($"Insert count: {insertCount}. Operation time: {timeDiff / totalOperationCount}");
-            }
-
             //var complexTable = new MyHashTable<ComplexKey, string?>();
             //for (int i = 0; i < 80; i++)
             //{
@@ -135,6 +83,95 @@ namespace HashTable
             //            $"заменено на <<<{value}>>>. В таблице {complexTable.Count} элементов.");
             //    }
             //}
+
+            //var dictionary = new MyDictionary<string, int?>();
+            //var sb = new StringBuilder();
+            //for (int i = 0; i < 100; i++)
+            //{
+            //    var key = rnd.Next(100).ToString();
+            //    var value = rnd.Next(100);
+
+            //    dictionary[key] = value;
+            //    Console.WriteLine($"Значение по ключу \"{key}\" установлено {value}. В таблице {dictionary.Count} элементов.");
+            //}
+
+            //dictionary.Enumerate((key, value) => sb.Append($"(\"{key}\", {value}) "));
+            //Console.WriteLine($"Содержимое коллекции: {sb}");
+
+            //for (int i = 0; i < 100; i++)
+            //{
+            //    var key = rnd.Next(100).ToString();
+            //    var value = dictionary[key];
+            //    if (value.HasValue)
+            //    {
+            //        Console.WriteLine($"По ключу \"{key}\" найдено значение {value}.");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine($"По ключу \"{key}\" значение не найдено.");
+            //    }
+            //}
+
+            //for (int i = 0; i < 100; i++)
+            //{
+            //    var key = rnd.Next(100).ToString();
+            //    var removed = dictionary.Remove(key);
+            //    if (removed)
+            //    {
+            //        Console.WriteLine($"Значение по ключу \"{key}\" исключено из таблицы. В таблице {dictionary.Count} элементов.");
+            //    }
+            //    else
+            //    {
+            //        Console.WriteLine($"Значение по ключу \"{key}\" в таблице отсутствует. В таблице {dictionary.Count} элементов.");
+            //    }
+            //}
+
+            var dictionary = new Dictionary<string, int?>();
+            var sb = new StringBuilder();
+            for (int i = 0; i < 100; i++)
+            {
+                var key = rnd.Next(100).ToString();
+                var value = rnd.Next(100);
+
+                dictionary[key] = value;
+                Console.WriteLine($"Значение по ключу \"{key}\" установлено {value}. В таблице {dictionary.Count} элементов.");
+            }
+
+            Console.Write("Содержимое коллекции: ");
+            foreach (var kvp in dictionary)
+            {
+                Console.Write($"(\"{kvp.Key}\", {kvp.Value}) ");
+            }
+
+            Console.WriteLine();
+
+            for (int i = 0; i < 100; i++)
+            {
+                var key = rnd.Next(100).ToString();
+                if (dictionary.ContainsKey(key))
+                {
+                    var value = dictionary[key];
+                    Console.WriteLine($"По ключу \"{key}\" найдено значение {value}.");
+                }
+                else
+                {
+                    Console.WriteLine($"По ключу \"{key}\" значение не найдено.");
+                }
+            }
+
+            for (int i = 0; i < 100; i++)
+            {
+                var key = rnd.Next(100).ToString();
+                var removed = dictionary.Remove(key);
+                if (removed)
+                {
+                    Console.WriteLine($"Значение по ключу \"{key}\" исключено из таблицы. В таблице {dictionary.Count} элементов.");
+                }
+                else
+                {
+                    Console.WriteLine($"Значение по ключу \"{key}\" в таблице отсутствует. В таблице {dictionary.Count} элементов.");
+                }
+            }
         }
 
         private static string GenerateRandomString(Random rnd)

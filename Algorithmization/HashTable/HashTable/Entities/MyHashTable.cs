@@ -95,6 +95,30 @@ namespace HashTable.Entities
             return false;
         }
 
+        public void Enumerate(Action<TKey, TValue?> action)
+        {
+            foreach (var kvp in _dataSet)
+            {
+                if (kvp == null || kvp.IsRemoved)
+                {
+                    continue;
+                }
+
+                action(kvp.Key, kvp.Value);
+            }
+        }
+
+        public void Clear()
+        {
+            for (int i = 0; i < _dataSet.Length; i++)
+            {
+                _dataSet[i] = null;
+            }
+
+            Count = 0;
+            _busyCount = 0;
+        }
+
         private long GetNextIndex(TKey key, long index, long count)
         {
             var hashCode = (uint)key.GetHashCode();

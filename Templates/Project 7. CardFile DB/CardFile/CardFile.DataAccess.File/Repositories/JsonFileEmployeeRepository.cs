@@ -1,16 +1,16 @@
 ﻿using CardFile.Core.Entities;
 using CardFile.Core.Repositories;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml.Serialization;
 
 namespace CardFile.DataAccess.File.Repositories
 {
-    public class XmlFileEmployeeRepository : IEmployeeRepository
+    public class JsonFileEmployeeRepository : IEmployeeRepository
     {
         public string FileName { get; set; }
 
@@ -18,9 +18,8 @@ namespace CardFile.DataAccess.File.Repositories
         {
             using (var sr = new StreamReader(FileName))
             {
-                var serializer = new XmlSerializer(typeof(EmployeeCollection));
-                var employees = (EmployeeCollection)serializer.Deserialize(sr);
-                return employees.Employees;
+                var serializer = new JsonSerializer();
+                return (List<Employee>)serializer.Deserialize(sr, typeof(List<Employee>));
             }
         }
 
@@ -28,9 +27,9 @@ namespace CardFile.DataAccess.File.Repositories
         {
             using (var sw = new StreamWriter(FileName))
             {
-                var serializer = new XmlSerializer(typeof(EmployeeCollection));
-                var collection = new EmployeeCollection { Employees = employees.ToList() };
-                serializer.Serialize(sw, collection);
+                var serializer = new JsonSerializer();
+                serializer.Formatting = Formatting.Indented;
+                serializer.Serialize(sw, employees);
             }
         }
     }
