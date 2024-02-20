@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardFile.Core", "CardFile.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardFile.DataAccess.PostgreSQL", "CardFile.DataAccess.PostgreSQL\CardFile.DataAccess.PostgreSQL.csproj", "{1ADC910F-7281-484E-945C-EDDFEAA2505A}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardFile.DataAccess.MSSQL", "CardFile.DataAccess.MSSQL\CardFile.DataAccess.MSSQL.csproj", "{17F0F392-5D99-40B4-AC53-EF3664C827AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CardFile.DataAccess.PostgreSql.EF", "CardFile.DataAccess.PostgreSql.EF\CardFile.DataAccess.PostgreSql.EF.csproj", "{CC6D1224-7DFA-4AE7-BA51-5FA4A40B1023}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +37,14 @@ Global
 		{1ADC910F-7281-484E-945C-EDDFEAA2505A}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1ADC910F-7281-484E-945C-EDDFEAA2505A}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1ADC910F-7281-484E-945C-EDDFEAA2505A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{17F0F392-5D99-40B4-AC53-EF3664C827AB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{17F0F392-5D99-40B4-AC53-EF3664C827AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{17F0F392-5D99-40B4-AC53-EF3664C827AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{17F0F392-5D99-40B4-AC53-EF3664C827AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CC6D1224-7DFA-4AE7-BA51-5FA4A40B1023}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CC6D1224-7DFA-4AE7-BA51-5FA4A40B1023}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CC6D1224-7DFA-4AE7-BA51-5FA4A40B1023}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CC6D1224-7DFA-4AE7-BA51-5FA4A40B1023}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

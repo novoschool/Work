@@ -26,13 +26,13 @@ namespace CardFile.Core.Entities
         [XmlIgnore]
         public DateTime BirthDate { get; set; }
 
-        [XmlAttribute("BirthDate")]
-        [JsonIgnore]
-        public string BirthDateText
-        {
-            get => BirthDate.ToString();
-            set => BirthDate = DateTime.Parse(value);
-        }
+        //[XmlAttribute("BirthDate")]
+        //[JsonIgnore]
+        //public string BirthDateText
+        //{
+        //    get => BirthDate.ToString();
+        //    set => BirthDate = DateTime.Parse(value);
+        //}
 
         [XmlElement("Position")]
         public string Position { get; set; }
@@ -43,12 +43,12 @@ namespace CardFile.Core.Entities
         [XmlIgnore]
         public DateTime EmploymentDate { get; set; }
 
-        [XmlAttribute("EmploymentDate")]
-        [JsonIgnore]
-        public string EmploymentDateText
-        {
-            get => EmploymentDate.ToString();
-            set => EmploymentDate = DateTime.Parse(value);
-        }
+        //[XmlAttribute("EmploymentDate")]
+        //[JsonIgnore]
+        //public string EmploymentDateText
+        //{
+        //    get => EmploymentDate.ToString();
+        //    set => EmploymentDate = DateTime.Parse(value);
+        //}
     }
 }

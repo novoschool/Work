@@ -15,7 +15,24 @@ namespace CardFile.DataAccess.PostgreSQL.Repositories
 
         public void Delete(int employeeId)
         {
-            throw new NotImplementedException();
+            var query = @"
+delete from ""Employees""
+where
+    ""Id"" = @employeeId
+";
+
+            using (var connection = new NpgsqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                using (var command = new NpgsqlCommand(query, connection))
+                {
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.Parameters.AddWithValue("employeeId", employeeId);
+
+                    command.ExecuteNonQuery();
+                }
+            }
         }
 
         public Employee Get(int employeeId)
@@ -114,12 +131,88 @@ from
 
         public int Insert(Employee employee)
         {
-            throw new NotImplementedException();
+            var query = @"
+insert into ""Employees""
+(
+    ""FirstName"",
+    ""MiddleName"",
+    ""LastName"",
+    ""BirthDate"",
+    ""Position"",
+    ""Division"",
+    ""EmploymentDate""
+)
+values
+(
+    @firstName,
+    @middleName,
+    @lastName,
+    @birthDate,
+    @position,
+    @division,
+    @employmentDate
+)
+returning ""Id""
+";
+
+            using (var connection = new NpgsqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                using (var command = new NpgsqlCommand(query, connection))
+                {
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.Parameters.AddWithValue("firstName", employee.FirstName);
+                    command.Parameters.AddWithValue("middleName", employee.MiddleName);
+                    command.Parameters.AddWithValue("lastName", employee.LastName);
+                    command.Parameters.AddWithValue("birthDate", employee.BirthDate);
+                    command.Parameters.AddWithValue("position", employee.Position);
+                    command.Parameters.AddWithValue("division", employee.Division);
+                    command.Parameters.AddWithValue("employmentDate", employee.EmploymentDate);
+
+                    var result = command.ExecuteScalar();
+                    return (int)result;
+                }
+            }
         }
 
         public void Update(Employee employee)
         {
-            throw new NotImplementedException();
+            var query = @"
+update ""Employees""
+set
+    ""FirstName"" = @firstName,
+    ""MiddleName"" = @middleName,
+    ""LastName"" = @lastName,
+    ""BirthDate"" = @birthDate,
+    ""Position"" = @position,
+    ""Division"" = @division,
+    ""EmploymentDate"" = @employmentDate
+where
+    ""Id"" = @employeeId
+";
+
+            using (var connection = new NpgsqlConnection(ConnectionString))
+            {
+                connection.Open();
+
+                using (var command = new NpgsqlCommand(query, connection))
+                {
+                    command.CommandType = System.Data.CommandType.Text;
+                    command.Parameters.AddWithValue("employeeId", employee.Id);
+                    command.Parameters.AddWithValue("firstName", employee.FirstName);
+                    command.Parameters.AddWithValue("middleName", employee.MiddleName);
+                    command.Parameters.AddWithValue("lastName", employee.LastName);
+                    command.Parameters.AddWithValue("birthDate", employee.BirthDate);
+                    command.Parameters.AddWithValue("position", employee.Position);
+                    command.Parameters.AddWithValue("division", employee.Division);
+                    command.Parameters.AddWithValue("employmentDate", employee.EmploymentDate);
+
+                    var result = command.ExecuteNonQuery();
+                }
+            }
         }
+
+        // CQRS
     }
 }

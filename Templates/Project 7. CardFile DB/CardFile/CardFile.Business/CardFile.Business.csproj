@@ -49,9 +49,9 @@
       <Project>{22F56004-7E80-4C6B-B100-F397859538FC}</Project>
       <Name>CardFile.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\CardFile.DataAccess.PostgreSQL\CardFile.DataAccess.PostgreSQL.csproj">
-      <Project>{1ADC910F-7281-484E-945C-EDDFEAA2505A}</Project>
-      <Name>CardFile.DataAccess.PostgreSQL</Name>
+    <ProjectReference Include="..\CardFile.DataAccess.PostgreSql.EF\CardFile.DataAccess.PostgreSql.EF.csproj">
+      <Project>{cc6d1224-7dfa-4ae7-ba51-5fa4a40b1023}</Project>
+      <Name>CardFile.DataAccess.PostgreSql.EF</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
