@@ -49,7 +49,6 @@ namespace CardFile.Business.Services
             {
                 Id = 3,
                 FirstName = "Герта",
-                StrongName = "Алексеевна",
                 LastName = "Фролова",
                 BirthDate = new DateTime(1978, 3, 11),
                 Position = "Бизнес-аналитик",
