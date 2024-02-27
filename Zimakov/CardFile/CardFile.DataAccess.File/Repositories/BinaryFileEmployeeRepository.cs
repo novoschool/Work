@@ -53,6 +53,11 @@ namespace CardFile.DataAccess.File.Repositories
             }
         }
 
+        public int Save(Employee employee)
+        {
+            throw new NotImplementedException();
+        }
+
         public void SaveAll(IEnumerable<Employee> employees)
         {
             using (var bw = new BinaryWriter(System.IO.File.Open(FileName, FileMode.Create)))

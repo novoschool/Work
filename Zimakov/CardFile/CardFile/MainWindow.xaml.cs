@@ -18,9 +18,6 @@ using System.Windows.Shapes;
 
 namespace CardFile
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
         internal MainWindowViewModel ViewModel => (MainWindowViewModel)DataContext;
@@ -61,40 +58,6 @@ namespace CardFile
         private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             ViewModel.UpdateButtons();
-        }
-
-        private void OpenMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            var dlg = new OpenFileDialog { Filter = FileNameFilter };
-            if (dlg.ShowDialog() == true)
-            {
-                ViewModel.Open(dlg.FileName);
-            }
-        }
-
-        private void SaveMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            if (ViewModel.HasFileName)
-            {
-                ViewModel.Save();
-            }
-            else
-            {
-                var dlg = new SaveFileDialog { Filter = FileNameFilter };
-                if (dlg.ShowDialog() == true)
-                {
-                    ViewModel.SaveAs(dlg.FileName);
-                }
-            }
-        }
-
-        private void SaveAsMenuItem_Click(object sender, RoutedEventArgs e)
-        {
-            var dlg = new SaveFileDialog { Filter = FileNameFilter };
-            if (dlg.ShowDialog() == true)
-            {
-                ViewModel.SaveAs(dlg.FileName);
-            }
         }
 
         private void ExitMenuItem_Click(object sender, RoutedEventArgs e)

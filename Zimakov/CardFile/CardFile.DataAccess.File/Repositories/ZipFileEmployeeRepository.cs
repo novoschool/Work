@@ -28,6 +28,11 @@ namespace CardFile.DataAccess.File.Repositories
             }
         }
 
+        public int Save(Employee employee)
+        {
+            throw new NotImplementedException();
+        }
+
         public void SaveAll(IEnumerable<Employee> employees)
         {
             using (var sw = new MemoryStream())
