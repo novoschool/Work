@@ -12,5 +12,9 @@ namespace CardFile.Core.Repositories
         IEnumerable<Employee> GetAll();
 
         void SaveAll(IEnumerable<Employee> employees);
+
+        int Save(Employee employee);
+
+        void Delete(int employeeId);
     }
 }
