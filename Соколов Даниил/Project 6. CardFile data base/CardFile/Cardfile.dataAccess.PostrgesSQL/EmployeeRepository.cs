@@ -122,7 +122,7 @@ update public.""BimBimBamBams""
 set 
     ""Rocket"" = @firstName,
     ""TypeWH"" = @middleName,
-    ""Basing"" = @lasName,
+    ""Basing"" = @lastName,
     ""DeadZone"" = @division,
     ""Range"" = @position,
     ""PuttingOnDuty"" = @birthDate,
@@ -130,6 +130,7 @@ set
 where
     ""Id"" = @id
 ";
+
             using (var connection = new NpgsqlConnection(ConnectionString))
             {
                 connection.Open();
@@ -151,6 +152,7 @@ where
             }
         }
         
+
 
         public void SaveAll(IEnumerable<Employee> employees)
         {
