@@ -148,32 +148,43 @@ namespace DetectorAutomat.Services
 
         private CharClass Classify(char ch)
         {
-            if (ch == ',')
-            {
-                return CharClass.Comma;
-            }
+            //switch (ch)
+            //{
+            //    case ',':
+            //        return CharClass.Comma;
 
-            if (ch == '(')
-            {
-                return CharClass.LeftBracket;
-            }
+            //    case '(':
+            //        return CharClass.LeftBracket;
 
-            if (ch == ')')
-            {
-                return CharClass.RightBracket;
-            }
+            //    case ')':
+            //        return CharClass.RightBracket;
 
-            if (char.IsLetter(ch))
-            {
-                return CharClass.Alpha;
-            }
+            //    default:
+            //        break;
+            //}
 
-            if (char.IsDigit(ch))
-            {
-                return CharClass.Digit;
-            }
+            return 
+                (ch, char.IsLetter(ch), char.IsDigit(ch)) switch
+                {
+                    (',', _, _) => CharClass.Comma,
+                    ('(', _, _) => CharClass.LeftBracket,
+                    (')', _, _) => CharClass.RightBracket,
+                    (_, true, _) => CharClass.Alpha,
+                    (_, false, true) => CharClass.Digit,
+                    _ => CharClass.Other,
+                };
 
-            return CharClass.Other;
+            //if (char.IsLetter(ch))
+            //{
+            //    return CharClass.Alpha;
+            //}
+
+            //if (char.IsDigit(ch))
+            //{
+            //    return CharClass.Digit;
+            //}
+
+            //return CharClass.Other;
         }
     }
 }

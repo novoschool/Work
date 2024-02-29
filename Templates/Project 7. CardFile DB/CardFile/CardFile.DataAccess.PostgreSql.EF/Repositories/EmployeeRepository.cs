@@ -28,7 +28,10 @@ namespace CardFile.DataAccess.PostgreSql.EF.Repositories
 
         public Employee Get(int employeeId)
         {
-            throw new NotImplementedException();
+            using (var ctx = new CardFileDbContext())
+            {
+                return ctx.Employees.FirstOrDefault(e => e.Id == employeeId);
+            }
         }
 
         public IEnumerable<Employee> GetAll()

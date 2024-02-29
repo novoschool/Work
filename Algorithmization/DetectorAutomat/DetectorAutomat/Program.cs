@@ -6,17 +6,25 @@ namespace DetectorAutomat
     {
         static void Main(string[] args)
         {
-            Console.Write("Введите строку: ");
-            var input = Console.ReadLine();
+            while (true)
+            {
+                Console.Write("Введите строку: ");
+                var input = Console.ReadLine();
 
-            var detector = new StringDetector();
-            if (detector.Detect(input))
-            {
-                Console.WriteLine("Строка допущена.");
-            }
-            else
-            {
-                Console.WriteLine("Строка отвергнута.");
+                if (string.IsNullOrEmpty(input))
+                {
+                    break;
+                }
+
+                var detector = new StringDetector();
+                if (detector.Detect(input))
+                {
+                    Console.WriteLine("Строка допущена.");
+                }
+                else
+                {
+                    Console.WriteLine("Строка отвергнута.");
+                }
             }
         }
     }
