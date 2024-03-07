@@ -49,13 +49,16 @@
       <Project>{22F56004-7E80-4C6B-B100-F397859538FC}</Project>
       <Name>CardFile.Core</Name>
     </ProjectReference>
-    <ProjectReference Include="..\Cardfile.dataAccess.PostrgesSQL\Cardfile.dataAccess.PostrgesSQL.csproj">
-      <Project>{ef8684f5-1fe9-448c-9269-521df9af3035}</Project>
-      <Name>Cardfile.dataAccess.PostrgesSQL</Name>
+    <ProjectReference Include="..\CardFile.DataAccess.PostgreSql.EF\CardFile.DataAccess.PostgreSql.EF.csproj">
+      <Project>{cc6d1224-7dfa-4ae7-ba51-5fa4a40b1023}</Project>
+      <Name>CardFile.DataAccess.PostgreSql.EF</Name>
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Models\" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

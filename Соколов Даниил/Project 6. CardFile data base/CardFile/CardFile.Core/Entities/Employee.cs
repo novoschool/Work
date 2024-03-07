@@ -8,57 +8,47 @@ using System.Xml.Serialization;
 
 namespace CardFile.Core.Entities
 {
-
+    [Serializable]
     public class Employee
     {
         [XmlAttribute("Id")]
-
         public int Id { get; set; }
 
         [XmlElement("FirstName")]
-
         public string FirstName { get; set; }
 
         [XmlElement("MiddleName")]
-
         public string MiddleName { get; set; }
 
         [XmlElement("LastName")]
-
         public string LastName { get; set; }
 
         [XmlIgnore]
-
         public DateTime BirthDate { get; set; }
 
-        [XmlAttribute("BirthDate")]
-        [JsonIgnore]
-
-        public string BirthDateText
-        {
-            get => BirthDate.ToString();
-            set => BirthDate = DateTime.Parse(value);
-        }
+        //[XmlAttribute("BirthDate")]
+        //[JsonIgnore]
+        //public string BirthDateText
+        //{
+        //    get => BirthDate.ToString();
+        //    set => BirthDate = DateTime.Parse(value);
+        //}
 
         [XmlElement("Position")]
-
-        public int Position { get; set; }
+        public string Position { get; set; }
 
         [XmlElement("Division")]
-
-        public int Division { get; set; }
+        public string Division { get; set; }
 
         [XmlIgnore]
-
         public DateTime EmploymentDate { get; set; }
 
-        [XmlAttribute("EmploymentDate")]
-        [JsonIgnore]
-
-        public string EmploymentDateText
-        {
-            get => EmploymentDate.ToString();
-            set => EmploymentDate = DateTime.Parse(value);
-        }
+        //[XmlAttribute("EmploymentDate")]
+        //[JsonIgnore]
+        //public string EmploymentDateText
+        //{
+        //    get => EmploymentDate.ToString();
+        //    set => EmploymentDate = DateTime.Parse(value);
+        //}
     }
 }
