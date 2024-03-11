@@ -9,15 +9,12 @@ namespace DetectorAutomat.Services
     internal enum State
     {
         None,
-        Start,
-        Letter,
-        VariableSeparator,
-        LeftBracket,
+        Initial,
+        Name,
+        DimensionInitial,
         Dimension,
         RightBracket,
-        DimensionSeparator,
         Success,
-        Fail,
         Error,
     }
 }
