@@ -12,7 +12,7 @@ namespace DetectorAutomat.Services
 
         public bool Detect(string input)
         {
-            _state = State.Start;
+            _state = State.Initial;
             foreach (var ch in input)
             {
                 if (char.IsWhiteSpace(ch))
@@ -36,28 +36,28 @@ namespace DetectorAutomat.Services
                 case State.None:
                     _state = State.Error;
                     break;
-                case State.Start:
+                case State.Initial:
                     switch (charClass)
                     {
                         case CharClass.Alpha:
-                            _state = State.Letter;
-                            break;
-                        case CharClass.EndMarker:
-                            _state = State.Fail;
+                            _state = State.Name;
                             break;
                         default:
                             _state = State.Error;
                             break;
                     }
                     break;
-                case State.Letter:
+                case State.Name:
                     switch (charClass)
                     {
+                        case CharClass.Alpha:
+                        case CharClass.Digit:
+                            break;
                         case CharClass.LeftBracket:
-                            _state = State.LeftBracket;
+                            _state = State.DimensionInitial;
                             break;
                         case CharClass.Comma:
-                            _state = State.VariableSeparator;
+                            _state = State.Initial;
                             break;
                         case CharClass.EndMarker:
                             _state = State.Success;
@@ -67,28 +67,11 @@ namespace DetectorAutomat.Services
                             break;
                     }
                     break;
-                case State.VariableSeparator:
-                    switch (charClass)
-                    {
-                        case CharClass.Alpha:
-                            _state = State.Letter;
-                            break;
-                        case CharClass.EndMarker:
-                            _state = State.Fail;
-                            break;
-                        default:
-                            _state = State.Error;
-                            break;
-                    }
-                    break;
-                case State.LeftBracket:
+                case State.DimensionInitial:
                     switch (charClass)
                     {
                         case CharClass.Digit:
                             _state = State.Dimension;
-                            break;
-                        case CharClass.EndMarker:
-                            _state = State.Fail;
                             break;
                         default:
                             _state = State.Error;
@@ -98,14 +81,13 @@ namespace DetectorAutomat.Services
                 case State.Dimension:
                     switch (charClass)
                     {
+                        case CharClass.Digit:
+                            break;
                         case CharClass.RightBracket:
                             _state = State.RightBracket;
                             break;
                         case CharClass.Comma:
-                            _state = State.DimensionSeparator;
-                            break;
-                        case CharClass.EndMarker:
-                            _state = State.Fail;
+                            _state = State.DimensionInitial;
                             break;
                         default:
                             _state = State.Error;
@@ -116,24 +98,10 @@ namespace DetectorAutomat.Services
                     switch (charClass)
                     {
                         case CharClass.Comma:
-                            _state = State.VariableSeparator;
+                            _state = State.Initial;
                             break;
                         case CharClass.EndMarker:
                             _state = State.Success;
-                            break;
-                        default:
-                            _state = State.Error;
-                            break;
-                    }
-                    break;
-                case State.DimensionSeparator:
-                    switch (charClass)
-                    {
-                        case CharClass.Digit:
-                            _state = State.Dimension;
-                            break;
-                        case CharClass.EndMarker:
-                            _state = State.Fail;
                             break;
                         default:
                             _state = State.Error;
@@ -148,21 +116,6 @@ namespace DetectorAutomat.Services
 
         private CharClass Classify(char ch)
         {
-            //switch (ch)
-            //{
-            //    case ',':
-            //        return CharClass.Comma;
-
-            //    case '(':
-            //        return CharClass.LeftBracket;
-
-            //    case ')':
-            //        return CharClass.RightBracket;
-
-            //    default:
-            //        break;
-            //}
-
             return 
                 (ch, char.IsLetter(ch), char.IsDigit(ch)) switch
                 {
@@ -173,18 +126,6 @@ namespace DetectorAutomat.Services
                     (_, false, true) => CharClass.Digit,
                     _ => CharClass.Other,
                 };
-
-            //if (char.IsLetter(ch))
-            //{
-            //    return CharClass.Alpha;
-            //}
-
-            //if (char.IsDigit(ch))
-            //{
-            //    return CharClass.Digit;
-            //}
-
-            //return CharClass.Other;
         }
     }
 }
