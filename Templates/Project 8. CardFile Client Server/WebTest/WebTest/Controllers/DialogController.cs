@@ -19,7 +19,7 @@ namespace WebTest.Controllers
         [HttpPost]
         public ActionResult Index(UserNameModel model)
         {
-            ValidateModel(model);
+            //ValidateModel(model);
             return View("Reply", model);
         }
     }
