@@ -1,0 +1,12 @@
+﻿@model WebTest.Models.UserNameModel
+
+@{
+    ViewBag.Title = "Ответ";
+}
+
+<h2>Ответ</h2>
+
+<div>
+    Добрый день, @(string.IsNullOrEmpty(Model.UserName) ? "незнакомец" : Model.UserName)!
+</div>
+

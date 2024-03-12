@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<EmployeeCollection xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+  <Employees>
+    <Employee Id="1" BirthDate="08.11.1985 0:00:00" EmploymentDate="15.07.2019 0:00:00">
+      <Position>Руководитель проекта</Position>
+      <Division>Отдел разработки</Division>
+      <FirstName>Андрей</FirstName>
+      <MiddleName>Григорьевич</MiddleName>
+      <LastName>Захаров</LastName>
+    </Employee>
+    <Employee Id="2" BirthDate="11.03.1978 0:00:00" EmploymentDate="03.02.2020 0:00:00">
+      <FirstName>Людмила</FirstName>
+      <MiddleName>Алексеевна</MiddleName>
+      <LastName>Фролова</LastName>
+      <Position>Бизнес-аналитик</Position>
+      <Division>Отдел анализа</Division>
+    </Employee>
+    <Employee Id="3" BirthDate="10.06.1989 0:00:00" EmploymentDate="18.11.2021 0:00:00">
+      <FirstName>Вера</FirstName>
+      <MiddleName>Владимировна</MiddleName>
+      <LastName>Тищенко</LastName>
+      <Position>Руководитель группы</Position>
+      <Division>Отдел тестирования</Division>
+    </Employee>
+  </Employees>
+</EmployeeCollection>
