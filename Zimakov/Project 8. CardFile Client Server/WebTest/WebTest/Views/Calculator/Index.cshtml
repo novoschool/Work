@@ -1,0 +1,79 @@
+﻿@model WebTest.Models.CalculatorViewModel
+
+@{
+    ViewBag.Title = "Калькулятор";
+}
+
+<h2>Калькулятор</h2>
+
+<div class="container">
+    <div class="row">
+        <div class="col-md-10">
+            <div class="display-3 text-end">@Model.XRegister</div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            @Html.ActionLink("7", "InputDigit", new { digit = 7 }, new { @class = "btn btn-primary w-100", role = "button", style="margin: 5px" })
+        </div>
+        <div class="col-md-2">
+            @Html.ActionLink("8", "InputDigit", new { digit = 8 }, new { @class = "btn btn-primary w-100", role = "button", style = "margin: 5px" })
+        </div>
+        <div class="col-md-2">
+            @Html.ActionLink("9", "InputDigit", new { digit = 9 }, new { @class = "btn btn-primary w-100", role = "button", style = "margin: 5px" })
+        </div>
+        <div class="col-md-4">
+            @Html.ActionLink("C", "Clear", null, new { @class = "btn btn-primary w-100", role = "button", style = "margin: 5px" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            @Html.ActionLink("4", "InputDigit", new { digit = 4 }, new { @class = "btn btn-primary w-100", role = "button", style = "margin: 5px" })
+        </div>
+        <div class="col-md-2">
+            @Html.ActionLink("5", "InputDigit", new { digit = 5 }, new { @class = "btn btn-primary w-100", role = "button", style = "margin: 5px" })
+        </div>
+        <div class="col-md-2">
+            @Html.ActionLink("6", "InputDigit", new { digit = 6 }, new { @class = "btn btn-primary w-100", role = "button", style = "margin: 5px" })
+        </div>
+        <div class="col-md-2">
+            @Html.ActionLink("+", "InputOperator", new { opCode = "+" }, new { @class = "btn btn-primary w-100", role = "button", style = "margin: 5px" })
+        </div>
+        <div class="col-md-2">
+            @Html.ActionLink("-", "InputOperator", new { opCode = "-" }, new { @class = "btn btn-primary w-100", role = "button", style = "margin: 5px" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            @Html.ActionLink("1", "InputDigit", new { digit = 1 }, new { @class = "btn btn-primary w-100", role = "button", style = "margin: 5px" })
+        </div>
+        <div class="col-md-2">
+            @Html.ActionLink("2", "InputDigit", new { digit = 2 }, new { @class = "btn btn-primary w-100", role = "button", style = "margin: 5px" })
+        </div>
+        <div class="col-md-2">
+            @Html.ActionLink("3", "InputDigit", new { digit = 3 }, new { @class = "btn btn-primary w-100", role = "button", style = "margin: 5px" })
+        </div>
+        <div class="col-md-2">
+            @Html.ActionLink("*", "InputOperator", new { opCode = "*" }, new { @class = "btn btn-primary w-100", role = "button", style = "margin: 5px" })
+        </div>
+        <div class="col-md-2">
+            @Html.ActionLink("/", "InputOperator", new { opCode = "/" }, new { @class = "btn btn-primary w-100", role = "button", style = "margin: 5px" })
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2">
+            @Html.ActionLink("0", "InputDigit", new { digit = 0 }, new { @class = "btn btn-primary w-100", role = "button", style = "margin: 5px" })
+        </div>
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-2">
+        </div>
+        <div class="col-md-4">
+            @Html.ActionLink("=", "InputOperator", new { opCode = "=" }, new { @class = "btn btn-primary w-100", role = "button", style = "margin: 5px" })
+        </div>
+    </div>
+</div>

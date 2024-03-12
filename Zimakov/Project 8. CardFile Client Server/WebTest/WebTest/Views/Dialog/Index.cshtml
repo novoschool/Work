@@ -1,0 +1,20 @@
+﻿@model WebTest.Models.UserNameModel
+
+@{
+    ViewBag.Title = "Приветствие";
+}
+
+<h2>Приветствие</h2>
+
+@using (Html.BeginForm())
+{
+    <div>
+        @ViewBag.GreetingMessage @Html.EditorFor(m => m.UserName)
+    </div>
+    <div>
+        @ViewBag.AgeMessage @Html.EditorFor(m => m.UserAge)
+    </div>
+    <div>
+        <input class="btn btn-primary" type="submit" value="Привет!" />
+    </div>
+}
