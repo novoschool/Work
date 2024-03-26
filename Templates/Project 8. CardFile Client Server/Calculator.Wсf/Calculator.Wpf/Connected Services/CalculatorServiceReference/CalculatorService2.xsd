@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="http://localhost:8088/CalculatorService?xsd=xsd2" namespace="http://schemas.datacontract.org/2004/07/Calculator.Wcf.Models" />
+  <xs:element name="AddDigit">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Calculator.Wcf.Models" minOccurs="0" name="model" nillable="true" type="q1:CalculatorServiceModel" />
+        <xs:element minOccurs="0" name="digit" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddDigitResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Calculator.Wcf.Models" minOccurs="0" name="AddDigitResult" nillable="true" type="q2:CalculatorServiceModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Clear">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Calculator.Wcf.Models" minOccurs="0" name="model" nillable="true" type="q3:CalculatorServiceModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ClearResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Calculator.Wcf.Models" minOccurs="0" name="ClearResult" nillable="true" type="q4:CalculatorServiceModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertOperator">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Calculator.Wcf.Models" minOccurs="0" name="model" nillable="true" type="q5:CalculatorServiceModel" />
+        <xs:element minOccurs="0" name="opCode" nillable="true" type="xs:string" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="InsertOperatorResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Calculator.Wcf.Models" minOccurs="0" name="InsertOperatorResult" nillable="true" type="q6:CalculatorServiceModel" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
